@@ -2,16 +2,16 @@
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-include_once($_SERVER['DOCUMENT_ROOT']. '/proyecto/Controlador/PHPMailer/src/Exception.php');
-include_once($_SERVER['DOCUMENT_ROOT']. '/proyecto/Controlador/PHPMailer/src/PHPMailer.php');
-include_once($_SERVER['DOCUMENT_ROOT']. '/proyecto/Controlador/PHPMailer/src/SMTP.php');
+include_once($_SERVER['DOCUMENT_ROOT']. '/proyecto/controlador/PHPMailer/src/Exception.php');
+include_once($_SERVER['DOCUMENT_ROOT']. '/proyecto/controlador/PHPMailer/src/PHPMailer.php');
+include_once($_SERVER['DOCUMENT_ROOT']. '/proyecto/controlador/PHPMailer/src/SMTP.php');
 
-class enviarCorreo{
+class EnviarCorreo{
 
   
     public function enviarSolicitud($partner,$para,$asunto,$mensaje,$xml){
         $mail = new PHPMailer(true);
-        #$mail->isSMTP();
+        
         $mail->Host='smtp.gmail.com';
         $mail->Port=587;
         $mail->SMTPAuth=true;
@@ -39,13 +39,12 @@ class enviarCorreo{
                     <br>
                     <p>'.$mensaje.'  </p>
                     <br>
-                    <p> Archivo:'.$xml.'</p>
-                    ';
-if(!$mail->send()){
-    echo 'Not sent: <pre>'.print_r(error_get_last(), true).'</pre>';
-}else{
-    return 1;
-}
+                    <p> Archivo:'.$xml.'</p>';
+        if(!$mail->send()){
+            echo 'Not sent: <pre>'.print_r(error_get_last(), true).'</pre>';
+        }else{
+            return 1;
+        }
 
     }
 }
