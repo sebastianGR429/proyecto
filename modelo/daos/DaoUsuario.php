@@ -15,10 +15,36 @@ class DaoUsuario extends DB implements dao_interface
         $this->con = $this->connect();
     }
 
+    public function agregarRegistro(Usuario $nuevoRegistro)
+    {
+
+    }   
+    public function actualizarRegistro(Usuario $nuevoRegistro)
+    {
+        
+    }    
+
+    public function eliminarRegistro($idRegistro)
+    {
+        
+    }    
+
+    public function listar()
+    {
+        $query = "select * from USUARIO";
+        $sentencia = $this->con->prepare($query);
+        $sentencia->execute([]);
+        $usuarios = [];
+        foreach ($sentencia->fetchall() as $key) {
+            $usuarios[] = new Usuario($key[0], $key[1], $key[2], $key[3], $key[4], $key[5]);
+        }
+        return $usuarios;
+    }
+
     public function actualizarContrasena(Usuario $u){
         $query='UPDATE USUARIO SET contraseña=? where  cod_usuario=?';
         $sentencia=$this->con->prepare($query);
-        $sentencia->execute([$u->getPass_usuario(),$u->getCod_usuario()]);
+        $sentencia->execute([$u->getContraseña(),$u->getCod_usuario()]);
         if($sentencia->rowCount()){
             return 1;
         }
@@ -30,8 +56,9 @@ class DaoUsuario extends DB implements dao_interface
         $cor= new EnviarCorreo();
         $nuevaContra=(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
         $md5Contra=md5($nuevaContra);
-        $mensaje='Con este codigo: '.$nuevaContra.' podras ingresar nuevamente a la pagina para que asi puedas realizar el cambio de tu contraseña.';
-        $r1=$cor->enviarMensaje("Usuario ChichaWeb",$correo,'Recuperación de Contraseña ChibchaWeb',$mensaje);
+        $mensaje='Con esta nueva contraseña generado aleaotoriamente podras volver a unirte a nosotros: '
+        .$nuevaContra.' podras ingresar nuevamente a la pagina para que asi puedas realizar el cambio de tu contraseña.';
+        $r1=$cor->enviarContraseña($correo,'Recuperación de Contraseña ChibchaWeb',$mensaje);
         
         if($r1==1){
             $query='UPDATE USUARIO SET contraseña=? WHERE correo=?';
@@ -45,18 +72,6 @@ class DaoUsuario extends DB implements dao_interface
 
     }
     
-    public function listar()
-    {
-        $query = "select * from USUARIO";
-        $sentencia = $this->con->prepare($query);
-        $sentencia->execute([]);
-        $usuarios = [];
-        foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Usuario($key[0], $key[1], $key[2], $key[3], $key[4], $key[5]);
-        }
-        return $usuarios;
-    }
-
     public function darUsuario($nom_usuario)
     {
         $query='SELECT * FROM USUARIO WHERE nom_usuario=?';
