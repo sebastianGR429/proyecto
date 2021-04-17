@@ -1,12 +1,11 @@
 <?php
 include_once('daointerface.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Usuario.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
 class DAOUsuario extends DB implements dao_interface
 {
-
     private $con;
 
     public function __construct()
