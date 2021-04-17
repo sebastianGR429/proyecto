@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Usuario.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
-class DaoUsuario extends DB implements dao_interface
+class DAOUsuario extends DB implements dao_interface
 {
 
     private $con;
@@ -19,7 +19,7 @@ class DaoUsuario extends DB implements dao_interface
     {
 
     }   
-    public function actualizarRegistro(Usuario $nuevoRegistro)
+    public function actualizarRegistro(Usuario $registroActualizar)
     {
         
     }    
