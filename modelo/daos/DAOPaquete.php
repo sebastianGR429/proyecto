@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
-class DAOUsuario extends DB implements dao_interface
+class DAOPaquete extends DB implements dao_interface
 {
     private $con;
 
@@ -16,7 +16,7 @@ class DAOUsuario extends DB implements dao_interface
 
     public function agregarRegistro(Paquete $nuevoRegistro)
     {
-
+        
     }   
     public function actualizarRegistro(Paquete $registroActualizar)
     {
