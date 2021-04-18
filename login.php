@@ -43,9 +43,9 @@
     <div class="headerL">
     <br>
 
-        <h3>Sign Up</h3>
+        <h3>Login</h3>
         
-        <p>You want to fill out this form</p>
+        <p>Ingresa tus datos</p>
         
     </div>
     
@@ -63,7 +63,7 @@
             <div id="miModal" class="modal">
             <div class="modal-contenido">
             <a href="#">x</a>
-            <h2>Mi primer Modal</h2>
+            <h2></h2>
             <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
             </div>  
 </div>
