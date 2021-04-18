@@ -53,19 +53,36 @@
 
     <div class="inputs">
     
+      <form id="datos_usuario">
         <input type="email" placeholder="e-mail" autofocus />
-    
         <input type="password" placeholder="Password" />
-        
         <a id="submit" href="#">Iniciar sesión</a>
-        
-        <a href="#miModal">Olvide mi contraseña</a>
-            <div id="miModal" class="modal">
-            <div class="modal-contenido">
-            <a href="#">x</a>
-            <h2></h2>
-            <p>Este es mi primera ventana modal sin utilizar JavaScript.</p>
-            </div>  
+      </form>
+      <br>
+
+      
+      <a href="#miModal">Olvide mi contraseña</a>
+      <div id="miModal" class="modal">
+        <div class="modal-contenido">
+          <a href="#">x</a>
+          <h2></h2>
+          <p>Ingresa el correo con el que te registraste.</p>
+          <form id="restablecer">
+              <input type="email" placeholder="e-mail" autofocus />
+              <a id="submit" href="#">Restaurar contraseña</a>
+          </form>
+
+        </div>
+      </div>
+      <a href="registro.php">Registrate</a>
+
+      
+    </div>  
+      
+      
+      
+
+
 </div>
     
     </div>
