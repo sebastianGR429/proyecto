@@ -54,20 +54,50 @@
     <ul class="nospace group">
       <li class="one_third first">
         <article><a href="#"><i class="fas fa-hand-peace"></i></a>
-          <h6 class="heading underline">Sapien tempor placerat</h6>
-          <p>Luctus mauris lectus elementum nulla ac consectetuer sapien leo et arcu maecenas auctor viverra magna sed.</p>
+          <h6 class="heading underline">Chincha-Platino</h6>
+          <p>Exclusivo de CHIBCHA-WEB.</p>
+          <hr>
+          <p>Calidad certificada ISO 9001.</p>
+          <hr>
+          <p>20 GB de espacio.</p>
+          <hr>
+          <p>20 correos corporativos.</p>
+          <hr>
+          <p>10 Base de Datos MySQL.</p>
+          <hr>
+          <p>Certificado SSL (https).</p>
         </article>
       </li>
       <li class="one_third">
         <article class="active"><a href="#"><i class="fas fa-microphone"></i></a>
-          <h6 class="heading underline">Blandit urna fusce</h6>
-          <p>In augue blandit ligula pharetra mattis vestibulum congue enim aenean felis augue pretium semper imperdiet.</p>
+          <h6 class="heading underline">Chibcha-Plata </h6>
+          <p>Exclusivo de CHIBCHA-WEB.</p>
+          <hr>
+          <p>Calidad certificada ISO 9001.</p>
+          <hr>
+          <p>40 GB de espacio.</p>
+          <hr>
+          <p>25 correos corporativos.</p>
+          <hr>
+          <p>12 Base de Datos MySQL.</p>
+          <hr>
+          <p>Certificado SSL (https).</p>
         </article>
       </li>
       <li class="one_third">
         <article><a href="#"><i class="fas fa-moon"></i></a>
-          <h6 class="heading underline">Quis euismod malesuada</h6>
-          <p>Purus morbi ut risus nec orci bibendum commodo phasellus fringilla pede vitae tincidunt congue nibh lobortis.</p>
+          <h6 class="heading underline">Chibcha-Oro</h6>
+          <p>Exclusivo de CHIBCHA-WEB.</p>
+          <hr>
+          <p>Calidad certificada ISO 9001.</p>
+          <hr>
+          <p>60 GB de espacio.</p>
+          <hr>
+          <p>30 correos corporativos.</p>
+          <hr>
+          <p>20 Base de Datos MySQL.</p>
+          <hr>
+          <p>Certificado SSL (https).</p>
         </article>
       </li>
     </ul>
