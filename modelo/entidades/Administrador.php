@@ -1,5 +1,5 @@
 <?php
-class Administador{
+class Administrador{
 
     private $cod_administrador;
     private $cod_usuario;
