@@ -5,7 +5,7 @@
 <title>Inicio- ChibchaWeb</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
 <link href="css/pago.css" rel="stylesheet" type="text/css" media="all">
 </head>
 <body id="top">
@@ -38,7 +38,9 @@
   <div class='window'>
     <div class='order-info'>
       <div class='order-info-content'>
-        <h2>Order Summary</h2>
+        <h2>COMPRA DE PAQUETE</h2>
+
+
        
        
        
@@ -67,7 +69,7 @@
                 <div class='dropdown-select'>
                 <ul>
                   <li>Master Card</li>
-                  <li>American Express</li>
+                  <li>Diners Club</li>
                   </ul></div>
                 </div>
                </td></tr>
@@ -77,7 +79,8 @@
             <input class='input-field'></input>
             Titular de la tarjeta
             <input class='input-field'></input>
-            <table class='half-input-table'>
+            
+            <table>
               <tr>
                 <td> Expires
                   <input class='input-field'></input>
@@ -85,13 +88,12 @@
                 <td>CVC
                   <input class='input-field'></input>
                 </td>
-              </tr>
-              <tr>
-                <td>forma de pago:</td>
-                <td>forma de pago:</td>
-              </tr>
+              </tr>        
             </table>
+            Plan de pago
+            <input class='input-field'></input>
             <button class='pay-btn'>Checkout</button>
+           
 
           </div>
 

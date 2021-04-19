@@ -22,12 +22,12 @@ window.onclick = function(e) {
       e.target.innerHTML = document.getElementById('current-card').innerHTML;
       document.getElementById('current-card').innerHTML = 'Master Card';
     }
-    else if (e.target.innerHTML === 'American Express') {
-         document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/f5hyn6u05ktql8d/amex-icon-6902.png';
+    else if (e.target.innerHTML === 'Diners Club') {
+         document.getElementById('credit-card-image').src = 'img/diner.png';
           activeDropdown.classList.remove('visible');
       activeDropdown = null;
       e.target.innerHTML = document.getElementById('current-card').innerHTML;
-      document.getElementById('current-card').innerHTML = 'American Express';      
+      document.getElementById('current-card').innerHTML = 'Diners Club';      
     }
     else if (e.target.innerHTML === 'Visa') {
          document.getElementById('credit-card-image').src = 'https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png';
