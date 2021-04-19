@@ -92,7 +92,7 @@
             </table>
             Plan de pago
             <input class='input-field'></input>
-            <button class='pay-btn'>Checkout</button>
+            <button class='pay-btn'>Comprar</button>
            
 
           </div>

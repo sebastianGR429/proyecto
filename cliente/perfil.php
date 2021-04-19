@@ -39,7 +39,7 @@
       
       
           <div id="datosP" >
-            <td><p>Ingresa tus datos personales.</p></td>
+            <td><p>Datos personales.</p></td>
           
             <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre completo">
             <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Cedula">
@@ -47,7 +47,7 @@
           </div>
       
           <div id="datosU">
-            <p>Crea un perfil.</p>
+            <p>Datos del perfil.</p>
             <br>
             <input class="controls" type="email" name="correo" id="correo" placeholder="Correo">
             <input class="controls" type="email" name="correo" id="correo" placeholder="Usuario">
