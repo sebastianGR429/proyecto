@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Sugerencias.php');
 //include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
-class DAOSugerencias extends DB implements dao_interface
+class DAOSugerencias extends DB
 {
     private $con;
 

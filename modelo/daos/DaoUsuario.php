@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Usuario.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
-class DAOUsuario extends DB implements dao_interface
+class DAOUsuario extends DB 
 {
 
     private $con;

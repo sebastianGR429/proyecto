@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
-class DAOParnet extends DB implements dao_interface
+class DAOParnet extends DB
 {
     private $con;
 

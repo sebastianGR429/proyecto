@@ -18,7 +18,7 @@ class DB{
 
     function connect(){
         try{
-            $connection = "pgsql:host=" . $this->host . ";dbname=" . $this->db;
+            $connection = "mysql:host=" . $this->host . ";dbname=" . $this->db;
             $options = [
                 PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_EMULATE_PREPARES   => false,

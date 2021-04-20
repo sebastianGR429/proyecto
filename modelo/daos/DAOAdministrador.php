@@ -3,7 +3,7 @@ include_once('daointerface.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Administrador.php');
 
-class DAOAdministrador extends DB implements dao_interface
+class DAOAdministrador extends DB 
 {
     private $con;
 

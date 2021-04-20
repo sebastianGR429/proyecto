@@ -3,7 +3,7 @@ include_once('daointerface.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
 
-class DAOPaquete extends DB implements dao_interface
+class DAOPaquete extends DB 
 {
     private $con;
 
@@ -13,11 +13,11 @@ class DAOPaquete extends DB implements dao_interface
         $this->con = $this->connect();
     }
 
-    public function agregarRegistro(Object $nuevoRegistro)
+    public function agregarRegistro(Paquete $nuevoRegistro)
     {
         
     }   
-    public function actualizarRegistro(Object $registroActualizar)
+    public function actualizarRegistro(Paquete $registroActualizar)
     {
         $query = "UPDATE PAQUETES SET nom_paquete=?,desc_paquete=?,costo_paquete=? 
         WHERE cod_paquete=?";
