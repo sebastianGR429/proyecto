@@ -1,51 +1,73 @@
-<footer id="footer" class="hoc clear"> 
-    <div class="one_quarter first">
-      <h6 class="heading">Información de contacto</h6>
-      <ul class="nospace linklist contact btmspace-30">
-        <li><i class="fas fa-map-marker-alt"></i>
-          <address>
-          Cra 34 #45-12
-          </address>
-        </li>
-        <li><i class="fas fa-phone"></i> +00 (123) 456 7890</li>
-        <li><i class="far fa-envelope"></i> chibchaw@gmail.com</li>
-      </ul>
-      <ul class="faico clear">
-        <li><a class="faicon-facebook" ><i class="fab fa-facebook"></i></a></li>
-        <li><a class="faicon-google-plus" ><i class="fab fa-google-plus-g"></i></a></li>
-        <li><a class="faicon-linkedin" ><i class="fab fa-linkedin"></i></a></li>
-        <li><a class="faicon-twitter" ><i class="fab fa-twitter"></i></a></li>
-        <li><a class="faicon-vk" ><i class="fab fa-vk"></i></a></li>
-      </ul>
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6">
+            <div class="footer-info">
+              <h3>Day</h3>
+              <p>
+                A108 Adam Street <br>
+                NY 535022, USA<br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+              </p>
+              <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-2 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4>Our Newsletter</h4>
+            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+
+          </div>
+
+        </div>
+      </div>
     </div>
-    <div class="one_quarter">
-      <h6 class="heading">Historia</h6>
-      <ul class="nospace linklist">
-        <li>
-          <article>
-            <p class="block font-xs" > Empezo como un proyecto en donde se creyo al maximo en la proyección que tenia este,
-            logrando asi cada vez mas mejoras en el sistema, hasta que decidimos lanzarnos al mercado, esto teniendo en cuenta siempre la premisa
-            del compromiso social y con nuestros clientes.</p>
-            <time class="nospace btmspace-10"><a href="#">Fundados desde el año 2000</a></time>
-          </article>
-        </li>
-      </ul>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
+        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+      </div>
     </div>
-    <div class="one_quarter">
-      <h6 class="heading">Principales Compromisos</h6>
-      <ul class="nospace linklist">
-        
-        <li><p>Dar respuesta en el menor tiempo posible a sugerencias hechas por clientes</p></li>
-        <li><p>Ofrecer los mejores planes de hosting</p></li>
-        <li><p>Crear las mejores asociaciones con otras aplicaciones registradoras de dominios</p></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Medios de pago</h6>
-      <ul class="nospace clear latestimg">
-        <li><a href=""><img src="images/demo/visa.png" alt=""></a></li>
-        <li><a href=""><img src="images/demo/master.png" alt=""></a></li>
-        <li><a href=""><img src="images/demo/diners.png" alt=""></a></li>
-      </ul>
-    </div>
-  </footer>
+  </footer><!-- End Footer -->

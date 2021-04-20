@@ -1,74 +1,124 @@
 <!DOCTYPE html>
-<html lang="">
-<head>
-<title>Inicio- ChibchaWeb</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<link href="../layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<link href="../layout/styles/style.css" rel="stylesheet" type="text/css" media="all">
-</head>
-<body id="top">
-<div class="wrapper row0">
-  <div id="topbar" class="hoc clear">
-    <div class="fl_left"> 
-      <ul class="nospace">
-        <li><i class="fas fa-phone rgtspace-5"></i> +00 (123) 456 7890</li>
-        <li><i class="far fa-envelope rgtspace-5"></i> chibchaw@gmail.com</li>
-      </ul>
-      
+<html lang="en">
+
+  <?php
+		include("head.php");
+	?>
+
+<body>
+
+  <!-- ======= Top Bar ======= -->
+  <section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+      <div class="contact-info d-flex align-items-center">
+        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
+        <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
+      </div>
+      <div class="social-links d-none d-md-block">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
+      </div>
     </div>
-    <div class="fl_right"> 
-      
-      <ul class="nospace">
-        <li><a href="index.php"><i class="fas fa-home"></i></a></li>
-      </ul>      
+  </section>
+
+  <?php
+		include("menu.php");
+	?>
+  
+  
+
+  <main id="main">
+
+    <section id="pricing" class="pricing">
+    <div class="container2" style="margin-left: 500px">
+        
+        <form class="form" id="login">
+            
+            <h1 class="form__title">Actualizar datos</h1>
+            <table>
+                <div class="form__message form__message--error"></div>
+                <tr>
+                    <td>
+                    <div class="form__input-group">
+                        <input type="text" id="nombre_cliente" class="form__input" autofocus placeholder="Nombre completo" >
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    </td>
+
+                    <td>
+                    <div class="form__input-group">
+                        <input type="text" id="cedula_cliente" class="form__input" autofocus placeholder="Cedula" readonly>
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    </td>
+                </tr>
+
+            </table>
+                    
+                    <div class="form__input-group">
+                        <input type="text" class="form__input" autofocus placeholder="Telefono">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    <div class="form__input-group">
+                        <input type="text" class="form__input" autofocus placeholder="Correo" >
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    
+                    <div class="form__input-group">
+                        <input type="text" class="form__input" autofocus placeholder="Usuario" readonly>
+                        <div class="form__input-error-message"></div>
+                    </div>
+
+            <table>
+                <tr>
+                    <td>
+                    <div class="form__input-group">
+                        <input type="password" class="form__input" autofocus placeholder="Contraseña">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    </td>
+                    
+                    <td>
+                    <div class="form__input-group">
+                        <input type="password" class="form__input" autofocus placeholder="Confirmar contraseña">
+                        <div class="form__input-error-message"></div>
+                    </div>
+                    </td>
+                </tr>
+            </table>        
+                    
+            <center><button type="button" class="btn btn-danger">Actualizar</button></center>
+            <br><br>
+            
+        </form>
     </div>
-  </div>
-</div>
-<div class="wrapper row1">
-    <?php
-		  include("menu.php");
-		?>
-</div>
-<div class="wrapper bgded overlay" style="background-image:url('../images/demo/backgrounds/imagen_inicio.jpg');">
-  <div id="pageintro" class="hoc clear"> 
-    
-  <section class="form-register">
-      <h3>Registro de cuenta</h3>
-      <div class="sep"></div>
-      
-      
-          <div id="datosP" >
-            <td><p>Datos personales.</p></td>
-          
-            <input class="controls" type="text" name="nombres" id="nombres" placeholder="Nombre completo">
-            <input class="controls" type="text" name="apellidos" id="apellidos" placeholder="Cedula">
-            <input class="controls" type="email" name="correo" id="correo" placeholder="Telefono">
-          </div>
-      
-          <div id="datosU">
-            <p>Datos del perfil.</p>
-            <br>
-            <input class="controls" type="email" name="correo" id="correo" placeholder="Correo">
-            <input class="controls" type="email" name="correo" id="correo" placeholder="Usuario">
-            <input class="controls" type="password" name="correo" id="correo" placeholder="Contraseña">
-            <input class="controls" type="password" name="correo" id="correo" placeholder="Confirmar Contraseña">
-          </div>
 
-          <input class="botons" type="submit" value="Actualizar">
-    </section>
+    </section><!-- End Pricing Section -->
 
-  </div>
-</div>
-<div class="wrapper row4">
-<?php
-		  include("footer.php");
-		?>
-</div>
 
-<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
-<script src="../layout/scripts/jquery.min.js"></script>
-<script src="../layout/scripts/jquery.backtotop.js"></script>
-<script src="../layout/scripts/jquery.mobilemenu.js"></script>
+  </main><!-- End #main -->
+
+  <?php
+		include("footer.php");
+	?>
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+
+  
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="../assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="../assets/vendor/php-email-form/validate.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+
+  <script src="./src/main.js"></script>
 </body>
+
 </html>
