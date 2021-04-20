@@ -6,6 +6,7 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOPaquete.php');
 
 $conPaq=new ControladorPaquete();
 $lisPaq=$conPaq->listar();
+
 ?> 
 
 <?php

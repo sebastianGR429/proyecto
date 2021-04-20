@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-		include("head.php");
+  include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPartner.php');
+  include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOPartner.php');
+	include("head.php");
+
+  $conPar=new ControladorPartner();
+  $lisPar=$conPar->listar();
 ?>
 
 <body>
@@ -42,30 +47,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
+            <?php foreach($partners as $i){?>
+              <tr>
+                <td><?php echo $i["nom_partner"]?></td>
+                <td><?php echo $i["correo_partner"]?><td>
+                <td><?php echo $i["tel_partner"]?><td>
                 <td><button type="button" class="btn btn-dark">Solicitar</button></td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-                <td><button type="button" class="btn btn-dark">Solicitar</button></td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-                <td><button type="button" class="btn btn-dark">Solicitar</button></td>
-            </tr>
+              </tr>
+						<?php }?>
+            
         </tbody>
     </table>
 
