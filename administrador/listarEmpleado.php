@@ -1,7 +1,8 @@
 <?php
 include('Header.php');
 include('menuAdmi.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/Controlador/ControladorEmpleado.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorEmpleado.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOEmpleado.php');
 $CEmpleados = new ControladorEmpleado();
 $empleados = $CEmpleados->listar();
 print_r($empleados);
@@ -47,28 +48,19 @@ print_r($empleados);
 							</tr>
 						</thead>
 						<tbody>
-							<!-- <?php
+							<?php
 							foreach ($empleados as $key) {
 								echo ("<tr>");
-								echo ("<td>" . $key[2] . "</td>");
-								echo ("<td>" . $key[3] . "</td>");
-								echo ("<td>" . $key[4] . "</td>");
-								
-								if ($key[6] == "4") {
-									echo ("<td><div class='btn-list'>	
-											<button type='button' class='btn btn-outline-danger' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Inactivar</button>
-											</div></td>");
-								} else {
-									echo ("<td><div class='btn-list'>
-											<button type='button' class='btn btn-outline-success' onclick='estado(" . '"' . $key['cod_usuario'] . '"' . ")'>Activar</button>
-											</div></td>");
-								}
+								echo ("<td>" . $key["nom_empleado"] . "</td>");
+								echo ("<td>" . $key["tel_empleado"] . "</td>");
+								echo ("<td>" . $key["cod_nivel"] . "</td>");
+							
 							?>
 
 							<?php
 								echo ("</tr>");
 							}
-							?> -->
+							?>
 
 						</tbody>
 					</table>
