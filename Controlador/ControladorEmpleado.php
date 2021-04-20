@@ -13,11 +13,6 @@ class ControladorEmpleado{
         return $this->Empleados->agregarRegistro($nuevoRegistro);
     }
 
-    public function agregarEmpleado($nombre, $telefono, $nivel)
-    {
-        $this->Empleados=new DAOEmpleado();
-        return $this->Empleados->agregarRegistro($nombre, $telefono, $nivel );
-    }
 
     public function actualizarRegistro(Empleado $registroActualizar)
     {

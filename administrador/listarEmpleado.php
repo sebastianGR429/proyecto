@@ -4,6 +4,7 @@ include('menuAdmi.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/Controlador/ControladorEmpleado.php');
 $CEmpleados = new ControladorEmpleado();
 $empleados = $CEmpleados->listar();
+print_r($empleados);
 ?>
 
 
@@ -46,13 +47,12 @@ $empleados = $CEmpleados->listar();
 							</tr>
 						</thead>
 						<tbody>
-							<?php
+							<!-- <?php
 							foreach ($empleados as $key) {
 								echo ("<tr>");
-								echo ("<td>" . $key[3] . "</td>");
 								echo ("<td>" . $key[2] . "</td>");
+								echo ("<td>" . $key[3] . "</td>");
 								echo ("<td>" . $key[4] . "</td>");
-								echo ("<td>" . $key[5] . "</td>");
 								
 								if ($key[6] == "4") {
 									echo ("<td><div class='btn-list'>	
@@ -68,7 +68,7 @@ $empleados = $CEmpleados->listar();
 							<?php
 								echo ("</tr>");
 							}
-							?>
+							?> -->
 
 						</tbody>
 					</table>

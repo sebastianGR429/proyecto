@@ -40,14 +40,14 @@ class DAOEmpleado extends DB
     }
     public function listar()
     {
-        $query = "SELECT * FROM EMPLEADO";
+        $query = "select * from EMPLEADO";
         $sentencia = $this->con->prepare($query);
         $sentencia->execute([]);
-        $empleados = [];
+        $usuarios = [];
         foreach ($sentencia->fetchall() as $key) {
             $usuarios[] = new Empleado($key[0], $key[1], $key[2], $key[3], $key[4]);
         }
-        return $empleados;
+        return $usuarios;
     }
     public function eliminarRegistro($idRegistro){
 
