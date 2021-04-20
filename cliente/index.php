@@ -3,30 +3,9 @@
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPaquete.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOPaquete.php');
-session_start();
-if (!isset($_SESSION['user'])) {
 
-    header("location: ../index.php");
-} else if (!$_SESSION['tipo'] == 4) {
-    header("location: ../index.php");
-}
-include("header.php");
-
-// $conReg=new ControladorRegistro();
-// $usuario=$conReg->darUsuario($_SESSION['user']);
-
-// $conCli=new ControladorCliente();
-// $cliente=$conCli->devolverCliente($usuario->getCod_usuario());
-
-
-
-// $contDoc=new ControladorDocumento();
-// $idiomas=$contDoc->idiomas();
-// $presentacion=$contDoc->tipoPres();
-// $documento=$contDoc->tipoDoc();
-// $conAutor=new ControladorAutores();
-// $autores=$conAutor->listar();
-// $listaDocumentos=$contDoc->informacionDocumentos();
+$conPaq=new ControladorPaquete();
+$lisPaq=$conPaq->listar();
 ?> 
 
 <?php

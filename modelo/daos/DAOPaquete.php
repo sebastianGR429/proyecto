@@ -2,7 +2,6 @@
 include_once('daointerface.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
 class DAOPaquete extends DB implements dao_interface
 {
@@ -14,11 +13,11 @@ class DAOPaquete extends DB implements dao_interface
         $this->con = $this->connect();
     }
 
-    public function agregarRegistro(Paquete $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
         
     }   
-    public function actualizarRegistro(Paquete $registroActualizar)
+    public function actualizarRegistro(Object $registroActualizar)
     {
         $query = "UPDATE PAQUETES SET nom_paquete=?,desc_paquete=?,costo_paquete=? 
         WHERE cod_paquete=?";
@@ -29,11 +28,6 @@ class DAOPaquete extends DB implements dao_interface
                 $registroActualizar->getCod_paquete()
         ]);
         return $respuesta;
-    }    
-
-    public function eliminarRegistro($idRegistro)
-    {
-        
     }    
 
     public function listar()
@@ -47,6 +41,12 @@ class DAOPaquete extends DB implements dao_interface
         }
         return $usuarios;
     }
+
+    public function eliminarRegistro($idRegistro)
+    {
+        
+    }    
+
 
       
 }
