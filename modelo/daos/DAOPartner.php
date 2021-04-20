@@ -4,7 +4,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
-class DAOParnet extends DB
+class DAOPartner extends DB
 {
     private $con;
 
@@ -39,14 +39,13 @@ class DAOParnet extends DB
     }
     public function listar()
     {
-        $query = "SELECT * FROM PARTNER";
-        $sentencia = $this->con->prepare($query);
-        $sentencia->execute([]);
-        $partners = [];
-        foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3]);
+        $query = $this->con->prepare("SELECT * FROM PARTNER");
+        $query->execute();
+        $par = array();
+        while ($fila = $query->fetch()) {
+            $par[] = $fila;
         }
-        return $partners;
+        return $par;
     }
     public function eliminarRegistro($idRegistro){
 

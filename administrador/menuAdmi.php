@@ -35,8 +35,8 @@
 							<span class="micon dw dw-library"></span><span  class="mtext">Partners</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="listarPartners.php">Listar</a></li>
-							<li><a href="agregarPartners.php">Agregar</a></li>					
+							<li><a href="listarPartner.php">Listar</a></li>
+							<li><a href="agregarPartner.php">Agregar</a></li>					
 						</ul>
 						
 					</li>

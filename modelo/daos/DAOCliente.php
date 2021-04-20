@@ -48,14 +48,13 @@ class DAOCliente extends DB
 
     public function listar()
     {
-        $query = "select * from CLIENTE";
-        $sentencia = $this->con->prepare($query);
-        $sentencia->execute([]);
-        $clientes = [];
-        foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3]);
+        $query = $this->con->prepare("SELECT * FROM CLIENTE");
+        $query->execute();
+        $cli = array();
+        while ($fila = $query->fetch()) {
+            $cli[] = $fila;
         }
-        return $clientes;
+        return $cli;
     }
 
       
