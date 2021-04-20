@@ -17,7 +17,7 @@
 							<span class="micon dw dw-house-1"></span><span href="index.php" class="mtext">Inicio</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="">inicio</a></li>
+							<li><a href="index.php">inicio</a></li>
 						</ul>
 					</li>
 					<li class="dropdown">
@@ -35,8 +35,8 @@
 							<span class="micon dw dw-library"></span><span  class="mtext">Partners</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="TablaPublicadores.php">Listar</a></li>
-							<li><a href="TablaPublicadoresInac.php">Agregar</a></li>					
+							<li><a href="listarPartners.php">Listar</a></li>
+							<li><a href="agregarPartners.php">Agregar</a></li>					
 						</ul>
 						
 					</li>
@@ -45,7 +45,7 @@
 							<span class="micon dw dw-library"></span><span  class="mtext">Clientes</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="TablaClientes.php">Listar</a></li>
+							<li><a href="listarClientes.php">Listar</a></li>
 						</ul>
 					</li>
                     <li class="dropdown">
