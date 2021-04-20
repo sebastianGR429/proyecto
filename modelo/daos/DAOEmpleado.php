@@ -1,8 +1,7 @@
 <?php
 include_once('daointerface.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
-include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/Controlador/db.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Empleado.php');
 
 class DAOEmpleado extends DB implements dao_interface
 {
@@ -16,11 +15,12 @@ class DAOEmpleado extends DB implements dao_interface
 
     public function agregarRegistro(Empleado $nuevoRegistro)
     {
-        $query = "INSERT INTO EMPLEADO VALUES (cod_empleado=?,cod_usuario=?,tel_empleado=?,cod_nivel=?)";
+        $query = "INSERT INTO EMPLEADO VALUES (cod_empleado=?,cod_usuario=?,tel_empleado=?,nom_empleado=?,cod_nivel=?)";
         $respuesta = $this->con->prepare($query)->execute([
 
             $nuevoRegistro->getCod_empleado(),
             $nuevoRegistro->getCod_usuario(),
+            $nuevoRegistro->getTel_empleado(),
             $nuevoRegistro->getNom_empleado(),
             $nuevoRegistro->getCod_nivel()
         ]);
@@ -45,7 +45,7 @@ class DAOEmpleado extends DB implements dao_interface
         $sentencia->execute([]);
         $empleados = [];
         foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3]);
+            $usuarios[] = new Empleado($key[0], $key[1], $key[2], $key[3], $key[4]);
         }
         return $empleados;
     }

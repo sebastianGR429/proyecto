@@ -25,8 +25,8 @@
 							<span class="micon dw dw-edit2"></span><span  class="mtext">Empleados</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="TablaEmpleados.php">Listar</a></li>
-							<li><a href="FormEmpleado.php">Agregar</a></li>
+							<li><a href="listarEmpleado.php">Listar</a></li>
+							<li><a href="agregarEmpleado.php">Agregar</a></li>
 					
 						</ul>
 					</li>
