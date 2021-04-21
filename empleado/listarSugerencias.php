@@ -44,12 +44,12 @@ print_r($sugerencias);
             </div>
             
             <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary submitBtn" onclick="submitContactForm()">SUBMIT</button>
-            </div>
-        </div>
-    </div>
+            <div class="modal-footer">					
+				<button type="button" class="btn btn-primary solucionarBtn" onclick="submitContactForm()">Solucionar sugerencia</button>
+				<button type="button" class="btn btn-warning escalartBtn" onclick="submitContactForm()">Escalar sugerencia</button>
+    		</div>
+		</div>
+	</div>
 </div>
 <div class="main-container">
 	<div class="pd-ltr-20 xs-pd-20-10">
