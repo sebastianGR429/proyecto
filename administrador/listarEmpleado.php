@@ -5,7 +5,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorEmple
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOEmpleado.php');
 $CEmpleados = new ControladorEmpleado();
 $empleados = $CEmpleados->listar();
-print_r($empleados);
 ?>
 
 

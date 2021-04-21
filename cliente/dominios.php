@@ -2,7 +2,12 @@
 <html lang="en">
 
 <?php
-		include("head.php");
+		 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorClientes_chibcha.php');
+     include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOClientes_chibcha.php');
+     include("head.php");
+   
+     $conCC=new ControladorClientes_chibcha();
+     $lisCC=$conCC->listar();
 ?>
 
 <body>
@@ -34,36 +39,26 @@
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
+                <th>Nom. dominio</th>
+                <th>Paquete</th>
+                <th>Tipo de dominio</th>
+                <th>Fecha de pago</th>
+                <th>Plataforma</th>
+                <th>Plan de pago</th>
                 
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-            </tr>
+        <?php foreach($lisCC as $i){?>
+              <tr>
+                <td><?php echo $i["dominio"]?></td>
+                <td><?php echo $i["cod_paquete"]?></td>
+                <td><?php echo $i["tipo_dominio"]?></td>
+                <td><?php echo $i["fecha_pago"]?></td>
+                <td><?php echo $i["plataforma"]?></td>
+                <td><?php echo $i["plan_pago"]?></td>
+              </tr>
+						<?php }?>
         </tbody>
     </table>
 

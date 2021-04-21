@@ -38,20 +38,18 @@
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                <th>Salary</th>
+                <th>Nombre de partner</th>
+                <th>Correo</th>
+                <th>Telefono</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($partners as $i){?>
+            <?php foreach($lisPar as $i){?>
               <tr>
                 <td><?php echo $i["nom_partner"]?></td>
-                <td><?php echo $i["correo_partner"]?><td>
-                <td><?php echo $i["tel_partner"]?><td>
+                <td><?php echo $i["correo_partner"]?></td>
+                <td><?php echo $i["tel_partner"]?></td>
                 <td><button type="button" class="btn btn-dark">Solicitar</button></td>
               </tr>
 						<?php }?>

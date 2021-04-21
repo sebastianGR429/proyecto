@@ -1,8 +1,7 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Sugerencias.php');
-//include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Clientes_chibcha.php');
 
 class DAOClientes_chimbcha extends DB
 {
@@ -54,14 +53,13 @@ class DAOClientes_chimbcha extends DB
 
     public function listar()
     {
-        $query = "select * from CLIENTES_CHIBCHA";
-        $sentencia = $this->con->prepare($query);
-        $sentencia->execute([]);
-        $usuarios = [];
-        foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Clientes_chibcha($key[0], $key[1], $key[2], $key[3], $key[4],$key[5],$key[6],$key[7]);
+        $query = $this->con->prepare("SELECT * FROM CLIENTES_CHIBCHA");
+        $query->execute();
+        $par = array();
+        while ($fila = $query->fetch()) {
+            $par[] = $fila;
         }
-        return $usuarios;
+        return $par;
     }
 
       
