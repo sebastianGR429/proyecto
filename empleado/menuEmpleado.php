@@ -37,7 +37,7 @@
 							<span class="micon dw dw-apartment"></span><span href="index.php" class="mtext"> Tickets </span>
 						</a>
 						<ul class="submenu">
-                            <li><a href="index.php">Listar </a></li>
+                            <li><a href="listarSugerencias.php">Listar </a></li>
                     	</ul>
 					</li>
 				</ul>

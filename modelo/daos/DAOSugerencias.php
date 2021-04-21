@@ -2,7 +2,6 @@
 
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Sugerencias.php');
-//include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
 class DAOSugerencias extends DB
 {
@@ -49,14 +48,15 @@ class DAOSugerencias extends DB
 
     public function listar()
     {
-        $query = "select * from SUGERENCIAS";
-        $sentencia = $this->con->prepare($query);
-        $sentencia->execute([]);
-        $usuarios = [];
-        foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Sugerencias($key[0], $key[1], $key[2], $key[3], $key[4],$key[5]);
+       
+        $query = $this->con->prepare("SELECT * FROM SUGERENCIAS");
+        $query->execute();
+        $em = array();
+        while ($fila = $query->fetch()) {
+            $em[] = $fila;
         }
-        return $usuarios;
+        return $em;
+    
     }
 
       
