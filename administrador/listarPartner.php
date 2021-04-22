@@ -6,7 +6,46 @@ $CPartner = new ControladorPartner();
 $Partner = $CPartner->listar();
 print_r($Partner);
 ?>
+<div class="modal fade" id="verPartner" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Informacion Partner</h4>
 
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">×</span>
+					<span class="sr-only">Cerrar</span>
+				</button>
+			</div>
+
+			<!-- Modal Body -->
+			<div class="modal-body">
+				<p class="statusMsg"></p>
+				<form role="form">
+					<div class="form-group">
+						<label>Nombre:</label>
+						<input type="text" class="form-control" id="nom_partner" />
+					</div>
+					<div class="form-group">
+						<label>Correo:</label>
+						<input class="form-control" id="correo_partner"></input>
+					</div>
+					<div class="form-group">
+						<label>Telefono:</label>
+						<input type="text" class="form-control" id="tel_partner"/>
+					</div>
+				</form>
+			</div>
+
+			<!-- Modal Footer -->
+			<!-- <div class="modal-footer">
+				<button type="button" class="btn btn-primary solucionarBtn" onclick="submitContactForm()">Solucionar sugerencia</button>
+				<button type="button" class="btn btn-warning escalartBtn" onclick="submitContactForm()">Escalar sugerencia</button>
+			</div> -->
+		</div>
+	</div>
+</div>
 
 <div class="main-container">
 	<div class="pd-ltr-20 xs-pd-20-10">
@@ -46,22 +85,24 @@ print_r($Partner);
 								<th>Acciones</th>
 							</tr>
 						</thead>
-						<tbody>
-							<?php
-							foreach ($Partner as $key) {
-								echo ("<tr>");
-								echo ("<td>" . $key["nom_partner"] . "</td>");
-								echo ("<td>" . $key["correo_partner"] . "</td>");
-								echo ("<td>" . $key["tel_partner"] . "</td>");
-							
-							?>
+						<?php
+						foreach ($Partner as $key) {
+						?>
+							<tbody>
 
-							<?php
-								echo ("</tr>");
-							}
-							?>
 
-						</tbody>
+								<td><?php echo $key['nom_partner'] ?></td>
+								<td><?php echo $key['correo_partner'] ?></td>
+								<td><?php echo $key['tel_partner'] ?></td>
+								<td>
+									<button type="button" class="btn btn-success verPartner">Mas informacion</button>
+								</td>
+
+
+							</tbody>
+						<?php
+						}
+						?>
 					</table>
 				</div>
 			</div>
@@ -72,11 +113,9 @@ print_r($Partner);
 
 
 <script>
-
-		function estado(cod) {
-            window.location.href = 'ac.php?action=' + "estadoEm&" + "codigo=" + cod;
-        }
-
+	function estado(cod) {
+		window.location.href = 'ac.php?action=' + "estadoEm&" + "codigo=" + cod;
+	}
 </script>
 
 <script src="TemplateAdministrador/vendors/scripts/core.js"></script>
@@ -97,3 +136,20 @@ print_r($Partner);
 <script src="TemplateAdministrador/src/plugins/datatables/js/vfs_fonts.js"></script>
 <!-- Datatable Setting js -->
 <script src="TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
+<script>
+$(document).ready(function(){
+	$('.verPartner').on('click', function(){
+		$('#verPartner').modal('show');
+
+			$tr = $(this).closest('tr');
+
+			var data = $tr.children("td").map(function(){
+				return $(this).text();
+			}).get();
+
+			$('#nom_partner').val(data[0]);
+			$('#correo_partner').val(data[1]);
+			$('#tel_partner').val(data[2]);
+	})
+});
+</script>

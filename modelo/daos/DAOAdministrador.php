@@ -35,7 +35,7 @@ class DAOAdministrador extends DB
             $registroActualizar->getTel_administrador(),
         ]);
         return $respuesta;
-    }    
+    }
 
     public function eliminarRegistro($idRegistro)
     {

@@ -15,26 +15,28 @@ class DAOEmpleado extends DB
 
     public function agregarRegistro(Empleado $nuevoRegistro)
     {
-        $query = "INSERT INTO EMPLEADO VALUES (cod_empleado=?,cod_usuario=?,tel_empleado=?,nom_empleado=?,cod_nivel=?)";
+        $query = "INSERT INTO EMPLEADO VALUES (cod_empleado=?,cod_usuario=?,tel_empleado=?,nom_empleado=?,cod_nivel=?,ced_empleado=?)";
         $respuesta = $this->con->prepare($query)->execute([
 
             $nuevoRegistro->getCod_empleado(),
             $nuevoRegistro->getCod_usuario(),
             $nuevoRegistro->getTel_empleado(),
             $nuevoRegistro->getNom_empleado(),
-            $nuevoRegistro->getCod_nivel()
+            $nuevoRegistro->getCod_nivel(),
+            $nuevoRegistro->getCed_empleado()
         ]);
         return $respuesta;
     }
     public function actualizarRegistro(Empleado $registroActualizar)
     {
-        $query = "UPDATE EMPLEADO SET cod_usuario=?,nom_empleado=?,tel_empleado=?,cod_nivel=?
+        $query = "UPDATE EMPLEADO SET cod_usuario=?,nom_empleado=?,tel_empleado=?,cod_nivel=?,ced_empleado=?
         WHERE cod_empleado=?";
         $respuesta = $this->con->prepare($query)->execute([ 
                 $registroActualizar->getCod_usuario(),
                 $registroActualizar->getNom_empleado(), 
                 $registroActualizar->getTel_empleado(),
-                $registroActualizar->getCod_nivel()
+                $registroActualizar->getCod_nivel(),
+                $registroActualizar->getCed_empleado()
         ]);
         return $respuesta;
     }
