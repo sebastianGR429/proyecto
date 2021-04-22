@@ -26,4 +26,10 @@ class ControladorPartner{
         return $this->Partners->listar();
     }
 
+    public function devolverPartner($cod_partner)
+    {
+        $this->Partners=new DAOPartner();
+        return $this->Partners->devolverPartner($cod_partner);
+    }
+
 }

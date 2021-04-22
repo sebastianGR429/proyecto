@@ -50,14 +50,23 @@
                 <td><?php echo $i["nom_partner"]?></td>
                 <td><?php echo $i["correo_partner"]?></td>
                 <td><?php echo $i["tel_partner"]?></td>
-                <td><button type="button" class="btn btn-dark">Solicitar</button></td>
+                <?php echo "<td><button type='button' class='btn btn-outline-success' onclick='soli(" . '"' . $i['cod_partner'] . '"' . ")'>Solicitar</button></td>" ?>
               </tr>
 						<?php }?>
             
         </tbody>
     </table>
 
+    <div class="modal fade" id="modal11" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        
+              
+        </div>
+      </div>
+	  </div>
     </section><!-- End Pricing Section -->
+    
 
 
   </main><!-- End #main -->
@@ -79,8 +88,15 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-  <script src="../src/tabla.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  
 
 </body>
 
 </html>
+<script>
+	function soli(codigoP) {
+		$('.modal-content').load('modalSolicitud.php?codP='+codigoP) 
+		$('#modal11').modal('show');
+	}
+</script>

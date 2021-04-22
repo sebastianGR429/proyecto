@@ -1,7 +1,7 @@
 <?php
 
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Partner.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
 class DAOPartner extends DB
@@ -49,6 +49,17 @@ class DAOPartner extends DB
     }
     public function eliminarRegistro($idRegistro){
 
+    }
+
+    public function devolverPartner($cod_partner){
+        $query=$this->con->prepare('SELECT * FROM PARTNER WHERE cod_partner= ?');
+        $query->execute([$cod_partner]);
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Partner($key[0], $key[1], $key[2], $key[3]);
+        } else {
+            return null;
+        }
     }
 
 }
