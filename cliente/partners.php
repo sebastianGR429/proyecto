@@ -50,7 +50,7 @@
                 <td><?php echo $i["nom_partner"]?></td>
                 <td><?php echo $i["correo_partner"]?></td>
                 <td><?php echo $i["tel_partner"]?></td>
-                <?php echo "<td><button type='button' class='btn btn-outline-success' onclick='soli(" . '"' . $i['cod_partner'] . '"' . ")'>Solicitar</button></td>" ?>
+                <?php echo "<td><button type='button' class='btn btn-dark' onclick='soli(" . '"' . $i['cod_partner'] . '"' . ")'>Solicitar</button></td>" ?>
               </tr>
 						<?php }?>
             

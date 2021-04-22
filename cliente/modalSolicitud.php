@@ -14,16 +14,29 @@ $partner=$conPartner->devolverPartner($cod_partner);
         </div>
         <div class="modal-body px-4">
 
-            <form id="solicitud" method="POST" action="javascript:agregarReserva()">
+            <form id="solicitud" method="POST" action="javascript:realizarSolicitud()">
             
                 <div class="modal-body px-4">
                     <div>
+                    <p>Seleccione el tipo de dominio</p>
+                    <select name="tipo" id="tipo" class="form-select" >
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="Trasferencia">Trasferencia</option>
                         
-
+                    </select>
                     </div>
+
+                    <div>
+                    <br>
+                    <p>Nombre de dominio</p>
+                    <input name="dominio" id="dominio" type="text" class="form__input" autofocus placeholder="Dominio">
+                    </div>
+
+                    <br>
+                    <?php echo  ("<td><button id='botonReservar' type='submit' class='btn btn-dark' >Enviar</button></td>");?>
                 </div>
 
-                <input type="hidden" id="correoPartner" name="correoPartner" value="<?php echo $partner->getCorreo_partner()?>" />
+                <input type="hidden" id="cod_partner" name="cod_partner" value="<?php echo $cod_partner ?>" />
 
             </form>
         </div>
@@ -44,10 +57,9 @@ $partner=$conPartner->devolverPartner($cod_partner);
 
                             console.log(r);
                             if (r == 1) {
-                                toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
-                                window.location.href = "reservasF.php";
+                               
                             } else {
-                                toastr["success"]("No se pudo realizar tu solicitud", "ERROR");
+                                
                             }
                         }
                     });
