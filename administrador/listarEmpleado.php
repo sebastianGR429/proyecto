@@ -6,7 +6,50 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOEmpleado.php'
 $CEmpleados = new ControladorEmpleado();
 $empleados = $CEmpleados->listar();
 ?>
+<div class="modal fade" id="verEmpleado" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Modal Header -->
+			<div class="modal-header">
+				<h4 class="modal-title" id="myModalLabel">Informacion Empleado</h4>
 
+				<button type="button" class="close" data-dismiss="modal">
+					<span aria-hidden="true">×</span>
+					<span class="sr-only">Cerrar</span>
+				</button>
+			</div>
+
+			<!-- Modal Body -->
+			<div class="modal-body">
+				<p class="statusMsg"></p>
+				<form role="form">
+					<div class="form-group">
+						<label>Nombre:</label>
+						<input type="text" class="form-control" id="nom_empleado" />
+					</div>
+					<div class="form-group">
+						<label>Cedula:</label>
+						<input class="form-control" id="cedula"></input>
+					</div>
+					<div class="form-group">
+						<label>Telefono:</label>
+						<input type="text" class="form-control" id="tel_empleado"/>
+					</div>
+					<div class="form-group">
+						<label>Nivel:</label>
+						<input class="form-control" id="cod_nivel"></input>
+					</div>
+				</form>
+			</div>
+
+			<!-- Modal Footer -->
+			<!-- <div class="modal-footer">
+				<button type="button" class="btn btn-primary solucionarBtn" onclick="submitContactForm()">Solucionar sugerencia</button>
+				<button type="button" class="btn btn-warning escalartBtn" onclick="submitContactForm()">Escalar sugerencia</button>
+			</div> -->
+		</div>
+	</div>
+</div>
 
 <div class="main-container">
 	<div class="pd-ltr-20 xs-pd-20-10">
@@ -30,6 +73,7 @@ $empleados = $CEmpleados->listar();
 
 
 
+
 			<!-- Checkbox select Datatable End -->
 			<!-- Export Datatable start -->
 			<div class="card-box mb-30">
@@ -41,27 +85,28 @@ $empleados = $CEmpleados->listar();
 						<thead>
 							<tr>
 								<th class="table-plus datatable-nosort">Nombre</th>
-								<th>Telefono</th>
-								<th>Nivel</th>
+								<th>Cedula</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
-						<tbody>
-							<?php
-							foreach ($empleados as $key) {
-								echo ("<tr>");
-								echo ("<td>" . $key["nom_empleado"] . "</td>");
-								echo ("<td>" . $key["tel_empleado"] . "</td>");
-								echo ("<td>" . $key["cod_nivel"] . "</td>");
-							
-							?>
+						<?php
+						foreach ($empleados as $key) {
+						?>
+							<tbody>
+								<tr>
+									<td><?php echo $key['nom_empleado'] ?></td>
+									<td><?php echo $key['ced_empleado'] ?>
+									<td>
+										<button type="button" class="btn btn-success verEmpleado">Mas informacion</button>
+									</td>
+								</tr>
 
-							<?php
-								echo ("</tr>");
-							}
-							?>
 
-						</tbody>
+
+							</tbody>
+						<?php
+						}
+						?>
 					</table>
 				</div>
 			</div>
@@ -72,11 +117,9 @@ $empleados = $CEmpleados->listar();
 
 
 <script>
-
-		function estado(cod) {
-            window.location.href = 'ac.php?action=' + "estadoEm&" + "codigo=" + cod;
-        }
-
+	function estado(cod) {
+		window.location.href = 'ac.php?action=' + "estadoEm&" + "codigo=" + cod;
+	}
 </script>
 
 <script src="TemplateAdministrador/vendors/scripts/core.js"></script>
@@ -97,3 +140,23 @@ $empleados = $CEmpleados->listar();
 <script src="TemplateAdministrador/src/plugins/datatables/js/vfs_fonts.js"></script>
 <!-- Datatable Setting js -->
 <script src="TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
+<script>
+$(document).ready(function(){
+	$('.verEmpleado').on('click', function(){
+		$('#verEmpleado').modal('show');
+
+			$tr = $(this).closest('tr');
+
+			var data = $tr.children("td").map(function(){
+				return $(this).text();
+			}).get();
+
+			$('#nom_empleado').val(data[0]);
+			$('#cedula').val(data[1]);
+			$('#tel_empleado').val(data[2]);
+			$('#cod_nivel').val(data[3]);
+	})
+});
+</script>
+
+</script>

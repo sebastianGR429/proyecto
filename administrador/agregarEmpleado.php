@@ -37,6 +37,7 @@ include('menuAdmi.php');
                                     <input type="text" class="form-control" required id="nombre" name="nombre">
                                 </div>
                             </div>
+                            
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telefono Empleado:</label>
@@ -48,12 +49,18 @@ include('menuAdmi.php');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Nivel Empleado :</label>
-                                    <select type="text" class="form-control" requiredid="cedula" name="cedula">
+                                    <select type="text" class="form-control" requiredid="nivelE" name="nivelE">
                                         <option value="value2" selected>Seleccione un nivel...</option>
                                         <option value="value1">Nivel 1 (Basico)</option>
                                         <option value="value2">Nivel 2 (Avanzado)</option>
                                         <option value="value3">Nivel 3 (Veterano)</option>
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Cedula:</label>
+                                    <input type="cedula" class="form-control" required id="telefonoE" name="cedulaE">
                                 </div>
                             </div>
                         </div>
