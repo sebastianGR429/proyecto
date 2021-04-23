@@ -15,14 +15,16 @@ class DAOSugerencias extends DB
 
     public function agregarRegistro(Sugerencias $nuevoRegistro)
     {
-        $query = "INSERT INTO SUGERENCIAS VALUES (cod_sugerencias=?,cod_cliente=?,descripcion_sugerencia=?,estado_sugerencia=?,fecha=?,nivel=?) ";
+        $query = "INSERT INTO SUGERENCIAS VALUES (cod_sugerencias=?,cod_cliente=?,descripcion_sugerencia=?,estado_sugerencia=?,fecha=?,cod_empleado=?,desc_escala=?,cod_nivel=?) ";
         $respuesta = $this->con->prepare($query)->execute([ 
                 $nuevoRegistro->getCod_sugerencia(), 
                 $nuevoRegistro->getCod_cliente(),
                 $nuevoRegistro->getDescripcion_sugerencia(),
                 $nuevoRegistro->getEstado_sugerencia(),
                 $nuevoRegistro->getFecha(),
-                $nuevoRegistro->getNivel(),
+                $nuevoRegistro->getCod_empleado(),
+                $nuevoRegistro->getDesc_escala(),
+                $nuevoRegistro->getCod_nivel()
         ]);
         return $respuesta;
     }   
@@ -36,9 +38,23 @@ class DAOSugerencias extends DB
                 $registroActualizar->getDescripcion_sugerencia(),
                 $registroActualizar->getEstado_sugerencia(),
                 $registroActualizar->getFecha(),
-                $registroActualizar->getNivel()
+                $registroActualizar->getCod_empleado(),
+                $registroActualizar->getDesc_escala(),
+                $registroActualizar->getCod_nivel()
         ]);
         return $respuesta;
+    }    
+
+    public function escalarSugerencia($cod_sugerencia, $descripcion_sugerencia)
+    {
+        $sentencia = $this->con->prepare("UPDATE SUGERENCIA SET desc_sugerencia=?, cod_nivel = 2 WHERE cod_sugerencia=?");
+        $sentencia->execute($descripcion_sugerencia,$cod_sugerencia);
+        $em = array();
+        while ($fila = $sentencia->fetch()) {
+            $em[] = $fila;
+        }
+        return $em;
+        
     }    
 
     public function eliminarRegistro($idRegistro)

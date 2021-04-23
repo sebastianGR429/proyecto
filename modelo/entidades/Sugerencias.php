@@ -6,16 +6,20 @@ class Sugerencias{
     private $descripcion_sugerencia;
     private $estado_sugerencia;
     private $fecha;
-    private $nivel;
+    private $cod_empleado;
+    private $desc_escala;
+    private $cod_nivel;
 
-    public function __construct($cod_sugerencia,$cod_cliente,$descripcion_sugerencia,$estado_sugerencia, $fecha, $nivel)
+    public function __construct($cod_sugerencia,$cod_cliente,$descripcion_sugerencia,$estado_sugerencia, $fecha, $cod_empleado, $desc_escala, $cod_nivel)
     {
           $this->cod_sugerencia = $cod_sugerencia;
           $this->cod_cliente=$cod_cliente;
           $this->descripcion_sugerencia = $descripcion_sugerencia;
           $this->estado_sugerencia=$estado_sugerencia;
           $this->fecha=$fecha;
-          $this->nivel=$nivel;
+          $this->cod_empleado=$cod_empleado;
+          $this->desc_escala=$desc_escala;
+          $this->cod_nivel=$cod_nivel;
      }
 
      
@@ -122,21 +126,61 @@ class Sugerencias{
     }
 
     /**
-     * Get the value of nivel
+     * Get the value of cod_empleado
      */ 
-    public function getNivel()
+    public function getCod_empleado()
     {
-        return $this->nivel;
+        return $this->cod_empleado;
     }
 
     /**
-     * Set the value of nivel
+     * Set the value of cod_empleado
      *
      * @return  self
      */ 
-    public function setNivel($nivel)
+    public function setCod_empleado($cod_empleado)
     {
-        $this->nivel = $nivel;
+        $this->cod_empleado = $cod_empleado;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of cod_nivel
+     */ 
+    public function getCod_nivel()
+    {
+        return $this->cod_nivel;
+    }
+
+    /**
+     * Set the value of cod_nivel
+     *
+     * @return  self
+     */ 
+    public function setCod_nivel($cod_nivel)
+    {
+        $this->cod_nivel = $cod_nivel;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of desc_escala
+     */ 
+    public function getDesc_escala()
+    {
+        return $this->desc_escala;
+    }
+
+    /**
+     * Set the value of desc_escala
+     *
+     * @return  self
+     */ 
+    public function setDesc_escala($desc_escala)
+    {
+        $this->desc_escala = $desc_escala;
 
         return $this;
     }

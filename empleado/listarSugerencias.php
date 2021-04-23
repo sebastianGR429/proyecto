@@ -5,7 +5,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorSuger
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOSugerencias.php');
 $CSugerencias = new ControladorSugerencias();
 $sugerencias = $CSugerencias->listar();
-print_r($sugerencias);
 ?>
 <div class="modal fade" id="verSugerencia" role="dialog">
     <div class="modal-dialog">
@@ -26,27 +25,32 @@ print_r($sugerencias);
                 <form role="form">
                     <div class="form-group">
                         <label>Nombre de cliente:</label>
-                        <input type="text" class="form-control" id="cod_cliente" />
+                        <input type="text" class="form-control" id="cod_cliente" readonly="readonly"/>
                     </div>
                     <div class="form-group">
                         <label >Descripción:</label>
-                        <textarea  type="text" class="form-control" id="descripcion_sugerencia" ></textarea>
+                        <textarea  type="text" class="form-control" id="descripcion_sugerencia" readonly="readonly"></textarea>
                     </div>
                     <div class="form-group">
                         <label >Estado:</label>
-                        <input class="form-control" id="estado_sugerencia" ></input>
+                        <input class="form-control" id="estado_sugerencia" readonly="readonly"></input>
                     </div>
 					<div class="form-group">
                         <label >Fecha:</label>
-                        <input class="form-control" id="fecha"></input>
+                        <input class="form-control" id="fecha" readonly="readonly"></input>
+                    </div>
+					<hr style="width:50%;text-align:left;margin-left:0">
+					<div class="form-group">
+                        <label >Descripción escalamiento:</label>
+                        <input class="form-control" id="desc_escala"></input>
                     </div>
                 </form>
             </div>
-            
+
             <!-- Modal Footer -->
             <div class="modal-footer">					
-				<button type="button" class="btn btn-primary solucionarBtn" onclick="submitContactForm()">Solucionar sugerencia</button>
-				<button type="button" class="btn btn-warning escalartBtn" onclick="submitContactForm()">Escalar sugerencia</button>
+				<button type="button" class="btn btn-primary solucionarBtn" onclick="solucionarSugerencia()">Solucionar sugerencia</button>
+				<button type="button" class="btn btn-warning escalartBtn" onclick="escalarSugerencia(<?php ?>)">Escalar sugerencia</button>
     		</div>
 		</div>
 	</div>
@@ -152,4 +156,6 @@ $(document).ready(function(){
 
 	})
 });
+
+
 </script>

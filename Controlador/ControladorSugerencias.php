@@ -11,7 +11,12 @@ class ControladorSugerencias{
         $this->Sugerencias=new DAOSugerencias();
         return $this->Sugerencias->agregarRegistro($nuevoRegistro);
     }
-
+    //Escalar sugerencia
+    public function escalarSugerencia($cod_sugerencia, $desc_sugerencia)
+    {
+        $this->Sugerencias=new DAOSugerencias();
+        return $this->Sugerencias->escalarSugerencia($cod_sugerencia, $desc_sugerencia);
+    }
 
     public function actualizarRegistro(Sugerencias $registroActualizar)
     {
