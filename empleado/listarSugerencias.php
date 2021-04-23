@@ -22,7 +22,7 @@ $sugerencias = $CSugerencias->listar();
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-                <form role="form">
+                <form role="formSugerencia">
                     <div class="form-group">
                         <label>Nombre de cliente:</label>
                         <input type="text" class="form-control" id="cod_cliente" readonly="readonly"/>
@@ -50,7 +50,7 @@ $sugerencias = $CSugerencias->listar();
             <!-- Modal Footer -->
             <div class="modal-footer">					
 				<button type="button" class="btn btn-primary solucionarBtn" onclick="solucionarSugerencia()">Solucionar sugerencia</button>
-				<button type="button" class="btn btn-warning escalartBtn" onclick="escalarSugerencia(<?php ?>)">Escalar sugerencia</button>
+				<button type="button" class="btn btn-warning escalartBtn" onclick="escalarSugerencia()">Escalar sugerencia</button>
     		</div>
 		</div>
 	</div>
@@ -126,6 +126,7 @@ $sugerencias = $CSugerencias->listar();
 <script src="TemplateAdministrador/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="TemplateAdministrador/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 <script src="TemplateAdministrador/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.0.2/js/toastr.min.js"></script>
 
 <!-- buttons for Export datatable -->
 <script src="TemplateAdministrador/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
@@ -135,10 +136,35 @@ $sugerencias = $CSugerencias->listar();
 <script src="TemplateAdministrador/src/plugins/datatables/js/buttons.flash.min.js"></script>
 <script src="TemplateAdministrador/src/plugins/datatables/js/pdfmake.min.js"></script>
 <script src="TemplateAdministrador/src/plugins/datatables/js/vfs_fonts.js"></script>
+<link rel="stylesheet" href="assetsCliente/plugins/toastr/toastr.min.css"/>
+<link rel="stylesheet" href="assetsCliente/plugins/toastr/toastr.min.css"/>
+
 <!-- Datatable Setting js -->
 <script src="TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
 <script>
 
+//Funcion para escalar sugerencias
+function escalarSugerencia() {
+        cod_cliente = $('#cod_cliente').val();
+		desc_escala = $('#desc_escala').val();
+		var dataString = 'cod_cliente=' + cod_cliente + '&desc_escala=' + desc_escala;
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: "escalarSugerencia.php",
+
+            success: function(r) {
+                console.log(r);
+                if (r == 1) {
+                    toastr["error"]("Error al subir autor", "Error :(");
+                } else {
+                    toastr["success"]("Autor agregado con exito", "Genial esto es un hpta milagro");
+                    // document.getElementById("formSugerencia").reset();
+                }
+            }
+        });
+    }
+//Funcion par la invocación del modal
 $(document).ready(function(){
 	$('.verSugerencia').on('click', function(){
 		$('#verSugerencia').modal('show');
