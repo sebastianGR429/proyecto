@@ -17,7 +17,7 @@ class ControladorSugerencias{
         $this->Sugerencias=new DAOSugerencias();
         return $this->Sugerencias->escalarSugerencia($cod_sugerencia, $desc_sugerencia);
     }
-
+    //Resolver sugerencia
     public function resolverSugerencia($cod_sugerencia, $desc_sugerencia)
     {
         $this->Sugerencias=new DAOSugerencias();

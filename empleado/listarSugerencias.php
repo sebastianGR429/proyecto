@@ -43,6 +43,7 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
                 <form role="formSugerencia">
                     <div class="form-group">
                         <label>Nombre de cliente:</label>
+						<input type="text" class="form-control" id="cod_sugerencia" hidden="true"/>
                         <input type="text" class="form-control" id="cod_cliente" readonly="readonly"/>
                     </div>
                     <div class="form-group">
@@ -102,7 +103,8 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Nombre de cliente</th>
+								<th>Cod Sugerencia</th>
+								<th>Cod de cliente</th>
 								<th>Descripción</th>
 								<th>Estado</th>
                                 <th>Fecha</th>
@@ -114,6 +116,7 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
 						?>
 							<tbody>
 								<tr> 
+									<td> <?php echo $key['cod_sugerencia']?>  </td> 
 									<td> <?php echo $key['cod_cliente']?>  </td> 
 									<td> <?php echo $key['descripcion_sugerencia'];?>  </td> 
 									<td> <?php echo $key['estado_sugerencia'];?> </td> 
@@ -163,9 +166,9 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
 
 //Funcion para escalar sugerencias
 function escalarSugerencia() {
-        cod_cliente = $('#cod_cliente').val();
+        cod_sugerencia = $('#cod_sugerencia').val();
 		desc_escala = $('#desc_escala').val();
-		var dataString = 'cod_cliente=' + cod_cliente + '&desc_escala=' + desc_escala;
+		var dataString = 'cod_sugerencia=' + cod_sugerencia + '&desc_escala=' + desc_escala;
         $.ajax({
             type: "POST",
             data: dataString,
@@ -177,27 +180,27 @@ function escalarSugerencia() {
                     toastr["error"]("Error al escalar sugerencia", "Error :(");
                 } else {
                     toastr["success"]("Sugerencia escalada con exito", "Genial");
-                    // document.getElementById("formSugerencia").reset();
                 }
             }
         });
     }
 
 	function solucionarSugerencia() {
-        cod_cliente = $('#cod_cliente').val();
-		var dataString = 'cod_cliente=' + cod_cliente;
+        cod_sugerencia = $('#cod_sugerencia').val();
+		desc_escala = $('#desc_escala').val();
+
+		var dataString = 'cod_sugerencia=' + cod_sugerencia + '&desc_escala=' + desc_escala;
         $.ajax({
             type: "POST",
             data: dataString,
-            url: "escalarSugerencia.php",
+            url: "solucionarSugerencia.php",
 
             success: function(r) {
                 console.log(r);
                 if (r == 1) {
                     toastr["error"]("Error al solucionar sugerencia", "Error :(");
                 } else {
-                    toastr["success"]("Autor agregado con exito", "Genial esto es un hpta milagro");
-                    // document.getElementById("formSugerencia").reset();
+                    toastr["success"]("Sugerencia atendida con exíto", "Genial");
                 }
             }
         });
@@ -212,11 +215,11 @@ $(document).ready(function(){
 			var data = $tr.children("td").map(function(){
 				return $(this).text();
 			}).get();
-
-			$('#cod_cliente').val(data[0]);
-			$('#descripcion_sugerencia').val(data[1]);
-			$('#estado_sugerencia').val(data[2]);
-			$('#fecha').val(data[3]);
+			$('#cod_sugerencia').val(data[0]);
+			$('#cod_cliente').val(data[1]);
+			$('#descripcion_sugerencia').val(data[2]);
+			$('#estado_sugerencia').val(data[3]);
+			$('#fecha').val(data[4]);
 
 	})
 });

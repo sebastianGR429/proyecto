@@ -47,31 +47,29 @@ class DAOSugerencias extends DB
 
     public function escalarSugerencia($cod_sugerencia, $descripcion_sugerencia)
     {
-        echo 'ENTRO A LA CONSULTA' ;
-        echo'CONSULTA';
+        
         $query="UPDATE SUGERENCIAS SET desc_escala= ? , estado_sugerencia= 'ESCALADO' ,cod_nivel = 2 WHERE cod_cliente = ? ";
         $sentencia = $this->con->prepare($query);
         $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
 
         if($res){
-            echo'SE HA REALIZADO LA EJEC';
+            echo'SE HA REALIZADO LA EJECUCIÓN DE ESCALAMIENTO  DE LA SUGERENCIA';
         }else{
-            echo'NO SE HA REALIZADO LA EJEC';
+            echo'NO SE HA REALIZADO LA EJECUCIÓN';
         }
         return $res;        
     }    
     public function resolverSugerencia($cod_sugerencia, $descripcion_sugerencia)
     {
-        echo 'ENTRO A LA CONSULTA' ;
-        echo'CONSULTA';
-        $query="UPDATE SUGERENCIAS SET estado_sugerencia= ESCALADO  WHERE cod_cliente = ? ";
+        
+        $query="UPDATE SUGERENCIAS SET desc_escala= ?, estado_sugerencia= 'RESUELTO'  WHERE cod_cliente = ? ";
         $sentencia = $this->con->prepare($query);
         $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
 
         if($res){
-            echo'SE HA REALIZADO LA EJEC';
+            echo'SE HA REALIZADO LA EJECUCIÓN DE SOLUCION DE SUGERENCIA';
         }else{
-            echo'NO SE HA REALIZADO LA EJEC';
+            echo'NO SE HA REALIZADO LA EJECUCIÓN';
         }
         return $res;        
     }          
