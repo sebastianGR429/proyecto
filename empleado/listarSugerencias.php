@@ -21,7 +21,7 @@ $empleado=$conEmpleado->empleado_x_cod_usuario($usuario->getCod_usuario());
 
 $CSugerencias = new ControladorSugerencias();
 $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
-
+print_r($sugerencias);
 
 ?>
 <div class="modal fade" id="verSugerencia" role="dialog">
@@ -41,6 +41,8 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
             <div class="modal-body">
                 <p class="statusMsg"></p>
                 <form role="formSugerencia">
+				<input type="text" class="form-control" id="cod_nivel" hidden="true"/>
+
                     <div class="form-group">
                         <label>Nombre de cliente:</label>
 						<input type="text" class="form-control" id="cod_sugerencia" hidden="true"/>
@@ -107,8 +109,10 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
 								<th>Cod de cliente</th>
 								<th>Descripción</th>
 								<th>Estado</th>
+								<th>Nivel de la sugerencia</th>
                                 <th>Fecha</th>
 								<th>Acciones</th>
+
 							</tr>
 						</thead>
 						<?php
@@ -116,11 +120,13 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
 						?>
 							<tbody>
 								<tr> 
-									<td> <?php echo $key['cod_sugerencia']?>  </td> 
-									<td> <?php echo $key['cod_cliente']?>  </td> 
-									<td> <?php echo $key['descripcion_sugerencia'];?>  </td> 
+									<td> <?php echo $key['cod_sugerencia']?> </td> 
+									<td> <?php echo $key['cod_cliente']?> </td> 
+									<td> <?php echo $key['descripcion_sugerencia'];?> </td> 
 									<td> <?php echo $key['estado_sugerencia'];?> </td> 
+									<td> <?php echo $key['cod_nivel'];?> </td> 
 									<td> <?php echo $key['fecha']; ?> </td>
+
 									<td>
 										<button type= "button" class="btn btn-success verSugerencia">Ver</button>
 									</td>					
@@ -168,7 +174,8 @@ $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
 function escalarSugerencia() {
         cod_sugerencia = $('#cod_sugerencia').val();
 		desc_escala = $('#desc_escala').val();
-		var dataString = 'cod_sugerencia=' + cod_sugerencia + '&desc_escala=' + desc_escala;
+		cod_nivel = $('#cod_nivel').val();
+		var dataString = 'cod_sugerencia=' + cod_sugerencia + '&desc_escala=' + desc_escala + '&cod_nivel=' + cod_nivel;
         $.ajax({
             type: "POST",
             data: dataString,
@@ -219,7 +226,9 @@ $(document).ready(function(){
 			$('#cod_cliente').val(data[1]);
 			$('#descripcion_sugerencia').val(data[2]);
 			$('#estado_sugerencia').val(data[3]);
-			$('#fecha').val(data[4]);
+			$('#cod_nivel').val(data[4]);
+			$('#fecha').val(data[5]);
+
 
 	})
 });
