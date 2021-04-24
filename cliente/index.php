@@ -16,9 +16,13 @@ $conPaq=new ControladorPaquete();
 
 $conReg=new ControladorRegistro();
 $usuario=$conReg->darUsuario($_SESSION['user']);
-$lisPaq=$conPaq->listar();
+$paq1=$conPaq->paquetexcod(1);
+$paq2=$conPaq->paquetexcod(2);
+$paq3=$conPaq->paquetexcod(3);
+
 $conCliente=new ControladorCliente();
 $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
+
 
 ?> 
 
@@ -106,52 +110,62 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
 
           <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
             <div class="box">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span></span></h4>
+             <?php foreach($paq1 as $i){ ?>
+              
+              <h3><?php echo $i["nom_paquete"] ?></h3>
+              <h4><sup>$</sup><?php echo $i["costo_paquete"] ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Norma: <?php echo $i["iso"] ?></li>
+                <li>Almacenamiento: <?php echo $i["almacenamiento"] ?></li>
+                <li>Motor de BD: <?php echo $i["bd"] ?></li>
+                <li>Corr. institucinales: <?php echo $i["correos"] ?></li>
+                <li>Sitios web: <?php echo $i["sitios_web"] ?></li>
+                <li>Cetificación: <?php echo $i["certificacion"] ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
+                <a href="#" class="btn-buy">Comprar</a>
               </div>
+              <?php } ?>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
             <div class="box featured">
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
+            <?php foreach($paq2 as $i){ ?>
+              <h3><?php echo $i["nom_paquete"] ?></h3>
+              <h4><sup>$</sup><?php echo $i["costo_paquete"] ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Norma: <?php echo $i["iso"] ?></li>
+                <li>Almacenamiento: <?php echo $i["almacenamiento"] ?></li>
+                <li>Motor de BD: <?php echo $i["bd"] ?></li>
+                <li>Corr. institucinales: <?php echo $i["correos"] ?></li>
+                <li>Sitios web: <?php echo $i["sitios_web"] ?></li>
+                <li>Cetificación: <?php echo $i["certificacion"] ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="pago.php" class="btn-buy">Buy Now</a>
+                <a href="pago.php" class="btn-buy">Comprar</a>
               </div>
+              <?php } ?>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
             <div class="box">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
+            <?php foreach($paq3 as $i){ ?>
+              <h3><?php echo $i["nom_paquete"] ?></h3>
+              <h4><sup>$</sup><?php echo $i["costo_paquete"] ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <li>Norma: <?php echo $i["iso"] ?></li>
+                <li>Almacenamiento: <?php echo $i["almacenamiento"] ?></li>
+                <li>Motor de BD: <?php echo $i["bd"] ?></li>
+                <li>Corr. institucinales: <?php echo $i["correos"] ?></li>
+                <li>Sitios web: <?php echo $i["sitios_web"] ?></li>
+                <li>Cetificación: <?php echo $i["certificacion"] ?></li>
               </ul>
               <div class="btn-wrap">
                 <a href="pago.php" class="btn-buy">Comprar</a>
               </div>
+              <?php } ?>
             </div>
           </div>
 

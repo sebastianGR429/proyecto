@@ -25,4 +25,10 @@ class ControladorPaquete{
         return $this->paquete->listar();
     }
 
+    public function paquetexcod($cod_paquete)
+    {
+        $this->paquete=new DAOPaquete();
+        return $this->paquete->paquetexcod($cod_paquete);
+    }
+
 }

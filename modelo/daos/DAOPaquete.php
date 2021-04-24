@@ -19,15 +19,9 @@ class DAOPaquete extends DB
     }   
     public function actualizarRegistro(Paquete $registroActualizar)
     {
-        $query = "UPDATE PAQUETES SET nom_paquete=?,desc_paquete=?,costo_paquete=? 
-        WHERE cod_paquete=?";
-        $respuesta = $this->con->prepare($query)->execute([ 
-                $registroActualizar->getNom_paquete(), 
-                $registroActualizar->getDesc_paquete(),
-                $registroActualizar->getCosto_paquete(),
-                $registroActualizar->getCod_paquete()
-        ]);
-        return $respuesta;
+        
+        
+        
     }    
 
     public function listar()
@@ -37,7 +31,7 @@ class DAOPaquete extends DB
         $sentencia->execute([]);
         $usuarios = [];
         foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3]);
+            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3],$key[4], $key[5], $key[6], $key[7],$key[8]);
         }
         return $usuarios;
     }
@@ -47,6 +41,16 @@ class DAOPaquete extends DB
         
     }    
 
+    public function paquetexcod($cod_paquete)
+    {
+        $query = $this->con->prepare("SELECT * FROM PAQUETES WHERE cod_paquete=?");
+        $query->execute([$cod_paquete]);
+        $par = array();
+        while ($fila = $query->fetch()) {
+            $par[] = $fila;
+        }
+        return $par;
+    }
 
       
 }

@@ -1,9 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorCliente.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 3) {
+    header("location: ../index.php");
+}
+include("head.php");
 
-  <?php
-		include("head.php");
-	?>
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+$conCliente=new ControladorCliente();
+$cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
+?>
 
 <body>
 
@@ -42,14 +54,16 @@
                 <tr>
                     <td>
                     <div class="form__input-group">
-                        <input type="text" id="nombre_cliente" class="form__input" autofocus placeholder="Nombre completo" >
+                        <input type="text" name="nombre_cliente" id="nombre_cliente" class="form__input" autofocus placeholder="Nombre completo" 
+                        value="<?php echo $cliente->getNom_cliente()?>">
                         <div class="form__input-error-message"></div>
                     </div>
                     </td>
 
                     <td>
                     <div class="form__input-group">
-                        <input type="text" id="cedula_cliente" class="form__input" autofocus placeholder="Cedula" readonly>
+                        <input type="text" id="cedula_cliente" name="cedula_cliente" class="form__input" autofocus placeholder="Cedula" 
+                        value="<?php echo $cliente->getCedula_cliente()?>" readonly>
                         <div class="form__input-error-message"></div>
                     </div>
                     </td>
@@ -58,16 +72,19 @@
             </table>
                     
                     <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Telefono">
+                        <input type="text" class="form__input" autofocus placeholder="Telefono" id="telefono_cliente" name="nombre_cliente"
+                        value="<?php echo $cliente->getTel_cliente()?>">
                         <div class="form__input-error-message"></div>
                     </div>
                     <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Correo" >
+                        <input type="text" class="form__input" autofocus placeholder="Correo" id="correo_cliente" name="nombre_cliente"
+                        value="<?php echo $usuario->getCorreo()?>" readonly>
                         <div class="form__input-error-message"></div>
                     </div>
                     
                     <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Usuario" readonly>
+                        <input type="text" class="form__input" autofocus placeholder="Usuario" id="usuario_cliente" name="usuario_cliente"
+                        value="<?php echo $usuario->getNom_usuario()?>" readonly>
                         <div class="form__input-error-message"></div>
                     </div>
 
@@ -75,14 +92,14 @@
                 <tr>
                     <td>
                     <div class="form__input-group">
-                        <input type="password" class="form__input" autofocus placeholder="Contraseña">
+                        <input type="password" class="form__input" autofocus placeholder="Contraseña" id="contra_cliente" name="contra_cliente">
                         <div class="form__input-error-message"></div>
                     </div>
                     </td>
                     
                     <td>
                     <div class="form__input-group">
-                        <input type="password" class="form__input" autofocus placeholder="Confirmar contraseña">
+                        <input type="password" class="form__input" autofocus placeholder="Confirmar contraseña" id="ver_contra" name="ver_contra">
                         <div class="form__input-error-message"></div>
                     </div>
                     </td>
