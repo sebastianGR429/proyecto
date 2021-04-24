@@ -1357,7 +1357,7 @@ section {
 
 #footer .footer-top .footer-newsletter form {
   margin-top: 30px;
-  background: #fff;
+  background: #0c0c0c;
   padding: 6px 10px;
   position: relative;
   border-radius: 4;
@@ -1369,8 +1369,13 @@ section {
   width: calc(100% - 110px);
 }
 
+textarea {
+  resize: vertical;
+  width: 350px;
+}
+
 #footer .footer-top .footer-newsletter form input[type="submit"] {
-  position: absolute;
+  
   top: 0;
   right: 0;
   bottom: 0;
