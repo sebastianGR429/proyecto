@@ -50,7 +50,7 @@ $sugerencias = $CSugerencias->listar();
             <!-- Modal Footer -->
             <div class="modal-footer">					
 				<button type="button" class="btn btn-primary solucionarBtn" onclick="solucionarSugerencia()">Solucionar sugerencia</button>
-				<button type="button" class="btn btn-warning escalartBtn" onclick="escalarSugerencia()">Escalar sugerencia</button>
+				<button type="button" name = 'updateSugerencia'class="btn btn-warning escalartBtn" onclick="escalarSugerencia()">Escalar sugerencia</button>
     		</div>
 		</div>
 	</div>

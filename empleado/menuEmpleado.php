@@ -26,7 +26,7 @@
 							<span class="micon dw dw-edit2"></span><span href="index.php" class="mtext">Partners</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="index.php">Listar</a></li>
+							<li><a href="listarPartner.php">Listar</a></li>
 							<li><a href="index.php">Agregar</a></li>
 					
 						</ul>
@@ -34,7 +34,7 @@
 
                     <li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-apartment"></span><span href="index.php" class="mtext"> Tickets </span>
+							<span class="micon dw dw-apartment"></span><span href="index.php" class="mtext"> Sugerencias </span>
 						</a>
 						<ul class="submenu">
                             <li><a href="listarSugerencias.php">Listar </a></li>

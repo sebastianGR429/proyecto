@@ -47,10 +47,19 @@ class DAOSugerencias extends DB
 
     public function escalarSugerencia($cod_sugerencia, $descripcion_sugerencia)
     {
-        $sentencia = $this->con->prepare("UPDATE SUGERENCIAS SET desc_escala='$descripcion_sugerencia', cod_nivel = 2 WHERE cod_cliente='$cod_sugerencia'");
-        $query_run = mysqli_query($this->con,$sentencia);
-        return $query_run;        
-    }    
+        echo 'ENTRO A LA CONSULTA' ;
+        echo'CONSULTA';
+        $query="UPDATE SUGERENCIAS SET desc_escala= ? ,  cod_nivel = 2 WHERE cod_cliente = ? ";
+        $sentencia = $this->con->prepare($query);
+        $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
+
+        if($res){
+            echo'SE HA REALIZADO LA EJEC';
+        }else{
+            echo'NO SE HA REALIZADO LA EJEC';
+        }
+        return $res;        
+    }       
 
     public function eliminarRegistro($idRegistro)
     {
