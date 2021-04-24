@@ -26,4 +26,11 @@ class ControladorCliente{
         return $this->Clientes->listar();
     }
 
+    public function darCliente_x_Codusuario($cod_usuario)
+    {
+        $this->Clientes=new DAOCliente();
+        return $this->Clientes->darCliente_x_Codusuario($cod_usuario);
+    }
+    
+
 }

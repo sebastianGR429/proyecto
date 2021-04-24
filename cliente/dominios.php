@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <?php
 		 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorClientes_chibcha.php');
      include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOClientes_chibcha.php');
      include("head.php");
-   
+
      $conCC=new ControladorClientes_chibcha();
      $lisCC=$conCC->listar();
 ?>
 
 <body>
 
-  <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">

@@ -84,5 +84,26 @@ class EnviarCorreo{
         }
 
     }
+
+    function crearSolicitud($nom_dominio,$corr_cliente)
+    {
+        $num=rand();
+        $arch="solicitud".$num.".xml";
+        
+        $xml = new DomDocument('1.0', 'UTF-8');
+        $solicitud = $xml->createElement('solicitud');
+        $solicitud = $xml->appendChild($solicitud);
+        $dominio = $xml->createElement('dominio',$nom_dominio);
+        $dominio = $solicitud->appendChild($dominio);
+        $correo = $xml->createElement('correo_cliente',$corr_cliente);
+        $dominio = $solicitud->appendChild($correo);
+        $xml->formatOutput = true;
+        $xml->saveXML();
+        $xml->save("solicitudes/".$arch);
+
+        return "solicitudes/".$arch;
+
+        
+    }
 }
 ?>

@@ -33,18 +33,18 @@
 
     <section id="pricing" class="pricing">
     <div class="container2" style="margin-left: 500px">
-        <form class="form" id="login">
+        <form class="form" id="login" method="POST" action="javascript:ingresar()" >
             <h1 class="form__title">Login</h1>
-            <div class="form__message form__message--error"></div>
+            
             <div class="form__input-group">
-                <input type="text" class="form__input" autofocus placeholder="Usuario">
+                <input type="text" class="form__input" autofocus placeholder="Usuario" id="username" name="username">
                 <div class="form__input-error-message"></div>
             </div>
             <div class="form__input-group">
-                <input type="password" class="form__input" autofocus placeholder="Contraseña">
+                <input type="password" class="form__input" autofocus placeholder="Contraseña" id="password" name="password">
                 <div class="form__input-error-message"></div>
             </div>
-            <center><button type="button" class="btn btn-danger">Ingresar</button></center>
+            <center><button type="submit" class="btn btn-danger">Ingresar</button></center>
             <br><br>
             <p class="form__text">
                 <a href="#" class="form__link">Olvidaste tu contraseña?</a>
@@ -137,8 +137,30 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
-  <script src="./src/main.js"></script>
 </body>
 
 </html>
+<script>
+        function ingresar() {
+
+            datos = $('#login').serialize();
+
+            $.ajax({
+                type: "POST",
+                data: datos,
+                url: "dar_login.php",
+                success: function(r) {
+
+                    console.log(r);
+                    if (r == 1) {
+                        
+                    } else {
+                        // toastr["error"](r, "ERROR");
+                    }
+                }
+            });
+
+        }
+</script>

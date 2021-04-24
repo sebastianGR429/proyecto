@@ -51,26 +51,26 @@ class DAOUsuario extends DB
         return 0;
     }
 
-    public function mandarCorreoRecuperacion($correo)
-    {
-        $cor= new EnviarCorreo();
-        $nuevaContra=(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
-        $md5Contra=md5($nuevaContra);
-        $mensaje='Con esta nueva contraseña generado aleaotoriamente podras volver a unirte a nosotros: '
-        .$nuevaContra.' podras ingresar nuevamente a la pagina para que asi puedas realizar el cambio de tu contraseña.';
-        $r1=$cor->enviarContraseña($correo,'Recuperación de Contraseña ChibchaWeb',$mensaje);
+    // public function mandarCorreoRecuperacion($correo)
+    // {
+    //     $cor= new EnviarCorreo();
+    //     $nuevaContra=(rand(0,9).rand(0,9).rand(0,9).rand(0,9));
+    //     $md5Contra=md5($nuevaContra);
+    //     $mensaje='Con esta nueva contraseña generado aleaotoriamente podras volver a unirte a nosotros: '
+    //     .$nuevaContra.' podras ingresar nuevamente a la pagina para que asi puedas realizar el cambio de tu contraseña.';
+    //     $r1=$cor->enviarContraseña($correo,'Recuperación de Contraseña ChibchaWeb',$mensaje);
         
-        if($r1==1){
-            $query='UPDATE USUARIO SET contraseña=? WHERE correo=?';
-            $sentencia=$this->con->prepare($query);
-            $sentencia->execute([$md5Contra,$correo]);
-            return 1;
-        }else{
-            return "hubo problemas con nuestro servidor de correos, por favor revise que el correo escrito
-            sea con el que se registro e intenta mas tarde";
-        }
+    //     if($r1==1){
+    //         $query='UPDATE USUARIO SET contraseña=? WHERE correo=?';
+    //         $sentencia=$this->con->prepare($query);
+    //         $sentencia->execute([$md5Contra,$correo]);
+    //         return 1;
+    //     }else{
+    //         return "hubo problemas con nuestro servidor de correos, por favor revise que el correo escrito
+    //         sea con el que se registro e intenta mas tarde";
+    //     }
 
-    }
+    // }
     
     public function darUsuario($nom_usuario)
     {
@@ -85,13 +85,13 @@ class DAOUsuario extends DB
         }
     }
 
-    public function cambiarEstadoUsuario($cod_usu, $estado_usu)
-    {        
-        $query = "UPDATE USUARIO SET estado_usuario= ? where cod_usuario= ?";
-        $respuesta = $this->con->prepare($query);
-        $respuesta->execute([$estado_usu,$cod_usu]);
-        return $respuesta;
-    }
+    // public function cambiarEstadoUsuario($cod_usu, $estado_usu)
+    // {        
+    //     $query = "UPDATE USUARIO SET estado_usuario= ? where cod_usuario= ?";
+    //     $respuesta = $this->con->prepare($query);
+    //     $respuesta->execute([$estado_usu,$cod_usu]);
+    //     return $respuesta;
+    // }
 
     public function darUsuarioPorCodigo($cod_usuario)
     {
@@ -108,7 +108,7 @@ class DAOUsuario extends DB
 
     public function validarContraseña($id,$contra)
     { 
-        $query="SELECT * from usuario where cod_usuario=? and pass_usuario=?";
+        $query="SELECT * from USUARIO where cod_usuario=? and contraseña=?";
         $sentencia = $this->con->prepare($query);
         $sentencia->execute([$id,md5($contra)]);
         $number_of_rows = $sentencia->fetchAll();
@@ -118,12 +118,22 @@ class DAOUsuario extends DB
     public function cambiarContraseña($cod_usu,$pass)
     {
         $pass2 = md5($pass);
-        $query="UPDATE usuario SET pass_usuario= ? WHERE cod_usuario = ? ";
+        $query="UPDATE USUARIO SET contraseña= ? WHERE cod_usuario = ? ";
         $sentencia = $this->con->prepare($query);
         $res=$sentencia->execute([$pass2,$cod_usu]);
         return $res;
     }
-
+    public function darUsuarioUser($user_usuario)
+    {
+        $query = $this->connect()->prepare('SELECT * FROM USUARIO WHERE cod_usuario=?');
+        $query->execute([$user_usuario]);
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Usuario($key[0], $key[1], $key[2], $key[3], $key[4], $key[5]);
+        } else {
+            return null;
+        }
+    }
    
 
 }
