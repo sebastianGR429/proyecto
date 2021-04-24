@@ -27,7 +27,6 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="listarPartner.php">Listar</a></li>
-							<li><a href="index.php">Agregar</a></li>
 					
 						</ul>
 					</li>
