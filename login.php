@@ -1,3 +1,37 @@
+<?php
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/user_Sesion.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Cliente.php');
+
+$userSession = new UserSession();
+$controladorR=new ControladorRegistro();
+$controladorC=new ControladorCliente();
+
+if(isset($_SESSION['user'])){
+    echo "entra a validar";
+    $usuario=$controladorR->darUsuario($userSession->getCurrentUser());
+    $tipo=$usuario->getCod_tipo_usuario();
+    if($tipo==1){
+        header('location: empleado/index.php');
+    }else if($tipo==2){
+        header('location: administrador/index.php');
+    }else{
+        echo "entra a cliente";
+        $cliente=$controladorC->darCliente_x_Codusuario($usuario->getCod_usuario());
+        if($cliente->getCod_tipo_cliente()==1)
+        {
+            echo ("entro a cliente");
+            header('location: cliente/index.php');
+        }else{
+            header('location: distribuidor/index.php');
+        }
+    }
+    include_once 'login.php';
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +67,7 @@
 
     <section id="pricing" class="pricing">
     <div class="container2" style="margin-left: 500px">
-        <form class="form" id="login" method="POST" action="javascript:ingresar()" >
+        <form class="form" id="login" method="POST" action="dar_login.php" >
             <h1 class="form__title">Login</h1>
             
             <div class="form__input-group">
@@ -46,6 +80,19 @@
             </div>
             <center><button type="submit" class="btn btn-danger">Ingresar</button></center>
             <br><br>
+            <?php
+            if(isset($_GET['respuesta'])){
+
+                ?>
+                <p class="form__text">
+                    <a >  <?php   echo($_GET['respuesta']); ?> </a>
+                </p>
+            <?php
+            }
+
+
+            ?>
+
             <p class="form__text">
                 <a href="#" class="form__link">Olvidaste tu contraseña?</a>
             </p>

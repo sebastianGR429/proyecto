@@ -125,7 +125,7 @@ class DAOUsuario extends DB
     }
     public function darUsuarioUser($user_usuario)
     {
-        $query = $this->connect()->prepare('SELECT * FROM USUARIO WHERE cod_usuario=?');
+        $query = $this->connect()->prepare('SELECT * FROM USUARIO WHERE nom_usuario=?');
         $query->execute([$user_usuario]);
         if ($query->rowCount()) {
             $key = $query->fetchAll()[0];
