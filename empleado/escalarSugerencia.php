@@ -5,7 +5,6 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/Controlador/ControladorSugeren
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/entidades/Sugerencias.php');
 print_r($_POST);
 print_r("entro");
-if(isset($_POST))
 $datos=array(
     $_POST["cod_cliente"],
     $_POST["desc_escala"]        

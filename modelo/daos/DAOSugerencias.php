@@ -49,7 +49,7 @@ class DAOSugerencias extends DB
     {
         echo 'ENTRO A LA CONSULTA' ;
         echo'CONSULTA';
-        $query="UPDATE SUGERENCIAS SET desc_escala= ? ,  cod_nivel = 2 WHERE cod_cliente = ? ";
+        $query="UPDATE SUGERENCIAS SET desc_escala= ? , estado_sugerencia= 'ESCALADO' ,cod_nivel = 2 WHERE cod_cliente = ? ";
         $sentencia = $this->con->prepare($query);
         $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
 
@@ -59,18 +59,33 @@ class DAOSugerencias extends DB
             echo'NO SE HA REALIZADO LA EJEC';
         }
         return $res;        
-    }       
+    }    
+    public function resolverSugerencia($cod_sugerencia, $descripcion_sugerencia)
+    {
+        echo 'ENTRO A LA CONSULTA' ;
+        echo'CONSULTA';
+        $query="UPDATE SUGERENCIAS SET estado_sugerencia= ESCALADO  WHERE cod_cliente = ? ";
+        $sentencia = $this->con->prepare($query);
+        $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
+
+        if($res){
+            echo'SE HA REALIZADO LA EJEC';
+        }else{
+            echo'NO SE HA REALIZADO LA EJEC';
+        }
+        return $res;        
+    }          
 
     public function eliminarRegistro($idRegistro)
     {
         
     }    
 
-    public function listar()
+    public function listar($Cod_nivel)
     {
        
-        $query = $this->con->prepare("SELECT * FROM SUGERENCIAS");
-        $query->execute();
+        $query = $this->con->prepare("SELECT * FROM SUGERENCIAS WHERE cod_nivel = ?");
+        $query->execute([$Cod_nivel]);
         $em = array();
         while ($fila = $query->fetch()) {
             $em[] = $fila;

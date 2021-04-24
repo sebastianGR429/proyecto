@@ -104,7 +104,7 @@ function escalarSugerencia() {
                 if (r == 1) {
                     toastr["error"]("Error al subir autor", "Error :(");
                 } else {
-                    toastr["success"]("Autor agregado con exito", "Genial esto es un hpta milagro");
+                    toastr["success"]("Sugerencia escalada con exito", "Genial");
                     // document.getElementById("formSugerencia").reset();
                 }
             }

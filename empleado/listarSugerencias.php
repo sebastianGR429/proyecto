@@ -1,10 +1,28 @@
 <?php
-include('Header.php');
-include('menuEmpleado.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorSugerencias.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorEmpleado.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOSugerencias.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 1) {
+    header("location: ../index.php");
+}
+include("Header.php");
+include("MenuEmpleado.php");
+
+
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+
+$conEmpleado=new ControladorEmpleado();
+$empleado=$conEmpleado->empleado_x_cod_usuario($usuario->getCod_usuario());
+
 $CSugerencias = new ControladorSugerencias();
-$sugerencias = $CSugerencias->listar();
+$sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
+
+
 ?>
 <div class="modal fade" id="verSugerencia" role="dialog">
     <div class="modal-dialog">
@@ -156,7 +174,27 @@ function escalarSugerencia() {
             success: function(r) {
                 console.log(r);
                 if (r == 1) {
-                    toastr["error"]("Error al subir autor", "Error :(");
+                    toastr["error"]("Error al escalar sugerencia", "Error :(");
+                } else {
+                    toastr["success"]("Sugerencia escalada con exito", "Genial");
+                    // document.getElementById("formSugerencia").reset();
+                }
+            }
+        });
+    }
+
+	function solucionarSugerencia() {
+        cod_cliente = $('#cod_cliente').val();
+		var dataString = 'cod_cliente=' + cod_cliente;
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: "escalarSugerencia.php",
+
+            success: function(r) {
+                console.log(r);
+                if (r == 1) {
+                    toastr["error"]("Error al solucionar sugerencia", "Error :(");
                 } else {
                     toastr["success"]("Autor agregado con exito", "Genial esto es un hpta milagro");
                     // document.getElementById("formSugerencia").reset();

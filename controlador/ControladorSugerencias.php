@@ -18,16 +18,23 @@ class ControladorSugerencias{
         return $this->Sugerencias->escalarSugerencia($cod_sugerencia, $desc_sugerencia);
     }
 
+    public function resolverSugerencia($cod_sugerencia, $desc_sugerencia)
+    {
+        $this->Sugerencias=new DAOSugerencias();
+        return $this->Sugerencias->resolverSugerencia($cod_sugerencia, $desc_sugerencia);
+    }
+
+
     public function actualizarRegistro(Sugerencias $registroActualizar)
     {
         $this->Sugerencias=new DAOSugerencias();
         return $this->Sugerencias->actualizarRegistro($registroActualizar);
     }
 
-    public function listar()
+    public function listar($Cod_Nivel)
     {
         $this->Sugerencias=new DAOSugerencias();
-        return $this->Sugerencias->listar();
+        return $this->Sugerencias->listar($Cod_Nivel);
     }
 
 }

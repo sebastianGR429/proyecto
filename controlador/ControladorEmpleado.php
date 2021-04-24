@@ -25,5 +25,10 @@ class ControladorEmpleado{
         $this->Empleados=new DAOEmpleado();
         return $this->Empleados->listar();
     }
+    public function empleado_x_cod_usuario($Cod_Usuario)
+    {
+        $this->Empleados=new DAOEmpleado();
+        return $this->Empleados->empleado_x_cod_usuario($Cod_Usuario);
+    }
 
 }

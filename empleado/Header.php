@@ -84,7 +84,7 @@
 					</a>
 					<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
 						<a class="dropdown-item" href="profile.php"><i class="dw dw-user1"></i> Perfil</a>
-						<a class="dropdown-item" href="cerrarSesion.php"><i class="dw dw-logout"></i> Salir</a>
+						<a class="dropdown-item" href="../cerrar.php"><i class="dw dw-logout"></i> Salir</a>
 					</div>
 				</div>
 			</div>

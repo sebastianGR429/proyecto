@@ -3,6 +3,7 @@
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/Controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Empleado.php');
 
+
 class DAOEmpleado extends DB
 {
     private $con;
@@ -49,6 +50,17 @@ class DAOEmpleado extends DB
             $em[] = $fila;
         }
         return $em;
+    }
+    public function empleado_x_cod_usuario($cod_usuario)
+    {
+        $query = $this->connect()->prepare('SELECT * FROM EMPLEADO WHERE cod_usuario=?');
+        $query->execute([$cod_usuario]);
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Empleado ($key[0], $key[1], $key[2], $key[3], $key[4], $key[5]);
+        } else {
+            return null;
+        }
     }
     public function eliminarRegistro($idRegistro){
 
