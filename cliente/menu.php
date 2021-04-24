@@ -13,7 +13,7 @@
           <li class="dropdown"><a href="#"><span>login</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="perfil.php">Perfil</a></li>
-                  <li><a href="#">Cerrar sesión</a></li>
+                  <li><a href="../cerrar.php">Cerrar sesión</a></li>
                 </ul>
           </li>
 

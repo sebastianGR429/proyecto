@@ -1,7 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-		include("head.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorSolicitud.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorCliente.php');
+session_start();
+  if (!isset($_SESSION['user'])) {
+      header("location: ../index.php");
+  } else if (!$_SESSION['tipo'] == 3) {
+      header("location: ../index.php");
+  }
+
+	include("head.php");
+
+  $conReg=new ControladorRegistro();
+  $usuario=$conReg->darUsuario($_SESSION['user']);
+  $conCliente=new ControladorCliente();
+  $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
+  $conSoli=new ControladorSolicitud();
+  $solicitudes=$conSoli->listarxcliente($cliente->getNom_cliente());
+
 ?>
 
 <body>
@@ -31,38 +49,24 @@
     <section id="pricing" class="pricing">
 
     <table id="example" class="table table-striped" style="width:100%">
-        <thead>
+    <thead>
             <tr>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Age</th>
-                <th>Start date</th>
-                
+                <th>Nombre de partner</th>
+                <th>Tipo dominio</th>
+                <th>Dominio</th>
+                <th>Fecha</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Tiger Nixon</td>
-                <td>System Architect</td>
-                <td>Edinburgh</td>
-                <td>61</td>
-                <td>2011/04/25</td>
-            </tr>
-            <tr>
-                <td>Garrett Winters</td>
-                <td>Accountant</td>
-                <td>Tokyo</td>
-                <td>63</td>
-                <td>2011/07/25</td>
-            </tr>
-            <tr>
-                <td>Ashton Cox</td>
-                <td>Junior Technical Author</td>
-                <td>San Francisco</td>
-                <td>66</td>
-                <td>2009/01/12</td>
-            </tr>
+            <?php foreach($solicitudes as $i){?>
+              <tr>
+                <td><?php echo $i["nom_partner"]?></td>
+                <td><?php echo $i["tipo_dominio"]?></td>
+                <td><?php echo $i["dominio"]?></td>
+                <td><?php echo $i["fecha"] ?></td>
+              </tr>
+						<?php }?>
+            
         </tbody>
     </table>
 
@@ -88,7 +92,7 @@
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-  <script src="../src/tabla.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 </body>
 

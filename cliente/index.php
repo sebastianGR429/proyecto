@@ -2,10 +2,23 @@
 <html lang="en">
 <?php
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPaquete.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorRegistro.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOPaquete.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 3) {
+    header("location: ../index.php");
+}
 
 $conPaq=new ControladorPaquete();
+
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
 $lisPaq=$conPaq->listar();
+$conCliente=new ControladorCliente();
+$cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
 
 ?> 
 
@@ -38,7 +51,7 @@ $lisPaq=$conPaq->listar();
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-      <h2><b>Bienvenido Sebastian Guevara</b></h2>
+      <h2><b>Bienvenido <?php echo $cliente->getNom_cliente() ?></b></h2>
       <h2>Nos encanta tenerte de vuelta en nuestro sitio web.</h2>
     </div>
   </section><!-- End Hero -->

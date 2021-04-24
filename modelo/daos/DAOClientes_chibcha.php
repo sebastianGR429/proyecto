@@ -62,5 +62,16 @@ class DAOClientes_chimbcha extends DB
         return $par;
     }
 
+    public function listarxcliente($nom_cliente)
+    {
+        $query = $this->con->prepare("SELECT * FROM dominios_cliente WHERE nom_cliente=?");
+        $query->execute([$nom_cliente]);
+        $par = array();
+        while ($fila = $query->fetch()) {
+            $par[] = $fila;
+        }
+        return $par;
+    }
+
       
 }

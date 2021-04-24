@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-  include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPartner.php');
-  include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOPartner.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPartner.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorRegistro.php');
+session_start();
+  if (!isset($_SESSION['user'])) {
+      header("location: ../index.php");
+  } else if (!$_SESSION['tipo'] == 3) {
+      header("location: ../index.php");
+  }
+
 	include("head.php");
 
   $conPar=new ControladorPartner();
   $lisPar=$conPar->listar();
+  $conReg=new ControladorRegistro();
+  $usuario=$conReg->darUsuario($_SESSION['user']);
 ?>
 
 <body>
@@ -50,7 +59,7 @@
                 <td><?php echo $i["nom_partner"]?></td>
                 <td><?php echo $i["correo_partner"]?></td>
                 <td><?php echo $i["tel_partner"]?></td>
-                <?php echo "<td><button type='button' class='btn btn-dark' onclick='soli(" . '"' . $i['cod_partner'] . '"' . ")'>Solicitar</button></td>" ?>
+                <?php echo "<td><button type='button' class='btn btn-dark' onclick='soli(" . '"' . $i['cod_partner'] . '",'.'"' . $usuario->getCod_usuario() . '"' . ")'>Solicitar</button></td>" ?>
               </tr>
 						<?php }?>
             
@@ -95,8 +104,8 @@
 
 </html>
 <script>
-	function soli(codigoP) {
-		$('.modal-content').load('modalSolicitud.php?codP='+codigoP) 
+	function soli(codigoP,codigoU) {
+		$('.modal-content').load('modalSolicitud.php?codP='+codigoP+"&codU="+codigoU) 
 		$('#modal11').modal('show');
 	}
 </script>

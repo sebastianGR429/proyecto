@@ -26,4 +26,10 @@ class ControladorClientes_chibcha{
         return $this->clientes->listar();
     }
 
+    public function listarxcliente($nom_cliente)
+    {
+        $this->clientes=new DAOClientes_chimbcha();
+        return $this->clientes->listarxcliente($nom_cliente);
+    }
+
 }

@@ -4,6 +4,8 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorPartn
 
 $conPartner = new ControladorPartner();
 $cod_partner = $_GET['codP'];
+$cod_usuario =$_GET['codU'];
+
 $partner=$conPartner->devolverPartner($cod_partner);
 
 ?>
@@ -37,6 +39,7 @@ $partner=$conPartner->devolverPartner($cod_partner);
                 </div>
 
                 <input type="hidden" id="cod_partner" name="cod_partner" value="<?php echo $cod_partner ?>" />
+                <input type="hidden" id="cod_usuario" name="cod_usuario" value="<?php echo $cod_usuario ?>" />
 
             </form>
         </div>
@@ -57,6 +60,9 @@ $partner=$conPartner->devolverPartner($cod_partner);
 
                             console.log(r);
                             if (r == 1) {
+                                
+                                // toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
+                                window.location.href = "index.php";
                                
                             } else {
                                 

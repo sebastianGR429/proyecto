@@ -16,11 +16,12 @@ class DAOSolicitud extends DB
 
     public function agregarRegistro(Solicitud  $nuevoRegistro)
     {
-        $query = "INSERT INTO SOLICITUD VALUES (cod_solicitud=?,cod_cliente=?,cod_partner=?,tipo_dominio=?,dominio=?)";
+        $query = "INSERT INTO SOLICITUD (cod_solicitud,cod_cliente,cod_partner,tipo_dominio,dominio,
+        fecha ) values (?,?,?,?,?,now() )";
         $respuesta = $this->con->prepare($query)->execute([
             $nuevoRegistro->getCod_solicitud(),
             $nuevoRegistro->getCod_cliente(),
-            $nuevoRegistro->getCod_partner(),
+            $nuevoRegistro->getCod_partner(), 
             $nuevoRegistro->getTipo_dominio(),
             $nuevoRegistro->getDominio()
         ]);
@@ -28,13 +29,15 @@ class DAOSolicitud extends DB
     }
     public function actualizarRegistro(Solicitud  $registroActualizar)
     {
-        $query = "UPDATE SOLICITUD SET cod_cliente=?,cod_partner=?,tipo_dominio=?,dominio=?
+        $query = "UPDATE SOLICITUD SET cod_cliente=?,cod_partner=?,tipo_dominio=?,dominio=?,fecha=?
         WHERE cod_solicitud=?";
         $respuesta = $this->con->prepare($query)->execute([ 
                 $registroActualizar->getCod_cliente(),
                 $registroActualizar->getCod_partner(), 
                 $registroActualizar->getTipo_dominio(),
-                $registroActualizar->getDominio()
+                $registroActualizar->getDominio(),
+                $registroActualizar->getFecha(),
+                $registroActualizar->getCod_solicitud()
         ]);
         return $respuesta;
     }
@@ -45,12 +48,26 @@ class DAOSolicitud extends DB
         $sentencia->execute([]);
         $solicitudes = [];
         foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3]);
+            $usuarios[] = new Solicitud($key[0], $key[1], $key[2], $key[3],$key[4],$key[5]);
         }
         return $solicitudes;
+    }
+
+    public function listarxcliente($nom_cliente)
+    {
+        $query = "SELECT * FROM solicitudes_cliente WHERE nom_cliente=?";    
+        $query = $this->con->prepare($query);
+        $query->execute([$nom_cliente]);
+        $par = array();
+        while ($fila = $query->fetch()) {
+            $par[] = $fila;
+        }
+        return $par;
     }
     public function eliminarRegistro($idRegistro){
 
     }
+
+
 
 }

@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-		 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorClientes_chibcha.php');
-     include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOClientes_chibcha.php');
-     include("head.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorClientes_chibcha.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorCliente.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 3) {
+    header("location: ../index.php");
+}
+include("head.php");
 
-     $conCC=new ControladorClientes_chibcha();
-     $lisCC=$conCC->listar();
+$conCC=new ControladorClientes_chibcha();
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+$conCliente=new ControladorCliente();
+$cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
+$lisCC=$conCC->listarxcliente($cliente->getNom_cliente());
+
 ?>
 
 <body>
@@ -37,24 +49,24 @@
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
-                <th>Nom. dominio</th>
-                <th>Paquete</th>
-                <th>Tipo de dominio</th>
-                <th>Fecha de pago</th>
-                <th>Plataforma</th>
+                <th>Nom. paquete</th>
                 <th>Plan de pago</th>
+                <th>Tipo de dominio</th>
+                <th>Dominio</th>
+                <th>Plataforma</th>
+                <th>Fecha de pago</th>
                 
             </tr>
         </thead>
         <tbody>
         <?php foreach($lisCC as $i){?>
               <tr>
-                <td><?php echo $i["dominio"]?></td>
-                <td><?php echo $i["cod_paquete"]?></td>
-                <td><?php echo $i["tipo_dominio"]?></td>
-                <td><?php echo $i["fecha_pago"]?></td>
-                <td><?php echo $i["plataforma"]?></td>
+                <td><?php echo $i["nom_paquete"]?></td>
                 <td><?php echo $i["plan_pago"]?></td>
+                <td><?php echo $i["tipo_dominio"]?></td>
+                <td><?php echo $i["dominio"]?></td>
+                <td><?php echo $i["plataforma"]?></td>
+                <td><?php echo $i["fecha_pago"]?></td>
               </tr>
 						<?php }?>
         </tbody>

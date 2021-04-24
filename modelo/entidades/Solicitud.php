@@ -6,14 +6,16 @@ class Solicitud{
     private $cod_partner;
     private $tipo_dominio;
     private $dominio;
+    private $fecha;
     
-    public function __construct($cod_solicitud, $cod_cliente,$cod_partner,$tipo_dominio,$dominio)
+    public function __construct($cod_solicitud, $cod_cliente,$cod_partner,$tipo_dominio,$dominio,$fecha)
     {
         $this->cod_solicitud=$cod_solicitud;
         $this->cod_cliente=$cod_cliente;
         $this->cod_partner=$cod_partner;
         $this->tipo_dominio=$tipo_dominio;
         $this->dominio=$dominio;    
+        $this->fecha=$fecha;    
     }
 
     /**
@@ -112,6 +114,26 @@ class Solicitud{
     public function setDominio($dominio)
     {
         $this->dominio = $dominio;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of fecha
+     */ 
+    public function getFecha()
+    {
+        return $this->fecha;
+    }
+
+    /**
+     * Set the value of fecha
+     *
+     * @return  self
+     */ 
+    public function setFecha($fecha)
+    {
+        $this->fecha = $fecha;
 
         return $this;
     }
