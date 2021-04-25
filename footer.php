@@ -9,7 +9,7 @@
             <div class="footer-info">
               <h3>Chibcha Web</h3>
               <p>
-                Calle 134 #9-45 <br>
+                Av. carrera 9 #131a-20<br>
                 Bogotá, Colombia<br><br>
                 <strong>Tel:</strong> +57 305 705 4858<br>
                 <strong>E-mail:</strong> contacto@chibchaweb.com<br>
