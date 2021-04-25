@@ -17,7 +17,7 @@
 							<span class="micon dw dw-house-1"></span><span href="index.php" class="mtext">Inicio</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="perfilEmpleado.php">inicio</a></li>
+							<li><a href="perfilEmpleado.php">Perfil</a></li>
 						</ul>
 					</li>
 

@@ -16,6 +16,7 @@ $usuario=$conReg->darUsuario($_SESSION['user']);
 $CEmpleado = new ControladorEmpleado();
 $empleado=$CEmpleado->empleado_x_cod_usuario($usuario->getCod_usuario());
 ?>
+
 <div class="main-container">
 	<div class="pd-ltr-20 xs-pd-20-10">
 		<div class="min-height-200px">
@@ -32,6 +33,7 @@ $empleado=$CEmpleado->empleado_x_cod_usuario($usuario->getCod_usuario());
 							</ol>
 						</nav>
 					</div>
+
 				</div>
 			</div>
 
@@ -39,23 +41,37 @@ $empleado=$CEmpleado->empleado_x_cod_usuario($usuario->getCod_usuario());
 			<!-- Export Datatable start -->
 			<div class="card-box mb-30">
 				<div class="pd-20">
-					<h4 class="text-blue h4">Datos de perfil</h4>
+					<h4 class="text-blue h4">¡Hola <?php echo $empleado->getNom_empleado()?>! bienvenido a tu perfil</h4>
 				</div>
 				<div class="pb-20">
-					<table class="" style="width:100%">
+					<table class="table hover nowrap">
 						<thead>
 							<tr>
-                                <th >Nombre partner</th>
-								<th>Correo</th>
-                                <th>Teléfono</th>
+								<th class="table-plus datatable-nosort">Código Empleado</th>
+								<th>Nombre</th>
+                                <th>Telefono</th>
+								<th>Cedula</th>
 							</tr>
 						</thead>
+
+							<tbody>
+								<tr>
+									<td><?php echo $empleado->getCod_empleado()?></td>
+									<td><?php echo $empleado->getNom_empleado()?></td>
+									<td><?php echo $empleado->getTel_empleado()?></td>
+                                    <td><?php echo $empleado->getCed_empleado()?></td>
+								</tr>
+
+
+
+							</tbody>
 					</table>
 				</div>
 			</div>
+			<!-- Export Datatable End -->
 		</div>
 	</div>
-
+</div>
 
 
 <script src="TemplateAdministrador/vendors/scripts/core.js"></script>
