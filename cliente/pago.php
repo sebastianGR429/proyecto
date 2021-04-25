@@ -2,7 +2,26 @@
 <html lang="en">
 
 <?php
-		include("head.php");
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorCliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPaquete.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+ header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 3) {
+ header("location: ../index.php");
+}
+include("head.php");
+
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+$conCliente=new ControladorCliente();
+$cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
+
+$conPaquete=new ControladorPaquete();
+$paquete=$conPaquete->paquetexcod($_GET["paq"]);
+
+
 ?>
 
 
@@ -31,84 +50,54 @@
   <main id="main">
 
     <section id="pricing" class="pricing">
-
+    <form id="factura" method="POST" action="javascript:realizarFactura()">
     <div class='container3' style="margin-left: 100px;">
         <div class='window'>
             <div class='order-info'>
             <div class='order-info-content'>
-                <h2>Order Summary</h2>
+                <h2>Orden de pago</h2>
                         <div class='line'></div>
                 <table class='order-table'>
                 <tbody>
                     <tr>
                     <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG' class='full-width'></img>
                     </td>
-                    <td>
-                        <br> <span class='thin'>Nike</span>
-                        <br> Free Run 3.0 Women<br> <span class='thin small'> Color: Grey/Orange, Size: 10.5<br><br></span>
-                    </td>
-
+                      <td>
+                          
+                          <br> <b>Paquete <?php echo $paquete->getNom_paquete()?></b><br>
+                          <span class='thin small'>Norma: <?php echo $paquete->getIso()?><br></span>
+                          <span class='thin small'>Almacenamiento: <?php echo $paquete->getAlmacenamiento()?><br></span>
+                          <span class='thin small'>Motor de BD: <?php echo $paquete->getBd()?><br></span>
+                          <span class='thin small'>Corr. institucinales: <?php echo $paquete->getCorreos()?><br></span>
+                          <span class='thin small'>Sitios web: <?php echo $paquete->getSitios_web()?><br></span>
+                          <span class='thin small'>Cetificación: <?php echo $paquete->getCertificacion()?><br></span>
+                      </td>
                     </tr>
+                    
                     <tr>
-                    <td>
-                        <div class='price'>$99.95</div>
-                    </td>
-                    </tr>
-                </tbody>
-
-                </table>
-                <div class='line'></div>
-                <table class='order-table'>
-                <tbody>
-                    <tr>
-                    <td><img src='https://dl.dropboxusercontent.com/s/qbj9tsbvthqq72c/Vintage-20L-Backpack-by-Fj%C3%A4llr%C3%A4ven.jpg' class='full-width'></img>
-                    </td>
-                    <td>
-                        <br> <span class='thin'>Fjällräven</span>
-                        <br>Vintage Backpack<br> <span class='thin small'> Color: Olive, Size: 20L</span>
-                    </td>
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class='price'>$235.95</div>
-                    </td>
-                    </tr>
+                        
                 </tbody>
                 </table>
-                <div class='line'></div>
-                <table class='order-table'>
-                <tbody>
-                    <tr>
-                    <td><img src='https://dl.dropboxusercontent.com/s/nbr4koso8dpoggs/6136C1p5FjL._SL1500_.jpg' class='full-width'></img>
-                    </td>
-                    <td>
-                        <br> <span class='thin'>Monobento</span>
-                        <br>Double Lunchbox<br> <span class='thin small'> Color: Pink, Size: Medium</span>
-                    </td>
+                <br>
+                Tipo de dominio:
+                    <select class="form-select" aria-label="Default select example" id="t_dominio" name="t_dominio">
+                        <option value="Nuevo">Nuevo</option>
+                        <option value="Trasferencia">Trasferencia</option>
+                    </select>
 
-                    </tr>
-                    <tr>
-                    <td>
-                        <div class='price'>$25.95</div>
-                    </td>
-                    </tr>
-                </tbody>
-                </table>
-                <div class='line'></div>
-                <div class='total'>
-                <span style='float:left;'>
-                    <div class='thin dense'>VAT 19%</div>
-                    <div class='thin dense'>Delivery</div>
-                    TOTAL
-                </span>
-                <span style='float:right; text-align:right;'>
-                    <div class='thin dense'>$68.75</div>
-                    <div class='thin dense'>$4.95</div>
-                    $435.55
-                </span>
+                Nombre dominio:
+                <div class="form__input-group">
+                        <input type="text" class="form__input" id="dominio" name="dominio">
+                        <div class="form__input-error-message"></div>
                 </div>
-        </div>
-        </div>
+
+                Plataforma:
+                    <select class="form-select" id="plataforma" name="plataforma" aria-label="Default select example">
+                        <option value="Windows">Windows</option>
+                        <option value="Unix">Unix</option>
+                    </select>    
+              </div>
+              </div>
                 <div class='credit-info2'>
                 <div class='credit-info-content2'>
                     <table class='half-input-table'>
@@ -123,27 +112,27 @@
                     </table>
                     <img src='https://dl.dropboxusercontent.com/s/ubamyu6mzov5c80/visa_logo%20%281%29.png' height='80' class='credit-card-image' id='credit-card-image'></img>
                     Numero de tarjeta
-                    <input class='input-field'></input>
+                    <input class='input-field' id="num_tarjeta" name="num_tarjeta"></input>
                     Titular
                     <input class='input-field'></input>
-                    Cedula
-                    <input class='input-field'></input>
-                    
-                    <select class="form-select2" aria-label="Default select example">
-                        <option selected>Forma de pago</option>
+                    Forma de pago
+                    <select id="plan" name="plan" class="form-select2" aria-label="Default select example">
                         <option value="Mensual">Mensual</option>
                         <option value="Trimestral">Trimestral</option>
                         <option value="Semestral">Semestral</option>
                         <option value="Anual">Anual</option>
                     </select>
-                    <button class='pay-btn'>Pagar</button>
+                    <h2>Total a pagar: <?php echo $paquete->getCosto_paquete()?></h2>
+                    <input type="hidden" id="codC" name="codC" value="<?php echo $cliente->getCod_cliente() ?>" />
+                    <input type="hidden" id="codP" name="codP" value="<?php echo $paquete->getCod_paquete() ?>" />
+                    <button class='pay-btn' type="submit" >Pagar</button>
 
                 </div>
 
                 </div>
             </div>
         </div>
-
+        </form>
     </section><!-- End Pricing Section -->
 
 
@@ -167,8 +156,34 @@
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
   <script src="pagos/pago.js"></script>
-  
-
 </body>
 
 </html>
+<script>
+    
+        function realizarFactura() {
+            
+               
+            datos = $('#factura').serialize();
+
+                    $.ajax({
+                        type: "POST",
+                        data: datos,
+                        url: "validar_pago.php",
+                        success: function(r) {
+
+                            console.log(r);
+                            if (r == 1) {
+                                
+                                // toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
+                                window.location.href = "index.php";
+                               
+                            } else {
+                                
+                            }
+                        }
+                    });
+
+               
+        }
+    </script>

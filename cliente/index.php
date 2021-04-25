@@ -36,7 +36,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
+        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">chibchaw@gmail.com</a>
         <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
       </div>
       <div class="social-links d-none d-md-block">
@@ -121,7 +121,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
                 <li>Cetificación: <?php echo $paq1->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <?php echo "<td><button type='button' class='btn btn-danger' onclick='comp(" . '"' . $paq1->getCod_paquete() . '",'.'"' . $usuario->getCod_usuario() . '"' . ")'>Comprar</button></td>" ?>
+              <a <?php echo('href="pago.php?paq='.($paq1->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
             </div>
           </div>
@@ -139,7 +139,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
                 <li>Cetificación: <?php echo $paq2->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <?php echo "<td><button type='button' class='btn btn-danger' onclick='comp(" . '"' . $paq2->getCod_paquete() . '",'.'"' . $usuario->getCod_usuario() . '"' . ")'>Comprar</button></td>" ?>
+              <a <?php echo('href="pago.php?paq='.($paq2->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
             </div>
           </div>
@@ -157,7 +157,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
                 <li>Cetificación: <?php echo $paq3->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <?php echo "<td><button type='button' class='btn btn-danger' onclick='comp(" . '"' . $paq3->getCod_paquete() . '",'.'"' . $usuario->getCod_usuario() . '"' . ")'>Comprar</button></td>" ?>
+              <a <?php echo('href="pago.php?paq='.($paq3->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
               
             </div>

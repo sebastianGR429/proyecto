@@ -31,7 +31,7 @@ function verificarIngresoUsuario(Usuario $usuario){
     $userForm = $_POST['username'];
     $passForm = $_POST['password'];
     $contraMD5=md5($passForm);
-    if($usuario->getContraseña()==$passForm){
+    if($usuario->getContraseña()==$contraMD5){
         
         $pasar=True;
         if($pasar){

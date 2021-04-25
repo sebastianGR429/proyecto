@@ -9,8 +9,9 @@ class Clientes_chibcha{
     private $dominio;
     private $fecha_pago;
     private $direccion_servidor;
+    private $plataforma;
 
-    public function __construct($cod_cliente_c,$cod_cliente,$cod_paquete,$plan_pago,$tipo_dominio,$dominio,$fecha_pago,$direccion_servidor)
+    public function __construct($cod_cliente_c,$cod_cliente,$cod_paquete,$plan_pago,$tipo_dominio,$dominio,$fecha_pago,$direccion_servidor,$plataforma)
   {
         $this->cod_paquete = $cod_paquete;
         $this->cod_cliente_c=$cod_cliente_c;
@@ -20,6 +21,7 @@ class Clientes_chibcha{
         $this->dominio=$dominio;
         $this->fecha_pago=$fecha_pago;
         $this->direccion_servidor=$direccion_servidor;
+        $this->plataforma=$plataforma;
 
    }
 
@@ -180,6 +182,26 @@ class Clientes_chibcha{
     public function setDireccion_servidor($direccion_servidor)
     {
         $this->direccion_servidor = $direccion_servidor;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of plataforma
+     */ 
+    public function getPlataforma()
+    {
+        return $this->plataforma;
+    }
+
+    /**
+     * Set the value of plataforma
+     *
+     * @return  self
+     */ 
+    public function setPlataforma($plataforma)
+    {
+        $this->plataforma = $plataforma;
 
         return $this;
     }
