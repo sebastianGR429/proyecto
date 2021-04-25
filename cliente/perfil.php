@@ -46,16 +46,23 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
     <section id="pricing" class="pricing">
     <div class="container2" style="margin-left: 500px">
         
-        <form class="form" id="login">
-            
+        <form method="POST" action="javascript:editarPerfil()" id="editarPerfil">
+        <input type="hidden" id="cod_cliente" name="cod_cliente" value="<?php echo $cliente->getCod_cliente() ?>" />
+        <input type="hidden" id="cod_usuario" name="cod_usuario" value="<?php echo $usuario->getCod_usuario() ?>" />
+        <input type="hidden" id="tipo_cliente" name="tipo_cliente" value="<?php echo $cliente->getCod_tipo_cliente() ?>" />
             <h1 class="form__title">Actualizar datos</h1>
+            <hr>
+            <div class="form__input-group">
+                        <input type="text" name="nombre_cliente" id="nombre_cliente" class="form__input" autofocus placeholder="Nombre completo" 
+                        value="<?php echo $cliente->getNom_cliente()?>">
+                        <div class="form__input-error-message"></div>
+            </div>
             <table>
                 <div class="form__message form__message--error"></div>
                 <tr>
                     <td>
                     <div class="form__input-group">
-                        <input type="text" name="nombre_cliente" id="nombre_cliente" class="form__input" autofocus placeholder="Nombre completo" 
-                        value="<?php echo $cliente->getNom_cliente()?>">
+                        <input type="text" class="form__input" autofocus placeholder="Telefono" id="telefono_cliente" name="telefono_cliente" value="<?php echo $cliente->getTel_cliente()?>">
                         <div class="form__input-error-message"></div>
                     </div>
                     </td>
@@ -72,12 +79,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
             </table>
                     
                     <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Telefono" id="telefono_cliente" name="nombre_cliente"
-                        value="<?php echo $cliente->getTel_cliente()?>">
-                        <div class="form__input-error-message"></div>
-                    </div>
-                    <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Correo" id="correo_cliente" name="nombre_cliente"
+                        <input type="text" class="form__input" autofocus placeholder="Correo" id="correo_cliente" name="correo_cliente"
                         value="<?php echo $usuario->getCorreo()?>" readonly>
                         <div class="form__input-error-message"></div>
                     </div>
@@ -92,7 +94,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
                 <tr>
                     <td>
                     <div class="form__input-group">
-                        <input type="password" class="form__input" autofocus placeholder="Contraseña" id="contra_cliente" name="contra_cliente">
+                        <input type="password" class="form__input" autofocus placeholder="Contraseña" id="nueva_contra" name="nueva_contra">
                         <div class="form__input-error-message"></div>
                     </div>
                     </td>
@@ -104,9 +106,17 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
                     </div>
                     </td>
                 </tr>
-            </table>        
-                    
-            <center><button type="button" class="btn btn-danger">Actualizar</button></center>
+            </table>       
+            <hr>
+            <div class="form__input-group">
+                        <input type="password" class="form__input" autofocus placeholder="Confirmar contraseña" id="contra_act" name="contra_act">
+                        <div class="form__input-error-message"></div>
+            </div>        
+            <p class="form__text">
+                <a>Ingresa la contraseña actual para realizar cambios.</a>
+            </p>
+            <hr>
+            <center><button type="submit" class="btn btn-danger">Actualizar</button></center>
             <br><br>
             
         </form>
@@ -137,5 +147,31 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
 
   <script src="./src/main.js"></script>
 </body>
+
+</html>
+
+<script>
+        function editarPerfil() {
+
+            datos = $('#editarPerfil').serialize();
+
+            $.ajax({
+                type: "POST",
+                data: datos,
+                url: "editar_perfil.php",
+                success: function(r) {
+
+                    console.log(r);
+                    if (r == 1) {
+                        // toastr["success"]('Actualizando perfil...', "NOTIFICACIÓN");
+                        window.location.href = "index.php";
+                    } else {
+                        // toastr["error"](r, "ERROR");
+                    }
+                }
+            });
+
+        }
+</script>
 
 </html>

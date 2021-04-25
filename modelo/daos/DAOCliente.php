@@ -28,8 +28,8 @@ class DAOCliente extends DB
     }   
     public function actualizarRegistro(Cliente $registroActualizar)
     {
-        $query = "UPDATE CLIENTE SET (cod_usuario=?,nom_cliente=?,cedula_cliente=?,tel_cliente=?,cod_tipo_cliente=?,cantidad_dominios=? 
-        WHERE cod_cliente=?";
+        $query = "UPDATE CLIENTE SET cod_usuario=?,nom_cliente=?,cedula_cliente=?,tel_cliente=?,
+        cod_tipo_cliente=?,cantidad_dominios=? WHERE cod_cliente=?";
         $respuesta = $this->con->prepare($query)->execute([ 
             $registroActualizar->getCod_usuario(), 
             $registroActualizar->getNom_cliente(),
@@ -37,6 +37,7 @@ class DAOCliente extends DB
             $registroActualizar->getTel_cliente(),
             $registroActualizar->getCod_tipo_cliente(),
             $registroActualizar->getCantidad_dominios(),
+            $registroActualizar->getCod_cliente()
         ]);
         return $respuesta;
     }    
