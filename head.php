@@ -2,13 +2,12 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  
   <title>Chibcha Web - Hostings</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="" rel="icon">
+  <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
@@ -26,11 +25,4 @@
   <link href="assets/css/style.css" rel="stylesheet">
   <link rel="shortcut icon" href="/assets/favicon.ico">
     <link rel="stylesheet" href="./src/main.css">
-
-  <!-- =======================================================
-  * Template Name: Day - v4.1.0
-  * Template URL: https://bootstrapmade.com/day-multipurpose-html-template-for-free/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
 </head>

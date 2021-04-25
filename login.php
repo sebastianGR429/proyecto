@@ -48,12 +48,6 @@ if(isset($_SESSION['user'])){
         <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">contacto@chibchaweb.com</a>
         <i class="bi bi-phone-fill phone-icon"></i>+57 305 705 4858
       </div>
-      <div class="social-links d-none d-md-block">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
     </div>
   </section>
 
@@ -66,7 +60,7 @@ if(isset($_SESSION['user'])){
   <main id="main">
 
     <section id="pricing" class="pricing">
-    <div class="container2" style="margin-left: 500px">
+    <div class="container2" style="margin-left: 700px">
         <form class="form" id="login" method="POST" action="dar_login.php" >
             <h1 class="form__title">Login</h1>
             
@@ -94,10 +88,10 @@ if(isset($_SESSION['user'])){
             ?>
 
             <p class="form__text">
-                <a href="#" class="form__link">Olvidaste tu contraseña?</a>
+                <a href="#" class="form__link">¿Olvidaste tu contraseña?</a>
             </p>
             <p class="form__text">
-                <a class="form__link" href="./" id="linkCreateAccount">No tienes cuenta? Crea una</a>
+                <a class="form__link" href="./" id="linkCreateAccount">¿No tienes cuenta? Crea una</a>
             </p>
         </form>
         <form class="form form--hidden" id="createAccount">
