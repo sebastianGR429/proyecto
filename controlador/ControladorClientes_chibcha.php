@@ -32,4 +32,10 @@ class ControladorClientes_chibcha{
         return $this->clientes->listarxcliente($nom_cliente);
     }
 
+    public function validarTarjeta($numero, $franq)
+    {
+        $this->clientes=new DAOClientes_chimbcha();
+        return $this->clientes->validarTarjeta($numero, $franq);
+    }
+
 }

@@ -7,7 +7,7 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="login.php">Login</a></li>
+          <li><a href="login.php">Ingresar</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->

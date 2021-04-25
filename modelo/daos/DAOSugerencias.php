@@ -15,13 +15,13 @@ class DAOSugerencias extends DB
 
     public function agregarRegistro(Sugerencias $nuevoRegistro)
     {
-        $query = "INSERT INTO SUGERENCIAS VALUES (cod_sugerencias=?,cod_cliente=?,descripcion_sugerencia=?,estado_sugerencia=?,fecha=?,cod_empleado=?,desc_escala=?,cod_nivel=?) ";
+        $query = "INSERT INTO SUGERENCIAS (cod_sugerencia,cod_cliente,descripcion_sugerencia,
+        estado_sugerencia,fecha,cod_empleado,desc_escala,cod_nivel) VALUES (?,?,?,?,now(),?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([ 
                 $nuevoRegistro->getCod_sugerencia(), 
                 $nuevoRegistro->getCod_cliente(),
                 $nuevoRegistro->getDescripcion_sugerencia(),
                 $nuevoRegistro->getEstado_sugerencia(),
-                $nuevoRegistro->getFecha(),
                 $nuevoRegistro->getCod_empleado(),
                 $nuevoRegistro->getDesc_escala(),
                 $nuevoRegistro->getCod_nivel()

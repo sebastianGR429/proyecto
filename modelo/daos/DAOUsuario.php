@@ -123,6 +123,7 @@ class DAOUsuario extends DB
         $res=$sentencia->execute([$pass2,$cod_usu]);
         return $res;
     }
+    
     public function darUsuarioUser($user_usuario)
     {
         $query = $this->connect()->prepare('SELECT * FROM USUARIO WHERE nom_usuario=?');

@@ -7,9 +7,8 @@
 
     <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="dominios.php">Dominios</a></li>
-          <li><a href="partners.php">Partners</a></li>
-          <li><a href="solicitudes.php">Solicitudes</a></li>
+          <li><a href="dominios.php">Dom. vendidos</a></li>
+          <li><a href="comisiones.php">Comisiones</a></li>
           <li class="dropdown"><a href="#"><span>Perfil</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="perfil.php">Editar</a></li>

@@ -15,7 +15,8 @@ class DAOClientes_chimbcha extends DB
 
     public function agregarRegistro(Clientes_chibcha $nuevoRegistro)
     {
-        $query = "INSERT INTO CLIENTES_CHIBCHA VALUES (cod_cliente_c=?,cod_cliente=?,cod_paquete=?,plan_pago=?,tipo_dominio=?,dominio=?,fecha_pago=?,direccion_servidor=?) ";
+        $query = "INSERT INTO CLIENTES_CHIBCHA (cod_cliente_c,cod_cliente,cod_paquete,plan_pago,
+        tipo_dominio,dominio,fecha_pago,direccion_servidor,plataforma) VALUES(?,?,?,?,?,?,now(),?,?)";
         $respuesta = $this->con->prepare($query)->execute([ 
                 $nuevoRegistro->getCod_cliente_c(), 
                 $nuevoRegistro->getCod_cliente(),
@@ -23,9 +24,8 @@ class DAOClientes_chimbcha extends DB
                 $nuevoRegistro->getPlan_pago(),
                 $nuevoRegistro->getTipo_dominio(),
                 $nuevoRegistro->getDominio(),
-                $nuevoRegistro->getFecha_pago(),
-                $nuevoRegistro->getDireccion_servidor()
-
+                $nuevoRegistro->getDireccion_servidor(),
+                $nuevoRegistro->getPlataforma()
         ]);
         return $respuesta;
     }   
@@ -71,6 +71,11 @@ class DAOClientes_chimbcha extends DB
             $par[] = $fila;
         }
         return $par;
+    }
+
+    public function validarTarjeta($numero, $franq)
+    {
+        return true;
     }
 
       

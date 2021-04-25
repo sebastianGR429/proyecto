@@ -1,6 +1,6 @@
 	<div class="left-side-bar">
 		<div class="brand-logo">
-			<a href="index.html">
+			<a href="index.php">
 				<img src="assetsCliente/images/logo/logo2.png" alt="" class="dark-logo">
 				<img src="assetsCliente/images/logo/logo2.png" alt="" class="light-logo">
 			</a>
@@ -17,7 +17,7 @@
 							<span class="micon dw dw-house-1"></span><span href="index.php" class="mtext">Inicio</span>
 						</a>
 						<ul class="submenu">
-							<li><a href="index.php">inicio</a></li>
+							<li><a href="perfilEmpleado.php">Perfil</a></li>
 						</ul>
 					</li>
 

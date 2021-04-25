@@ -3,13 +3,14 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/user_Sesion.php'
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorRegistro.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Cliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPaquete.php');
+
 
 $userSession = new UserSession();
 $controladorR=new ControladorRegistro();
 $controladorC=new ControladorCliente();
 
 if(isset($_SESSION['user'])){
-    echo "entra a validar";
     $usuario=$controladorR->darUsuario($userSession->getCurrentUser());
     $tipo=$usuario->getCod_tipo_usuario();
     if($tipo==1){
@@ -29,29 +30,24 @@ if(isset($_SESSION['user'])){
     }
     include_once 'login.php';
 }
+include("head.php");
 
+$conPaq=new ControladorPaquete();
+$paq1=$conPaq->paquetexcod(1);
+$paq2=$conPaq->paquetexcod(2);
+$paq3=$conPaq->paquetexcod(3);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<?php
-		include("head.php");
-?>
 <body>
 
   <!-- ======= Top Bar ======= -->
   <section id="topbar" class="d-flex align-items-center">
     <div class="container d-flex justify-content-center justify-content-md-between">
       <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">info@example.com</a>
-        <i class="bi bi-phone-fill phone-icon"></i> +1 5589 55488 55
-      </div>
-      <div class="social-links d-none d-md-block">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a>
-      </div>
+        <i class="bi bi-envelope-fill"></i><a href="mailto:contact@example.com">contacto@chibchaweb.com</a>
+        <i class="bi bi-phone-fill phone-icon"></i> +57 305 705 4858
+      </div>  
     </div>
   </section>
 
@@ -62,9 +58,9 @@ if(isset($_SESSION['user'])){
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-      <h1>Welcome to Day</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="#about" class="btn-get-started scrollto">Get Started</a>
+      <h1>Unete y conoce la verdadera velocidad</h1>
+      <h2>Los mejores planes de hosting para ti y tu negocio.</h2>
+      <a href="#about" class="btn-get-started scrollto">Conocenos</a>
     </div>
   </section><!-- End Hero -->
 
@@ -79,20 +75,16 @@ if(isset($_SESSION['user'])){
             <img src="assets/img/about.jpg" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>Servidores web en múltiples ubicaciones.</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+            El tiempo de implementación de nuevos servidores ronda los 10 minutos. Tenemos un proceso de arranque (bootstrap) totalmente automático: Se oprime el botón de encendido, se conectan los cables de red, se activa la automatización (kickstart, ansible) y el servidor se conecta.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i> Todos los datos almacenados tienen protección superior con varios niveles de seguridad anti fallos, RAID-10, y copias de seguridad diarias o semanales.</li>
+              <li><i class="bi bi-check-circle"></i> Nos hacemos cargo de mantener lo servidores y la infraestructura completamente operativa. Nuestros ingenieros están siempre alerta en Pageduty y tenemos tiempos de respuesta casi inmediatos frente a incidentes. Y tenemos monitoreo predictivo mediante Prometheus que nos ayuda a prevenir inconvenientes sin que hayan ocurrido.</li> 
             </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+            Chibcha Web es el mejor servicio de hosting para Colombia con millones de usuarios inteligentes, quienes realmente aman ahorrar sin perder características Premium, es ideal para crear páginas web.
             </p>
           </div>
         </div>
@@ -142,8 +134,8 @@ if(isset($_SESSION['user'])){
       <div class="container">
 
         <div class="section-title">
-          <span>Services</span>
-          <h2>Services</h2>
+          <span>Servicios</span>
+          <h2>Servicios</h2>
           <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
         </div>
 
@@ -151,48 +143,24 @@ if(isset($_SESSION['user'])){
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
             <div class="icon-box">
               <div class="icon"><i class="bx bxl-dribbble"></i></div>
-              <h4><a href="">Lorem Ipsum</a></h4>
-              <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+              <h4><a href="">Facilidad de uso</a></h4>
+              <p>Nuestro panel de control es muy amigable con el usuario. Tanto personas con poca experiencia en desarrollo web como avanzados pueden utilizarlo sin inconvenientes.</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="150">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-file"></i></div>
-              <h4><a href="">Sed ut perspiciatis</a></h4>
-              <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="">Velocidad sin igual</a></h4>
+              <p>El tiempo de implementación de nuevos servidores ronda los 10 minutos. Tenemos un proceso de arranque (bootstrap) totalmente automático: Se oprime el botón de encendido, se conectan los cables de red, se activa la automatización (kickstart, ansible) y el servidor se conecta.</p>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
             <div class="icon-box">
-              <div class="icon"><i class="bx bx-tachometer"></i></div>
-              <h4><a href="">Magni Dolores</a></h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="450">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-world"></i></div>
-              <h4><a href="">Nemo Enim</a></h4>
-              <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-slideshow"></i></div>
-              <h4><a href="">Dele cardo</a></h4>
-              <p>Quis consequatur saepe eligendi voluptatem consequatur dolor consequuntur</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="750">
-            <div class="icon-box">
-              <div class="icon"><i class="bx bx-arch"></i></div>
-              <h4><a href="">Divera don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Hostings Data Centers</a></h4>
+              <p>Centros de datos en 7 países: Reino Unido, EEUU, Brasil, Holanda, Singapur, Indonesia y Lituania (próximamente). ofrecemos la latencia más baja con alta confiabilidad gracias a los centros de datos Tier-3 conectados globalmente.</p>
             </div>
           </div>
 
@@ -206,62 +174,66 @@ if(isset($_SESSION['user'])){
     <section id="pricing" class="pricing">
       <div class="container">
 
-        <div class="section-title">
-          <span>Pricing</span>
-          <h2>Pricing</h2>
-          <p>Sit sint consectetur velit quisquam cupiditate impedit suscipit alias</p>
+      <div class="section-title">
+          <span>Hostings</span>
+          <h2>Hostings</h2>
+          <p>Estos son nuestros paquetes de hosting ofrecidos para ti !.</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
-            <div class="box">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
+            <div class="box"> 
+            <h3><?php echo $paq1->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq1->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Norma: <?php echo $paq1->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq1->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq1->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq1->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq1->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq1->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
+              <a <?php echo('href="pago.php?paq='.($paq1->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
             <div class="box featured">
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
+            <h3><?php echo $paq2->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq2->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Norma: <?php echo $paq2->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq2->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq2->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq2->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq2->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq2->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
+              <a <?php echo('href="pago.php?paq='.($paq2->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
             <div class="box">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
+              <h3><?php echo $paq3->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq3->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <li>Norma: <?php echo $paq3->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq3->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq3->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq3->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq3->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq3->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
+              <a <?php echo('href="pago.php?paq='.($paq3->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
+              
             </div>
           </div>
 
