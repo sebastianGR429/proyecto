@@ -45,11 +45,12 @@ class DAOPaquete extends DB
     {
         $query = $this->con->prepare("SELECT * FROM PAQUETES WHERE cod_paquete=?");
         $query->execute([$cod_paquete]);
-        $par = array();
-        while ($fila = $query->fetch()) {
-            $par[] = $fila;
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Paquete($key[0], $key[1], $key[2], $key[3], $key[4], $key[5], $key[6],$key[7], $key[8]);
+        } else {
+            return null;
         }
-        return $par;
     }
 
       

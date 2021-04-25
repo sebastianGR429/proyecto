@@ -109,69 +109,71 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
         <div class="row">
 
           <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
-            <div class="box">
-             <?php foreach($paq1 as $i){ ?>
-              
-              <h3><?php echo $i["nom_paquete"] ?></h3>
-              <h4><sup>$</sup><?php echo $i["costo_paquete"] ?><span> / mes</span></h4>
+            <div class="box"> 
+            <h3><?php echo $paq1->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq1->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Norma: <?php echo $i["iso"] ?></li>
-                <li>Almacenamiento: <?php echo $i["almacenamiento"] ?></li>
-                <li>Motor de BD: <?php echo $i["bd"] ?></li>
-                <li>Corr. institucinales: <?php echo $i["correos"] ?></li>
-                <li>Sitios web: <?php echo $i["sitios_web"] ?></li>
-                <li>Cetificación: <?php echo $i["certificacion"] ?></li>
+                <li>Norma: <?php echo $paq1->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq1->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq1->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq1->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq1->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq1->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Comprar</a>
+                <?php echo "<td><button type='button' class='btn btn-danger' onclick='comp(" . '"' . $paq1->getCod_paquete() . '",'.'"' . $usuario->getCod_usuario() . '"' . ")'>Comprar</button></td>" ?>
               </div>
-              <?php } ?>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
             <div class="box featured">
-            <?php foreach($paq2 as $i){ ?>
-              <h3><?php echo $i["nom_paquete"] ?></h3>
-              <h4><sup>$</sup><?php echo $i["costo_paquete"] ?><span> / mes</span></h4>
+            <h3><?php echo $paq2->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq2->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Norma: <?php echo $i["iso"] ?></li>
-                <li>Almacenamiento: <?php echo $i["almacenamiento"] ?></li>
-                <li>Motor de BD: <?php echo $i["bd"] ?></li>
-                <li>Corr. institucinales: <?php echo $i["correos"] ?></li>
-                <li>Sitios web: <?php echo $i["sitios_web"] ?></li>
-                <li>Cetificación: <?php echo $i["certificacion"] ?></li>
+                <li>Norma: <?php echo $paq2->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq2->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq2->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq2->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq2->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq2->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="pago.php" class="btn-buy">Comprar</a>
+                <?php echo "<td><button type='button' class='btn btn-danger' onclick='comp(" . '"' . $paq2->getCod_paquete() . '",'.'"' . $usuario->getCod_usuario() . '"' . ")'>Comprar</button></td>" ?>
               </div>
-              <?php } ?>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
             <div class="box">
-            <?php foreach($paq3 as $i){ ?>
-              <h3><?php echo $i["nom_paquete"] ?></h3>
-              <h4><sup>$</sup><?php echo $i["costo_paquete"] ?><span> / mes</span></h4>
+              <h3><?php echo $paq3->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq3->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Norma: <?php echo $i["iso"] ?></li>
-                <li>Almacenamiento: <?php echo $i["almacenamiento"] ?></li>
-                <li>Motor de BD: <?php echo $i["bd"] ?></li>
-                <li>Corr. institucinales: <?php echo $i["correos"] ?></li>
-                <li>Sitios web: <?php echo $i["sitios_web"] ?></li>
-                <li>Cetificación: <?php echo $i["certificacion"] ?></li>
+                <li>Norma: <?php echo $paq3->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq3->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq3->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq3->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq3->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq3->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="pago.php" class="btn-buy">Comprar</a>
+                <?php echo "<td><button type='button' class='btn btn-danger' onclick='comp(" . '"' . $paq3->getCod_paquete() . '",'.'"' . $usuario->getCod_usuario() . '"' . ")'>Comprar</button></td>" ?>
               </div>
-              <?php } ?>
+              
             </div>
           </div>
 
         </div>
 
       </div>
+      <div class="modal fade" id="modal11" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        
+              
+        </div>
+      </div>
+	  </div>
     </section><!-- End Pricing Section -->
 
 
@@ -194,7 +196,14 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 
 </body>
 
 </html>
+<script>
+	function comp(codigoP,codigoU) {
+		$('.modal-content').load('modalComprar.php?codP='+codigoP+"&codU="+codigoU) 
+		$('#modal11').modal('show');
+	}
+</script>

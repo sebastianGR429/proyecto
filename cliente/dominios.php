@@ -94,7 +94,7 @@ $lisCC=$conCC->listarxcliente($cliente->getNom_cliente());
 
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
-  <script src="../src/tabla.js"></script>
+  
 
 </body>
 

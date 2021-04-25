@@ -41,10 +41,11 @@
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
             <h4>Cuentanos tu problema, asi podremos ayudarte.</h4>
-            <form action="" method="post">
-            <input type="text" class="form__inputF" autofocus >
+            <form action="javascript:realizarSugerencia()" method="POST" id="sugerencia">
+            <input type="text" class="form__inputF" autofocus id="des_sugerencia" name="des_sugerencia">
+            <input type="hidden" id="codU" name="codU" value="<?php echo $usuario->getCod_usuario()?>" />
             </br>
-            <button type="button" class="btn btn-danger">Enviar</button>
+            <button type="submit" class="btn btn-danger">Enviar</button>
             </form>
 
           </div>
@@ -66,3 +67,31 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script>
+    
+    function realizarSugerencia() {
+        
+           
+        datos = $('#sugerencia').serialize();
+
+                $.ajax({
+                    type: "POST",
+                    data: datos,
+                    url: "agregar_sugerencia.php",
+                    success: function(r) {
+
+                        console.log(r);
+                        if (r == 1) {
+                            // toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
+                            window.location.href = "index.php";
+                           
+                        } else {
+                            
+                        }
+                    }
+                });
+
+           
+    }
+</script>
