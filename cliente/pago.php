@@ -60,7 +60,7 @@ $paquete=$conPaquete->paquetexcod($_GET["paq"]);
                 <table class='order-table'>
                 <tbody>
                     <tr>
-                    <td><img src='https://dl.dropboxusercontent.com/s/sim84r2xfedj99n/%24_32.JPG' class='full-width'></img>
+                    <td><img src='pagos/lista.png' class='full-width'></img>
                     </td>
                       <td>
                           

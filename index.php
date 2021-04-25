@@ -3,13 +3,14 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/user_Sesion.php'
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorRegistro.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorCliente.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Cliente.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPaquete.php');
+
 
 $userSession = new UserSession();
 $controladorR=new ControladorRegistro();
 $controladorC=new ControladorCliente();
 
 if(isset($_SESSION['user'])){
-    echo "entra a validar";
     $usuario=$controladorR->darUsuario($userSession->getCurrentUser());
     $tipo=$usuario->getCod_tipo_usuario();
     if($tipo==1){
@@ -29,14 +30,15 @@ if(isset($_SESSION['user'])){
     }
     include_once 'login.php';
 }
+include("head.php");
 
+$conPaq=new ControladorPaquete();
+$paq1=$conPaq->paquetexcod(1);
+$paq2=$conPaq->paquetexcod(2);
+$paq3=$conPaq->paquetexcod(3);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<?php
-		include("head.php");
-?>
 <body>
 
   <!-- ======= Top Bar ======= -->
@@ -172,62 +174,66 @@ if(isset($_SESSION['user'])){
     <section id="pricing" class="pricing">
       <div class="container">
 
-        <div class="section-title">
-          <span>Precios</span>
-          <h2>Precios</h2>
-          <p>Somos de los primeros en implementar las innovaciones en tecnología web. Ya sea hardware más veloz, arquitectura de red o software.</p>
+      <div class="section-title">
+          <span>Hostings</span>
+          <h2>Hostings</h2>
+          <p>Estos son nuestros paquetes de hosting ofrecidos para ti !.</p>
         </div>
 
         <div class="row">
 
           <div class="col-lg-4 col-md-6" data-aos="zoom-in" data-aos-delay="150">
-            <div class="box">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0 COP<span> / mensuales</span></h4>
+            <div class="box"> 
+            <h3><?php echo $paq1->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq1->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Norma: <?php echo $paq1->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq1->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq1->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq1->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq1->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq1->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Comprar ahora</a>
+              <a <?php echo('href="pago.php?paq='.($paq1->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-md-0" data-aos="zoom-in">
             <div class="box featured">
-              <h3>Business</h3>
-              <h4><sup>$</sup>20.000 COP<span> / mensuales</span></h4>
+            <h3><?php echo $paq2->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq2->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
+                <li>Norma: <?php echo $paq2->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq2->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq2->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq2->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq2->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq2->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Comprar ahora</a>
+              <a <?php echo('href="pago.php?paq='.($paq2->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="150">
             <div class="box">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29.000 COP<span> / mensuales</span></h4>
+              <h3><?php echo $paq3->getNom_paquete() ?></h3>
+              <h4><sup>$</sup><?php echo $paq3->getCosto_paquete() ?><span> / mes</span></h4>
               <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
+                <li>Norma: <?php echo $paq3->getIso()  ?></li>
+                <li>Almacenamiento: <?php echo $paq3->getAlmacenamiento() ?></li>
+                <li>Motor de BD: <?php echo $paq3->getBd() ?></li>
+                <li>Corr. institucinales: <?php echo $paq3->getCorreos() ?></li>
+                <li>Sitios web: <?php echo $paq3->getSitios_web() ?></li>
+                <li>Cetificación: <?php echo $paq3->getCertificacion() ?></li>
               </ul>
               <div class="btn-wrap">
-                <a href="#" class="btn-buy">Comprar ahora</a>
+              <a <?php echo('href="pago.php?paq='.($paq3->getCod_paquete()).'"'); ?> class="btn btn-danger">Comprar</a>
               </div>
+              
             </div>
           </div>
 

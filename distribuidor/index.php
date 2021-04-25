@@ -166,14 +166,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
         </div>
 
       </div>
-      <div class="modal fade" id="modal11" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        
-              
-        </div>
-      </div>
-	  </div>
+      
     </section><!-- End Pricing Section -->
 
 
