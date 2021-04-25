@@ -1,8 +1,14 @@
 <?php
-include('Header.php');
-include('menuEmpleado.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorPartner.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOPartner.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 1) {
+    header("location: ../index.php");
+}
+include('Header.php');
+include('menuEmpleado.php');
 $CPartner = new ControladorPartner();
 $partner = $CPartner->listar();
 ?>
@@ -88,6 +94,7 @@ $partner = $CPartner->listar();
 <!-- Datatable Setting js -->
 <script src="TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
 <script>
+
 
 //Funcion para escalar sugerencias
 function escalarSugerencia() {
