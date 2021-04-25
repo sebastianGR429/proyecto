@@ -21,7 +21,6 @@ $empleado=$conEmpleado->empleado_x_cod_usuario($usuario->getCod_usuario());
 
 $CSugerencias = new ControladorSugerencias();
 $sugerencias = $CSugerencias->listar($empleado->getCod_nivel());
-print_r($sugerencias);
 
 ?>
 <div class="modal fade" id="verSugerencia" role="dialog">
