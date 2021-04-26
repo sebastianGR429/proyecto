@@ -101,5 +101,16 @@ class DAOSugerencias extends DB
     
     }
 
+    public function listar2()
+    {
+        $query = $this->con->prepare("SELECT * FROM SUGERENCIAS");
+        $query->execute();
+        $par = array();
+        while ($fila = $query->fetch()) {
+            $par[] = $fila;
+        }
+        return $par;
+    }
+    
       
 }

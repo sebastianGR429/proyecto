@@ -37,4 +37,9 @@ class ControladorSugerencias{
         return $this->Sugerencias->listar($Cod_Nivel);
     }
 
+    public function listar2()
+    {
+        $this->Sugerencias=new DAOSugerencias();
+        return $this->Sugerencias->listar2();
+    }
 }

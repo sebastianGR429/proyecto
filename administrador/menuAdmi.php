@@ -42,6 +42,33 @@
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span  class="mtext">Dominios</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="listarDominios.php">Listar</a></li>					
+						</ul>
+						
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span  class="mtext">Solicitudes</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="listarSolicitudes.php">Listar</a></li>					
+						</ul>
+						
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-library"></span><span  class="mtext">Sugerencias</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="listarSugerencias.php">Listar</a></li>					
+						</ul>
+						
+					</li>
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
 							<span class="micon dw dw-library"></span><span  class="mtext">Clientes</span>
 						</a>
 						<ul class="submenu">

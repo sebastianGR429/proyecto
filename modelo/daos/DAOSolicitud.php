@@ -2,6 +2,7 @@
 
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/db.php');
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Paquete.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Solicitud.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/EnviarCorreo.php');
 
 class DAOSolicitud extends DB
@@ -52,6 +53,7 @@ class DAOSolicitud extends DB
         }
         return $solicitudes;
     }
+
 
     public function listarxcliente($nom_cliente)
     {

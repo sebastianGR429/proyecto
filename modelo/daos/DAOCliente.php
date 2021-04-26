@@ -58,6 +58,17 @@ class DAOCliente extends DB
         return $cli;
     }
 
+    public function devolverCliente($cod_cliente){
+        $query=$this->con->prepare('SELECT * FROM CLIENTE WHERE cod_cliente= ?');
+        $query->execute([$cod_cliente]);
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Cliente($key[0], $key[1], $key[2], $key[3], $key[4], $key[5], $key[6]);
+        } else {
+            return null;
+        }
+    }
+
     public function darCliente_x_Codusuario($cod_usuario)
     {
         $query = $this->connect()->prepare('SELECT * FROM CLIENTE WHERE cod_usuario=?');

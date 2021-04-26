@@ -1,7 +1,7 @@
 
 <?php
 
-include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/Controlador/ControladorPartner.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPartner.php');
 include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/entidades/Partner.php');
 print_r($_POST);
 $datos=array(

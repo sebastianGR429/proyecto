@@ -26,6 +26,7 @@ class ControladorSolicitud{
         return $this->solicitud->listar();
     }
 
+
     public function listarxcliente($nom_cliente)
     {
         $this->solicitud=new DAOSolicitud();

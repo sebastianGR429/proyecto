@@ -38,7 +38,7 @@ class DAOPartner extends DB
         return $respuesta;
     }
 
-    public function actualizarPartner($cod_partner,$nom_partner,$correo_partner,$tel_partner)
+    public function actualizarPartner( $cod_partner,$nom_partner,$correo_partner,$tel_partner)
     {
 
         $query = "UPDATE PARTNER SET nom_partner=?,correo_partner=?,tel_partner=?
