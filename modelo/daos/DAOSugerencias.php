@@ -49,13 +49,13 @@ class DAOSugerencias extends DB
     {
         if($cod_nivel == 1){
 
-                $query="UPDATE SUGERENCIAS SET desc_escala= ? , estado_sugerencia= 'ESCALADO' ,cod_nivel = 2 WHERE cod_cliente = ? ";
+                $query="UPDATE SUGERENCIAS SET desc_escala= ? , estado_sugerencia= 'ESCALADO' ,cod_nivel = 2 WHERE cod_sugerencia = ? ";
                 $sentencia = $this->con->prepare($query);
                 $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
                 echo'ENTRO A CASE 1 ';
         }
         else{
-            $query="UPDATE SUGERENCIAS SET desc_escala= ? , estado_sugerencia= 'ESCALADO' ,cod_nivel = 3 WHERE cod_cliente = ? ";
+            $query="UPDATE SUGERENCIAS SET desc_escala= ? , estado_sugerencia= 'ESCALADO' ,cod_nivel = 3 WHERE cod_sugerencia = ? ";
             $sentencia = $this->con->prepare($query);
             $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
         }    
@@ -71,7 +71,7 @@ class DAOSugerencias extends DB
     public function resolverSugerencia($cod_sugerencia, $descripcion_sugerencia)
     {
         
-        $query="UPDATE SUGERENCIAS SET desc_escala= ?, estado_sugerencia= 'RESUELTO'  WHERE cod_cliente = ? ";
+        $query="UPDATE SUGERENCIAS SET desc_escala= ?, estado_sugerencia= 'RESUELTO'  WHERE cod_sugerencia = ? ";
         $sentencia = $this->con->prepare($query);
         $res=$sentencia->execute([$descripcion_sugerencia,$cod_sugerencia]);
 
