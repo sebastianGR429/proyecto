@@ -22,6 +22,11 @@ $paq3=$conPaq->paquetexcod(3);
 
 $conCliente=new ControladorCliente();
 $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
+$mos_tipo="Basico";
+if($cliente->getCod_tipo_cliente()==3)
+{
+  $mos_tipo="Premium";
+}
 
 
 ?> 
@@ -55,7 +60,7 @@ $cliente=$conCliente->darCliente_x_Codusuario($usuario->getCod_usuario());
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
     <div class="container position-relative" data-aos="fade-up" data-aos-delay="500">
-      <h2><b>Bienvenido <?php echo $cliente->getNom_cliente() ?></b></h2>
+      <h2><b>Bienvenido <?php echo $cliente->getNom_cliente() ?>, Distribuidor <?php echo $mos_tipo ?></b></h2>
       <h2>Nos encanta tenerte de vuelta en nuestro sitio web.</h2>
     </div>
   </section><!-- End Hero -->
