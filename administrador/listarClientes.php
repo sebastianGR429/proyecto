@@ -5,7 +5,7 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorClien
 include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOCliente.php');
 $CCliente = new ControladorCliente();
 $cliente = $CCliente->listar();
-print_r($cliente);
+//print_r($cliente);
 ?>
 
 
