@@ -51,9 +51,9 @@ include('menuAdmi.php');
                                     <label> Nivel Empleado :</label>
                                     <select type="text" class="form-control" required id="nivelE" >
                                         <option value="value2" selected>Seleccione un nivel...</option>
-                                        <option value="value1">Nivel 1 (Basico)</option>
-                                        <option value="value2">Nivel 2 (Avanzado)</option>
-                                        <option value="value3">Nivel 3 (Veterano)</option>
+                                        <option value="1">Nivel 1 (Basico)</option>
+                                        <option value="2">Nivel 2 (Avanzado)</option>
+                                        <option value="3">Nivel 3 (Veterano)</option>
                                     </select>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@ include('menuAdmi.php');
                                     <button type="submit" onclick="agregarEmpleado()" class='btn btn-outline-success'>Agregar Empleado</button>
                                 </div>
                             </div>
-                        </div>
+                    </div>
                 </div>
             </div>
 

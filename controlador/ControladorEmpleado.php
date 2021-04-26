@@ -7,7 +7,7 @@ class ControladorEmpleado{
     private $Empleados;
 
 
-    public function agregarRegistro(Empleado $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
         $this->Empleados=new DAOEmpleado();
         return $this->Empleados->agregarRegistro($nuevoRegistro);

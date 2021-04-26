@@ -5,7 +5,6 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Empleado.ph
 
 print_r($_POST);
 $datos=array(
-
   $_POST["nomE"],
   $_POST["telE"],
   $_POST["nivelE"],

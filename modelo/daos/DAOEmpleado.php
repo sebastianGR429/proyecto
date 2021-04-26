@@ -14,18 +14,21 @@ class DAOEmpleado extends DB
         $this->con = $this->connect();
     }
 
-    public function agregarRegistro(Empleado $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
-        $query = "INSERT INTO EMPLEADO VALUES (cod_empleado=?,cod_usuario=?,tel_empleado=?,nom_empleado=?,cod_nivel=?,ced_empleado=?)";
+        $query = "INSERT INTO EMPLEADO(cod_usuario, nom_empleado,tel_empleado, cod_nivel, ced_empleado)VALUES ( 1,?,?,?,?)";        
         $respuesta = $this->con->prepare($query)->execute([
-
-            $nuevoRegistro->getCod_empleado(),
-            $nuevoRegistro->getCod_usuario(),
-            $nuevoRegistro->getTel_empleado(),
             $nuevoRegistro->getNom_empleado(),
+            $nuevoRegistro->getTel_empleado(),
             $nuevoRegistro->getCod_nivel(),
             $nuevoRegistro->getCed_empleado()
         ]);
+        
+        if($respuesta){
+            echo'SE HA REALIZADO LA EJECUCIÓN DE LA SENTENCIA';
+        }else{
+            echo'NO SE HA REALIZADO LA EJECUCIÓN';
+        }
         return $respuesta;
     }
     public function actualizarRegistro(Empleado $registroActualizar)
