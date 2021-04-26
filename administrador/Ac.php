@@ -22,10 +22,11 @@ if (isset($_GET['action'])) {
             $datos = array(
                 $_POST["nombre"],
                 $_POST["telefono"],
-                $_POST['nivel']
+                $_POST['nivel'],
+                $_POST['cedula']
             );
             // FALTA EL CONTROLADOR DEL USUARIO
-            $empleado = new Empleado($datos[0], $datos[1], $datos[2], $datos[3], $datos[4]);
+            $empleado = new Empleado(0, 0, $datos[2], $datos[3], $datos[4], $datos[5]);
             $CEmpleados = new ControladorEmpleado();
             echo $CEmpleados->agregarRegistro($empleado);
 
@@ -38,7 +39,7 @@ if (isset($_GET['action'])) {
                 $_POST['nivel']
             );
             // FALTA EL CONTROLADOR DEL USUARIO
-            $empleado = new Empleado($datos[0], $datos[1], $datos[2], $datos[3], $datos[4]);
+            $empleado = new Empleado($datos[0], $datos[1], $datos[2], $datos[3], $datos[4], $datos[5]);
             $CEmpleados = new ControladorEmpleado();
             echo $CEmpleados->agregarRegistro($empleado);
 
