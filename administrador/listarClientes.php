@@ -46,9 +46,7 @@ $cliente = $CCliente->listar();
 			</div>
 
 			<!-- Modal Footer -->
-			<div class="modal-footer">
-				<button type="button" class="btn btn-primary solucionarBtn" onclick="actualizarCliente()">Actualizar Cliente</button>
-			</div>
+			
 		</div>
 	</div>
 </div>
@@ -170,3 +168,4 @@ $cliente = $CCliente->listar();
 
 		})
 	});
+</script>

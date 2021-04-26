@@ -46,8 +46,7 @@ $dominios = $CDominios->listar();
 								<th>Fecha de pago</th>
                                 <th>Direccion del servidor</th>
                                 <th>Plataforma</th>
-                                <th>Acciones</th>
-
+                                
 							</tr>
 						</thead>
 						<?php

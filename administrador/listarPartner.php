@@ -152,7 +152,7 @@ print_r($Partner);
 	function actualizarPartner() {
 		cod_partner = $('#cod_partner').val();
 		nom_partner = $('#nom_partner').val();
-		correo_partner = $('#correo').val();
+		correo_partner = $('#correo_partner').val();
 		tel_partner = $('#tel_partner').val();
 
 		var dataString = '&cod_partner=' + cod_partner + '&nom_partner=' + nom_partner + '&correo_partner=' + correo_partner +'&tel_partner='+ tel_partner;

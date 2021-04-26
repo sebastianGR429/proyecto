@@ -88,37 +88,35 @@ include('menuAdmi.php');
 </div>
 
 
-<script>
-   function agregarEmpleado() {
-            
-               
-            datos = $('#agregarE').serialize();
-
-                    $.ajax({
-                        type: "POST",
-                        data: datos,
-                        url: "agregar_empleado.php",
-                        success: function(r) {
-
-                            console.log(r);
-                            if (r == 1) {
-                                
-                                toastr["ERROR"]('Error al crear empleado', "Error:(");
-                                window.location.href = "index.php";
-                               
-                            } else {
-                                toastr["success"]("Autor agregado con exito", "Genial");
-                                document.getElementById("agregarE").reset();
-                            }
-                        }
-                    });
-
-               
-        }
-</script>
 <script src="TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="TemplateAdministrador/vendors/scripts/script.min.js"></script>
 <script src="TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
 <script src="TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
 <script src="TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
 <script src="TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>
+
+<script>
+   function agregarEmpleado() {
+        
+        nom_empleado = $('#nomE').val();
+        cedula = $('#cedE').val();
+        tel_empleado = $('#telE').val();
+        cod_nivel = $('#nivelE').val();
+
+        var dataString =  '&nomE=' + nom_empleado + '&cedE=' + cedula +'&telE='+ tel_empleado +'&nivelE=' + cod_nivel;
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: "agregar_empleado.php",
+
+            success: function(r) {
+                console.log(r);
+                if (r == 1) {
+                    //toastr["error"]("Error al solucionar sugerencia", "Error :(");
+                } else {
+                    //toastr["success"]("Sugerencia atendida con exíto", "Genial");
+                }
+            }
+        });
+    }
+</script>
