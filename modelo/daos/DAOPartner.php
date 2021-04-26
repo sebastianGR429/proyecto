@@ -16,15 +16,18 @@ class DAOPartner extends DB
 
     public function agregarRegistro(Object $nuevoRegistro)
     {
-        $query = "INSERT INTO PARTNER VALUES (cod_partner=?,nom_partner=?,correo_partner=?,tel_partner=?)";
+        $query = "INSERT INTO PARTNER  (nom_partner,correo_partner,tel_partner) VALUES (?,?,?)";
         $respuesta = $this->con->prepare($query)->execute([
 
-            $nuevoRegistro->getCod_partner(),
+            
             $nuevoRegistro->getNom_partner(),
             $nuevoRegistro->getCorreo_partner(),
             $nuevoRegistro->getTel_partner()
         ]);
         return $respuesta;
+        if($respuesta == 1){
+            echo("Buena, entro");
+        }
     }
     public function actualizarRegistro(Partner $registroActualizar)
     {

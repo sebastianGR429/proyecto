@@ -7,7 +7,7 @@ class ControladorPartner{
     private $Partners;
 
 
-    public function agregarRegistro(Partner $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
         $this->Partners=new DAOPartner();
         return $this->Partners->agregarRegistro($nuevoRegistro);

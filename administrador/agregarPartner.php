@@ -59,15 +59,16 @@ include('menuAdmi.php');
                                     <input type="hidden" class="form-control" required id="" name="">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                           
+                        </div>
+                    </form>
+                    <div class="col-md-6">
                                 <div class="form-group">
                                     <br>
                                     <!-- onclick="agregarCliente()" -->
                                     <button type="button" onclick="agregarPartner()" class='btn btn-outline-success'>Agregar Partner</button>
                                 </div>
                             </div>
-                        </div>
-                    </form>
                 </div>
             </div>
 
@@ -78,30 +79,27 @@ include('menuAdmi.php');
 
 <script>
       function agregarPartner() {
-            
-               
-            datos = $('#agregarE').serialize();
+        
+        nom_partner = $('#nombreP').val();
+        correo_partner = $('#correoP').val();
+        tel_partner = $('#telefonoP').val();
 
-                    $.ajax({
-                        type: "POST",
-                        data: datos,
-                        url: "insertarPartner.php",
-                        success: function(r) {
+        var dataString =  '&nombreP=' + nom_partner + '&correoP=' + correo_partner +'&telefonoP='+ tel_partner;
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: "insertarPartner.php",
 
-                            console.log(r);
-                            if (r == 1) {
-                                
-                                // toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
-                                window.location.href = "index.php";
-                               
-                            } else {
-                                
-                            }
-                        }
-                    });
-
-               
-        }
+            success: function(r) {
+                console.log(r);
+                if (r == 1) {
+                    //toastr["error"]("Error al solucionar sugerencia", "Error :(");
+                } else {
+                    //toastr["success"]("Sugerencia atendida con exíto", "Genial");
+                }
+            }
+        });
+    }
 </script>
 <<script src="TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="TemplateAdministrador/vendors/scripts/script.min.js"></script>

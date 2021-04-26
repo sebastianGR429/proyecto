@@ -6,9 +6,9 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Partner.php
 print_r($_POST);
 $datos=array(
 
-    $_POST["nom_partner"],
-    $_POST["correo_partner"],
-    $_POST["tel_partner"]          
+    $_POST["nombreP"],
+    $_POST["correoP"],
+    $_POST["telefonoP"]          
 );
 
 $controlador = new ControladorPartner();

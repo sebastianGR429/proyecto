@@ -89,7 +89,7 @@
 							<span class="micon dw dw-apartment"></span><span  class="mtext"> Informes </span>
 						</a>
 						<ul class="submenu">
-                            <li><a href="gr_fvd.php">Clientes por paquete</a></li>
+                            <li><a href="lineal.php">Clientes por paquete</a></li>
                     	</ul>
 					</li>
 				</ul>
