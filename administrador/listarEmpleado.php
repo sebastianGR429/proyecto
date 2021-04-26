@@ -23,6 +23,8 @@ $empleados = $CEmpleados->listar();
 			<div class="modal-body">
 				<p class="statusMsg"></p>
 				<form role="form">
+				<input type="text" class="form-control" id="cod_empleado" hidden = "true"/>
+
 					<div class="form-group">
 						<label>Nombre:</label>
 						<input type="text" class="form-control" id="nom_empleado" />
@@ -37,16 +39,19 @@ $empleados = $CEmpleados->listar();
 					</div>
 					<div class="form-group">
 						<label>Nivel:</label>
-						<input class="form-control" id="cod_nivel"></input>
+						<select class="form-control"  id="cod_nivel" name="cod_nivel">
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
 					</div>
 				</form>
 			</div>
 
 			<!-- Modal Footer -->
-			<!-- <div class="modal-footer">
-				<button type="button" class="btn btn-primary solucionarBtn" onclick="submitContactForm()">Solucionar sugerencia</button>
-				<button type="button" class="btn btn-warning escalartBtn" onclick="submitContactForm()">Escalar sugerencia</button>
-			</div> -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary solucionarBtn" onclick="actualizarEmpleado()">Actualizar Empleado</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -84,9 +89,13 @@ $empleados = $CEmpleados->listar();
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Nombre</th>
+								<th>Número de empleado</th>
+								<th>Nombre</th>
 								<th>Cedula</th>
+								<th>Teléfono</th>
+								<th>Nivel Empleado</th>
 								<th>Acciones</th>
+
 							</tr>
 						</thead>
 						<?php
@@ -94,10 +103,13 @@ $empleados = $CEmpleados->listar();
 						?>
 							<tbody>
 								<tr>
+									<td><?php echo $key['cod_empleado'] ?></td>	
 									<td><?php echo $key['nom_empleado'] ?></td>
-									<td><?php echo $key['ced_empleado'] ?>
+									<td><?php echo $key['ced_empleado'] ?></td>
+									<td><?php echo $key['tel_empleado'] ?>
+									<td><?php echo $key['cod_nivel'] ?>
 									<td>
-										<button type="button" class="btn btn-success verEmpleado">Mas informacion</button>
+										<button type="button" class="btn btn-success verEmpleado">Ver empleado</button>
 									</td>
 								</tr>
 
@@ -151,12 +163,38 @@ $(document).ready(function(){
 				return $(this).text();
 			}).get();
 
-			$('#nom_empleado').val(data[0]);
-			$('#cedula').val(data[1]);
-			$('#tel_empleado').val(data[2]);
-			$('#cod_nivel').val(data[3]);
+			$('#cod_empleado').val(data[0]);
+			$('#nom_empleado').val(data[1]);
+			$('#cedula').val(data[2]);
+			$('#tel_empleado').val(data[3]);
+			$('#cod_nivel').val(data[4]);
+
 	})
 });
+//Actualizar empleado
+function actualizarEmpleado() {
+		cod_empleado = $('#cod_empleado').val();
+		nom_empleado = $('#nom_empleado').val();
+		cedula = $('#cedula').val();
+		tel_empleado = $('#tel_empleado').val();
+		cod_nivel = $('#cod_nivel').val();
+
+		var dataString = 'cod_empleado=' + cod_empleado + '&nom_empleado=' + nom_empleado + '&cedula=' + cedula +'&tel_empleado='+ tel_empleado +'&cod_nivel=' + cod_nivel;
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: "actualizarEmpleado.php",
+
+            success: function(r) {
+                console.log(r);
+                if (r == 1) {
+                    //toastr["error"]("Error al solucionar sugerencia", "Error :(");
+                } else {
+                    //toastr["success"]("Sugerencia atendida con exíto", "Genial");
+                }
+            }
+        });
+    }
 </script>
 
 </script>

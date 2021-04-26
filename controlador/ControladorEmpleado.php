@@ -30,5 +30,10 @@ class ControladorEmpleado{
         $this->Empleados=new DAOEmpleado();
         return $this->Empleados->empleado_x_cod_usuario($Cod_Usuario);
     }
+    public function actualizarEmpleado($nom_empleado,$cedula,$tel_empleado,$cod_nivel,$cod_empleado)
+    {
+        $this->Empleados=new DAOEmpleado();
+        return $this->Empleados->actualizarEmpleado($nom_empleado,$cedula,$tel_empleado,$cod_nivel,$cod_empleado);
+    }
 
 }

@@ -30,6 +30,7 @@ class DAOEmpleado extends DB
     }
     public function actualizarRegistro(Empleado $registroActualizar)
     {
+        print_r("ENTRO AL METODO");
         $query = "UPDATE EMPLEADO SET cod_usuario=?,nom_empleado=?,tel_empleado=?,cod_nivel=?,ced_empleado=?
         WHERE cod_empleado=?";
         $respuesta = $this->con->prepare($query)->execute([ 
@@ -41,6 +42,23 @@ class DAOEmpleado extends DB
         ]);
         return $respuesta;
     }
+
+    public function actualizarEmpleado($nom_empleado,$cedula,$tel_empleado,$cod_nivel,$cod_empleado)
+    {
+
+        $query = "UPDATE EMPLEADO SET nom_empleado=?,tel_empleado=?,cod_nivel=?,ced_empleado=?
+        WHERE cod_empleado=?";        
+        $sentencia = $this->con->prepare($query);
+        $res=$sentencia->execute([$nom_empleado,$tel_empleado,$cod_nivel,$cedula,$cod_empleado]);
+
+        if($res){
+            echo'SE HA REALIZADO LA EJECUCIÓN DE LA SENTENCIA';
+        }else{
+            echo'NO SE HA REALIZADO LA EJECUCIÓN';
+        }
+        return $res;        
+    }          
+
     public function listar()
     {
         $query = $this->con->prepare("SELECT * FROM EMPLEADO");
