@@ -34,14 +34,14 @@ include('menuAdmi.php');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nombre Empleado:</label>
-                                    <input type="text" class="form-control" required id="nomE" name="nomE">
+                                    <input type="text" class="form-control" required id="nomE" >
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telefono Empleado:</label>
-                                    <input type="number" class="form-control" required id="telE" name="telE">
+                                    <input type="number" class="form-control" required id="telE" >
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@ include('menuAdmi.php');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Nivel Empleado :</label>
-                                    <select type="text" class="form-control" required id="nivelE" name="nivelE">
+                                    <select type="text" class="form-control" required id="nivelE" >
                                         <option value="value2" selected>Seleccione un nivel...</option>
                                         <option value="value1">Nivel 1 (Basico)</option>
                                         <option value="value2">Nivel 2 (Avanzado)</option>
@@ -60,17 +60,12 @@ include('menuAdmi.php');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Cedula:</label>
-                                    <input type="cedula" class="form-control" required id="cedE" name="cedE">
+                                    <input type="cedula" class="form-control" required id="cedE" >
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="form-group">
-                                    <br>
-                                    <input type="hidden" class="form-control" required id="" name="">
-                                </div>
-                            </div>
+                        </div>                        
+                    </form>
+                    <div class="row">                            
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <br>
@@ -79,7 +74,6 @@ include('menuAdmi.php');
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
 
@@ -87,13 +81,23 @@ include('menuAdmi.php');
     </div>
 </div>
 
-
 <script src="TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="TemplateAdministrador/vendors/scripts/script.min.js"></script>
+<script src="TemplateAdministrador/vendors/scripts/process.js"></script>
 <script src="TemplateAdministrador/vendors/scripts/layout-settings.js"></script>
-<script src="TemplateAdministrador/src/plugins/jquery-steps/jquery.steps.js"></script>
-<script src="TemplateAdministrador/src/plugins/sweetalert2/sweetalert2.all.js"></script>
-<script src="TemplateAdministrador/src/plugins/sweetalert2/sweet-alert.init.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<!-- buttons for Export datatable -->
+<script src="TemplateAdministrador/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/buttons.print.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/buttons.html5.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/buttons.flash.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/pdfmake.min.js"></script>
+<script src="TemplateAdministrador/src/plugins/datatables/js/vfs_fonts.js"></script>
+<!-- Datatable Setting js -->
 
 <script>
    function agregarEmpleado() {

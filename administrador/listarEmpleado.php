@@ -197,4 +197,3 @@ function actualizarEmpleado() {
     }
 </script>
 
-</script>
