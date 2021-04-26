@@ -38,5 +38,16 @@ class ControladorCliente{
         return $this->Clientes->darCliente_x_Codusuario($cod_usuario);
     }
     
+    public function actualizarCantDominios($cantidad,$cod_cliente)
+    {
+        $this->clientes=new DAOCliente();
+        return $this->clientes->actualizarCantDominios($cantidad,$cod_cliente);
+    }
+
+    public function actualizarCategoria($cod_tipo,$cod_cliente)
+    {
+        $this->clientes=new DAOCliente();
+        return $this->clientes->actualizarCategoria($cod_tipo,$cod_cliente);
+    }
 
 }

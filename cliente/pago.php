@@ -125,6 +125,7 @@ $paquete=$conPaquete->paquetexcod($_GET["paq"]);
                     <h2>Total a pagar: <?php echo $paquete->getCosto_paquete()?></h2>
                     <input type="hidden" id="codC" name="codC" value="<?php echo $cliente->getCod_cliente() ?>" />
                     <input type="hidden" id="codP" name="codP" value="<?php echo $paquete->getCod_paquete() ?>" />
+                    <input type="hidden" id="codU" name="codU" value="<?php echo $usuario->getCod_usuario() ?>" />
                     <button class='pay-btn' type="submit" >Pagar</button>
 
                 </div>

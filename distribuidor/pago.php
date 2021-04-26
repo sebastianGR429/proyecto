@@ -125,6 +125,11 @@ $paquete=$conPaquete->paquetexcod($_GET["paq"]);
                     <h2>Total a pagar: <?php echo $paquete->getCosto_paquete()?></h2>
                     <input type="hidden" id="codC" name="codC" value="<?php echo $cliente->getCod_cliente() ?>" />
                     <input type="hidden" id="codP" name="codP" value="<?php echo $paquete->getCod_paquete() ?>" />
+                    <input type="hidden" id="codU" name="codU" value="<?php echo $usuario->getCod_usuario() ?>" />
+                    <input type="hidden" id="costo_paquete" name="costo_paquete" 
+                    value="<?php echo $paquete->getCosto_paquete() ?>" />
+                    <input type="hidden" id="nom_paquete" name="nom_paquete" 
+                    value="<?php echo $paquete->getNom_paquete() ?>" />
                     <button class='pay-btn' type="submit" >Pagar</button>
 
                 </div>
@@ -156,6 +161,7 @@ $paquete=$conPaquete->paquetexcod($_GET["paq"]);
   <!-- Template Main JS File -->
   <script src="../assets/js/main.js"></script>
   <script src="pagos/pago.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 </body>
 
 </html>

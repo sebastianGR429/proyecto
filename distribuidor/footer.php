@@ -4,94 +4,26 @@
       <div class="container">
         <div class="row">
 
-          <div class="col-lg-4 col-md-6">
+          <div class="">
+          <table class="center">
             <div class="footer-info">
-              <h3>CHIBCHA WEB</h3>
+              <h3>Chibcha Web</h3>
               <p>
-                Cra 85 #45-54 <br>
-                Bogota, Colombia<br><br>
-                <strong>Telefono:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong>chibchaw@gmail.com <br>
+                Av. carrera 9 #131a-20<br>
+                Bogotá, Colombia<br><br>
+                <strong>Tel:</strong> +57 305 705 4858<br>
+                <strong>E-mail:</strong> contacto@chibchaweb.com<br>
               </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
               </div>
-            </div>
+            </table>
           </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Nuestros servicios</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="partners.php">Solicitar alojamiento (partners)</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="index.php">Solicitar alojamiento (ChibchaWeb)</a></li>
-              
-            </ul>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4></h4>
-            <ul>
-              
-            </ul>
-          </div>
-
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Cuentanos tu problema, asi podremos ayudarte.</h4>
-            <form action="javascript:realizarSugerencia()" method="POST" id="sugerencia">
-            <input type="text" class="form__inputF" autofocus id="des_sugerencia" name="des_sugerencia">
-            <input type="hidden" id="codU" name="codU" value="<?php echo $usuario->getCod_usuario()?>" />
-            </br>
-            <button type="submit" class="btn btn-danger">Enviar</button>
-            </form>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Day</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>Chibcha Web</span></strong>.Todos los derechos reservados
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/day-multipurpose-html-template-for-free/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+
       </div>
     </div>
   </footer><!-- End Footer -->
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script>
-    
-    function realizarSugerencia() {
-        
-           
-        datos = $('#sugerencia').serialize();
-
-                $.ajax({
-                    type: "POST",
-                    data: datos,
-                    url: "agregar_sugerencia.php",
-                    success: function(r) {
-
-                        console.log(r);
-                        if (r == 1) {
-                            // toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
-                            window.location.href = "index.php";
-                           
-                        } else {
-                            
-                        }
-                    }
-                });
-
-           
-    }
-</script>

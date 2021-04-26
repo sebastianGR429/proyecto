@@ -15,6 +15,11 @@ $conDominio=new ControladorDominio();
 $verificacion=$conDominio->buscarDominioGeneral($datos[4]);;
 $conCC=new ControladorClientes_chibcha();
 $tarjeta=$conCC->validarTarjeta($_POST["num_tarjeta"], "");
+$conCliente=new ControladorCliente();
+$cliente=$conCliente->darCliente_x_Codusuario($_POST["codU"]);
+$dominios=$cliente->getCantidad_dominios();
+
+
 
 if($tarjeta)
 {
@@ -24,7 +29,9 @@ if($tarjeta)
         if($verificacion)
             {   
                 $clienteCC=new Clientes_chibcha(0,$datos[0],$datos[1],$datos[2],$datos[3],$datos[4],"2010","198.232.12",$datos[5]);
-                echo($conCC->agregarRegistro($clienteCC));
+                $conCC->agregarRegistro($clienteCC);
+                $dominios=$dominios+1;
+                echo($conCliente->actualizarCantDominios($dominios,$datos[0]));
             }
         else 
             { 
@@ -32,7 +39,9 @@ if($tarjeta)
             }
     }else{
         $clienteCC=new Clientes_chibcha(0,$datos[0],$datos[1],$datos[2],$datos[3],$datos[4],"2019-09-12","198.123.82",$datos[5]);
-        echo($conCC->agregarRegistro($clienteCC));
+        $conCC->agregarRegistro($clienteCC);
+        $dominios=$dominios+1;
+        echo($conCliente->actualizarCantDominios($dominios,$datos[0]));
     }
 }else
 {

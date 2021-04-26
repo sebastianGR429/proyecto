@@ -80,5 +80,19 @@ class DAOCliente extends DB
             return null;
         }
     }
+
+    public function actualizarCantDominios($cantidad,$cod_cliente)
+    {
+        $query = "UPDATE CLIENTE SET cantidad_dominios=? WHERE cod_cliente=?";
+        $respuesta = $this->con->prepare($query)->execute([$cantidad ,$cod_cliente]);
+        return $respuesta;
+    }    
+
+    public function actualizarCategoria($cod_tipo,$cod_cliente)
+    {
+        $query = "UPDATE CLIENTE SET cod_tipo_cliente=? WHERE cod_cliente=?";
+        $respuesta = $this->con->prepare($query)->execute([$cod_tipo ,$cod_cliente]);
+        return $respuesta;
+    }    
       
 }
