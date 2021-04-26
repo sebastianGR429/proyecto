@@ -29,19 +29,19 @@ include('menuAdmi.php');
                     <h4 class="text-blue h4">Formulario del empleado</h4>
                 </div>
                 <div class="wizard-content">
-                    <form id="newE" method="POST" action="javascript: agregarEmpleado()" class="tab-wizard wizard-circle wizard">
+                    <form id="agregarE" method="POST" class="tab-wizard wizard-circle wizard">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Nombre Empleado:</label>
-                                    <input type="text" class="form-control" required id="nomE" name="nombre">
+                                    <input type="text" class="form-control" required id="nomE" name="nomE">
                                 </div>
                             </div>
                             
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telefono Empleado:</label>
-                                    <input type="number" class="form-control" required id="telE" name="telefonoE">
+                                    <input type="number" class="form-control" required id="telE" name="telE">
                                 </div>
                             </div>
                         </div>
@@ -49,7 +49,7 @@ include('menuAdmi.php');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label> Nivel Empleado :</label>
-                                    <select type="text" class="form-control" requiredid="nivelE" name="nivelE">
+                                    <select type="text" class="form-control" required id="nivelE" name="nivelE">
                                         <option value="value2" selected>Seleccione un nivel...</option>
                                         <option value="value1">Nivel 1 (Basico)</option>
                                         <option value="value2">Nivel 2 (Avanzado)</option>
@@ -60,7 +60,7 @@ include('menuAdmi.php');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Cedula:</label>
-                                    <input type="cedula" class="form-control" required id="cedE" name="cedulaE">
+                                    <input type="cedula" class="form-control" required id="cedE" name="cedE">
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,7 @@ include('menuAdmi.php');
                                 <div class="form-group">
                                     <br>
                                     <!-- onclick="agregarCliente()" -->
-                                    <button type="submit" class='btn btn-outline-success'>Agregar</button>
+                                    <button type="submit" onclick="agregarEmpleado()" class='btn btn-outline-success'>Agregar Empleado</button>
                                 </div>
                             </div>
                         </div>
@@ -103,11 +103,12 @@ include('menuAdmi.php');
                             console.log(r);
                             if (r == 1) {
                                 
-                                // toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
+                                toastr["ERROR"]('Error al crear empleado', "Error:(");
                                 window.location.href = "index.php";
                                
                             } else {
-                                
+                                toastr["success"]("Autor agregado con exito", "Genial");
+                                document.getElementById("agregarE").reset();
                             }
                         }
                     });

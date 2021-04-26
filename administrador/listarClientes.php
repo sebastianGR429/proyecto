@@ -7,7 +7,7 @@ $CCliente = new ControladorCliente();
 $cliente = $CCliente->listar();
 //print_r($cliente);
 ?>
-<div class="modal fade" id="verCliente" role="dialog">
+<div class="modal fade" id="Cliente" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<!-- Modal Header -->
@@ -24,7 +24,7 @@ $cliente = $CCliente->listar();
 			<div class="modal-body">
 				<p class="statusMsg"></p>
 				<form role="form">
-				<input type="text" class="form-control" id="cod_cliente" hidden = "true"/>
+					<input type="text" class="form-control" id="cod_cliente" hidden="true" />
 
 					<div class="form-group">
 						<label>Nombre:</label>
@@ -36,11 +36,11 @@ $cliente = $CCliente->listar();
 					</div>
 					<div class="form-group">
 						<label>Telefono:</label>
-						<input type="text" class="form-control" id="tel_cliente"/>
+						<input type="text" class="form-control" id="tel_cliente" />
 					</div>
 					<div class="form-group">
 						<label>Nivel:</label>
-						<input class="form-control"  id="cod_tipo_cliente"/>
+						<input class="form-control" id="cod_tipo_cliente" />
 					</div>
 				</form>
 			</div>
@@ -80,7 +80,7 @@ $cliente = $CCliente->listar();
 			<!-- Export Datatable start -->
 			<div class="card-box mb-30">
 				<div class="pd-20">
-					<h4 class="text-blue h4">Empleados registrados</h4>
+					<h4 class="text-blue h4">Clientes registrados</h4>
 				</div>
 				<div class="pb-20">
 					<table class="table hover multiple-select-row data-table-export nowrap">
@@ -101,14 +101,14 @@ $cliente = $CCliente->listar();
 						?>
 							<tbody>
 								<tr>
-									<td><?php echo $key['cod_cliente'] ?></td>	
+									<td><?php echo $key['cod_cliente'] ?></td>
 									<td><?php echo $key['nom_cliente'] ?></td>
 									<td><?php echo $key['cedula_cliente'] ?></td>
 									<td><?php echo $key['tel_cliente'] ?>
 									<td><?php echo $key['cod_tipo_cliente'] ?>
 									<td><?php echo $key['cantidad_dominios'] ?>
 									<td>
-										<button type="button" class="btn btn-success verCliente">Ver cliente</button>
+										<button type="button" class="btn btn-success Cliente">Ver cliente</button>
 									</td>
 								</tr>
 
@@ -127,11 +127,9 @@ $cliente = $CCliente->listar();
 </div>
 
 <script>
-
-		function estado(cod) {
-            window.location.href = 'ac.php?action=' + "estadoEm&" + "codigo=" + cod;
-        }
-
+	function estado(cod) {
+		window.location.href = 'ac.php?action=' + "estadoEm&" + "codigo=" + cod;
+	}
 </script>
 
 <script src="TemplateAdministrador/vendors/scripts/core.js"></script>
@@ -153,13 +151,13 @@ $cliente = $CCliente->listar();
 <!-- Datatable Setting js -->
 <script src="TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
 <script>
-$(document).ready(function(){
-	$('.verCliente').on('click', function(){
-		$('#verCliente').modal('show');
+	$(document).ready(function() {
+		$('.Cliente').on('click', function() {
+			$('#Cliente').modal('show');
 
 			$tr = $(this).closest('tr');
 
-			var data = $tr.children("td").map(function(){
+			var data = $tr.children("td").map(function() {
 				return $(this).text();
 			}).get();
 
@@ -170,5 +168,5 @@ $(document).ready(function(){
 			$('#cod_tipo_cliente').val(data[4]);
 			$('#cantidad_dominios').val(data[5]);
 
-	})
-});
+		})
+	});

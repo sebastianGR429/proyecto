@@ -40,7 +40,7 @@ include('menuAdmi.php');
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Correo Partner:</label>
-                                    <input type="email" class="form-control" required id="telefonoE" name="correoP">
+                                    <input type="email" class="form-control" required id="correoP" name="correoP">
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@ include('menuAdmi.php');
                         <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Telefono Partner:</label>
-                                    <input type="number" class="form-control" required id="telefonoE" name="telefonoE">
+                                    <input type="number" class="form-control" required id="telefonoP" name="telefonoE">
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@ include('menuAdmi.php');
                                 <div class="form-group">
                                     <br>
                                     <!-- onclick="agregarCliente()" -->
-                                    <button type="submit" class='btn btn-outline-success'>Agregar</button>
+                                    <button type="button" onclick="agregarPartner()" class='btn btn-outline-success'>Agregar Partner</button>
                                 </div>
                             </div>
                         </div>
@@ -77,47 +77,31 @@ include('menuAdmi.php');
 
 
 <script>
-    function agregarPartner() {
-        datos = $('#newE').serialize();
+      function agregarPartner() {
+            
+               
+            datos = $('#agregarE').serialize();
 
-        $.ajax({
-            type: "POST",
-            data: datos,
-            url: "Ac.php?action=" + "AgregarP",
-            success: function(r) {
+                    $.ajax({
+                        type: "POST",
+                        data: datos,
+                        url: "insertarPartner.php",
+                        success: function(r) {
 
-                console.log(r);
-                if (r == 3) {
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: '¡El correo ya existe!',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
+                            console.log(r);
+                            if (r == 1) {
+                                
+                                // toastr["success"]('Realizando tu solicitud...', "NOTIFICACIÓN");
+                                window.location.href = "index.php";
+                               
+                            } else {
+                                
+                            }
+                        }
+                    });
 
-
-                } else if (r == 1) {
-                    swal({
-                        type: 'success',
-                        title: '¡Se agregó correctamente!',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-                    document.getElementById("newE").reset();
-
-                } else {
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: '¡No se ha podido agregar!',
-                        showConfirmButton: false,
-                        timer: 2000
-                    })
-                }
-            }
-        });
-    }
+               
+        }
 </script>
 <<script src="TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="TemplateAdministrador/vendors/scripts/script.min.js"></script>
