@@ -10,7 +10,7 @@ $datos=array(
     $_POST["tel_empleado"],      
     $_POST["cod_nivel"],
     $_POST["cod_empleado"],
- 
+
 );
 
 $controlador = new ControladorEmpleado();

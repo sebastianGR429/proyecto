@@ -37,6 +37,22 @@ class DAOPartner extends DB
         ]);
         return $respuesta;
     }
+
+    public function actualizarPartner($cod_partner,$nom_partner,$correo_partner,$tel_partner)
+    {
+
+        $query = "UPDATE PARTNER SET nom_partner=?,correo_partner=?,tel_partner=?
+        WHERE cod_partner=?";        
+        $sentencia = $this->con->prepare($query);
+        $res=$sentencia->execute([$cod_partner,$nom_partner,$correo_partner,$tel_partner]);
+
+        if($res){
+            echo'SE HA REALIZADO LA EJECUCIÓN DE LA SENTENCIA';
+        }else{
+            echo'NO SE HA REALIZADO LA EJECUCIÓN';
+        }
+        return $res;        
+    }
     public function listar()
     {
         $query = $this->con->prepare("SELECT * FROM PARTNER");

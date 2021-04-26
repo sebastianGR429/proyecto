@@ -1,7 +1,7 @@
 <?php
 include('Header.php');
 include('menuAdmi.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorPartner.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorPartner.php');
 $CPartner = new ControladorPartner();
 $Partner = $CPartner->listar();
 print_r($Partner);
@@ -23,6 +23,7 @@ print_r($Partner);
 			<div class="modal-body">
 				<p class="statusMsg"></p>
 				<form role="form">
+				<input type="text" class="form-control" id="cod_partner" hidden = "true"/>
 					<div class="form-group">
 						<label>Nombre:</label>
 						<input type="text" class="form-control" id="nom_partner" />
@@ -33,16 +34,15 @@ print_r($Partner);
 					</div>
 					<div class="form-group">
 						<label>Telefono:</label>
-						<input type="text" class="form-control" id="tel_partner"/>
+						<input type="text" class="form-control" id="tel_partner" />
 					</div>
 				</form>
 			</div>
 
 			<!-- Modal Footer -->
-			<!-- <div class="modal-footer">
-				<button type="button" class="btn btn-primary solucionarBtn" onclick="submitContactForm()">Solucionar sugerencia</button>
-				<button type="button" class="btn btn-warning escalartBtn" onclick="submitContactForm()">Escalar sugerencia</button>
-			</div> -->
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary solucionarBtn" onclick="actualizarPartner()">Actualizar Partner</button>
+			</div>
 		</div>
 	</div>
 </div>
@@ -67,10 +67,6 @@ print_r($Partner);
 				</div>
 			</div>
 
-
-
-			<!-- Checkbox select Datatable End -->
-			<!-- Export Datatable start -->
 			<div class="card-box mb-30">
 				<div class="pd-20">
 					<h4 class="text-blue h4">Partners registrados</h4>
@@ -79,9 +75,10 @@ print_r($Partner);
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th class="table-plus datatable-nosort">Nombre</th>
+								<th>Número de partner</th>
+								<th>Nombre</th>
 								<th>Correo</th>
-								<th>Telefono</th>
+								<th>Teléfono</th>
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -90,12 +87,12 @@ print_r($Partner);
 						?>
 							<tbody>
 
-
+								<td><?php echo $key['cod_partner'] ?></td>
 								<td><?php echo $key['nom_partner'] ?></td>
 								<td><?php echo $key['correo_partner'] ?></td>
 								<td><?php echo $key['tel_partner'] ?></td>
 								<td>
-									<button type="button" class="btn btn-success verPartner">Mas informacion</button>
+									<button type="button" class="btn btn-success verPartner">Ver Partner</button>
 								</td>
 
 
@@ -106,7 +103,6 @@ print_r($Partner);
 					</table>
 				</div>
 			</div>
-			<!-- Export Datatable End -->
 		</div>
 	</div>
 </div>
@@ -137,19 +133,42 @@ print_r($Partner);
 <!-- Datatable Setting js -->
 <script src="TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
 <script>
-$(document).ready(function(){
-	$('.verPartner').on('click', function(){
-		$('#verPartner').modal('show');
+	$(document).ready(function() {
+		$('.verPartner').on('click', function() {
+			$('#verPartner').modal('show');
 
 			$tr = $(this).closest('tr');
 
-			var data = $tr.children("td").map(function(){
+			var data = $tr.children("td").map(function() {
 				return $(this).text();
 			}).get();
+			$('#cod_partner').val(data[0]);
+			$('#nom_partner').val(data[1]);
+			$('#correo_partner').val(data[2]);
+			$('#tel_partner').val(data[3]);
+		})
+	});
 
-			$('#nom_partner').val(data[0]);
-			$('#correo_partner').val(data[1]);
-			$('#tel_partner').val(data[2]);
-	})
-});
+	function actualizarPartner() {
+		cod_empleado = $('#cod_partner').val();
+		nom_partner = $('#nom_partner').val();
+		correo_partner = $('#correo').val();
+		tel_partner = $('#tel_partner').val();
+
+		var dataString = '&cod_partner=' + cod_partner + '&nom_partner=' + nom_partner + '&correo_partner=' + correo_partner +'&tel_partner='+ tel_partner;
+        $.ajax({
+            type: "POST",
+            data: dataString,
+            url: "actualizarPartner.php",
+
+            success: function(r) {
+                console.log(r);
+                if (r == 1) {
+                    //toastr["error"]("Error al solucionar sugerencia", "Error :(");
+                } else {
+                    //toastr["success"]("Sugerencia atendida con exíto", "Genial");
+                }
+            }
+        });
+    }
 </script>

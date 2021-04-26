@@ -26,7 +26,7 @@
 						</a>
 						<ul class="submenu">
 							<li><a href="listarEmpleado.php">Listar</a></li>
-							<li><a href="agregarEmpleado.php">Agregar</a></li>
+							<li><a href="formEmpleado.php">Agregar</a></li>
 					
 						</ul>
 					</li>

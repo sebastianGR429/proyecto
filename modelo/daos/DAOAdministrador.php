@@ -49,10 +49,23 @@ class DAOAdministrador extends DB
         $sentencia->execute([]);
         $administrador = [];
         foreach ($sentencia->fetchall() as $key) {
-            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3]);
+            $usuarios[] = new Administrador ($key[0], $key[1], $key[2], $key[3]);
         }
         return $administrador;
     }
+
+    public function admin_x_Codusuario($cod_usuario)
+    {
+        $query = $this->connect()->prepare('SELECT * FROM ADMINISTRADOR WHERE cod_usuario=?');
+        $query->execute([$cod_usuario]);
+        if ($query->rowCount()) {
+            $key = $query->fetchAll()[0];
+            return new Administrador ($key[0], $key[1], $key[2], $key[3]);
+        } else {
+            return null;
+        }
+    }
+
 
       
 }

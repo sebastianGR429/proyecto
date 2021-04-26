@@ -1,6 +1,20 @@
 <?php
+include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/controlador/ControladorRegistro.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorAdministrador.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOEmpleado.php');
+session_start();
+if (!isset($_SESSION['user'])) {
+    header("location: ../index.php");
+} else if (!$_SESSION['tipo'] == 2) {
+    header("location: ../index.php");
+}
 include ('Header.php');
 include ('menuAdmi.php');
+
+$conReg=new ControladorRegistro();
+$usuario=$conReg->darUsuario($_SESSION['user']);
+$CAdmin = new ControladorAdministrador();
+$Admins=$CAdmin->admin_x_Codusuario($usuario->getCod_usuario());
 ?>
 
 <div class="mobile-menu-overlay"></div>

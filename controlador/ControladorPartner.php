@@ -31,5 +31,10 @@ class ControladorPartner{
         $this->Partners=new DAOPartner();
         return $this->Partners->devolverPartner($cod_partner);
     }
+    public function actualizarPartner($cod_partner,$nom_partner,$correo_partner,$tel_partner)
+    {
+        $this->Partners=new DAOPartner();
+        return $this->Partners->actualizarPartner($cod_partner,$nom_partner,$correo_partner,$tel_partner);
+    }
 
 }
