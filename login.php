@@ -87,71 +87,9 @@ if(isset($_SESSION['user'])){
 
             ?>
 
+            
             <p class="form__text">
-                <a href="#" class="form__link">¿Olvidaste tu contraseña?</a>
-            </p>
-            <p class="form__text">
-                <a class="form__link" href="./" id="linkCreateAccount">¿No tienes cuenta? Crea una</a>
-            </p>
-        </form>
-        <form class="form form--hidden" id="createAccount">
-            <h1 class="form__title">Crear Cuenta</h1>
-            <table>
-                <div class="form__message form__message--error"></div>
-                <tr>
-                    <td>
-                    <div class="form__input-group">
-                        <input type="text" id="nombre_cliente" class="form__input" autofocus placeholder="Nombre completo">
-                        <div class="form__input-error-message"></div>
-                    </div>
-                    </td>
-
-                    <td>
-                    <div class="form__input-group">
-                        <input type="text" id="cedula_cliente" class="form__input" autofocus placeholder="Cedula">
-                        <div class="form__input-error-message"></div>
-                    </div>
-                    </td>
-                </tr>
-
-            </table>
-                    
-                    <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Telefono">
-                        <div class="form__input-error-message"></div>
-                    </div>
-                    <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Correo">
-                        <div class="form__input-error-message"></div>
-                    </div>
-                    
-                    <div class="form__input-group">
-                        <input type="text" class="form__input" autofocus placeholder="Usuario">
-                        <div class="form__input-error-message"></div>
-                    </div>
-
-            <table>
-                <tr>
-                    <td>
-                    <div class="form__input-group">
-                        <input type="password" class="form__input" autofocus placeholder="Contraseña">
-                        <div class="form__input-error-message"></div>
-                    </div>
-                    </td>
-                    
-                    <td>
-                    <div class="form__input-group">
-                        <input type="password" class="form__input" autofocus placeholder="Confirmar contraseña">
-                        <div class="form__input-error-message"></div>
-                    </div>
-                    </td>
-                </tr>
-            </table>        
-                    
-            <center><button type="button" class="btn btn-danger">Registrar</button></center>
-            <br><br>
-            <p class="form__text">
-                <a class="form__link" href="./" id="linkLogin">Ya tienes una cuenta? Ingresar</a>
+                <a class="form__link" href="registro.php" id="linkCreateAccount">¿No tienes cuenta? Crea una</a>
             </p>
         </form>
     </div>
