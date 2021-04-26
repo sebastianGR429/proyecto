@@ -24,6 +24,8 @@ class DAOEmpleado extends DB
             $nuevoRegistro->getCed_empleado()
         ]);
         
+        
+        
         if($respuesta){
             echo'SE HA REALIZADO LA EJECUCIÓN DE LA SENTENCIA';
         }else{

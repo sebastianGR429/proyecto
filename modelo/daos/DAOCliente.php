@@ -13,17 +13,23 @@ class DAOCliente extends DB
         $this->con = $this->connect();
     }
 
-    public function agregarRegistro(Cliente $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
-        $query = "INSERT INTO CLIENTE VALUES (cod_usuario=?,nom_cliente=?,cedula_cliente=?,tel_cliente=?,cod_tipo_cliente=?,cantidad_dominios=?) ";
+        $query = "INSERT INTO CLIENTE (nom_cliente,cedula_cliente,tel_cliente,cod_tipo_cliente) VALUES (?,?,?,2) ";
         $respuesta = $this->con->prepare($query)->execute([ 
-                $nuevoRegistro->getCod_usuario(), 
+ 
                 $nuevoRegistro->getNom_cliente(),
                 $nuevoRegistro->getCedula_cliente(),
                 $nuevoRegistro->getTel_cliente(),
-                $nuevoRegistro->getCod_tipo_cliente(),
-                $nuevoRegistro->getCantidad_dominios(),
+
         ]);
+        return $respuesta;
+
+        if($respuesta==1){
+            $query  = "INSERT INTO USUARIO (cod_usuario, nom_usuario, cod_tipo_usuario, contraseña, estado_usuario, correo) VALUES (?, nom_cliente, 2, asd, 1, ?)";
+        }else{
+            echo'No sirve';
+        }
         return $respuesta;
     }   
     public function actualizarRegistro(Cliente $registroActualizar)

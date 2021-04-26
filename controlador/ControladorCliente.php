@@ -4,10 +4,9 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/proyecto/modelo/daos/DAOCliente.php');
 
 class ControladorCliente{
 
-    private $Partners;
 
 
-    public function agregarRegistro(Cliente $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
         $this->Clientes=new DAOCliente();
         return $this->Clientes->agregarRegistro($nuevoRegistro);

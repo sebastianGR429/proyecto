@@ -14,7 +14,7 @@ class DAOPartner extends DB
         $this->con = $this->connect();
     }
 
-    public function agregarRegistro(Partner $nuevoRegistro)
+    public function agregarRegistro(Object $nuevoRegistro)
     {
         $query = "INSERT INTO PARTNER VALUES (cod_partner=?,nom_partner=?,correo_partner=?,tel_partner=?)";
         $respuesta = $this->con->prepare($query)->execute([

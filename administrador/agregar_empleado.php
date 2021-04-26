@@ -5,14 +5,17 @@ include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/entidades/Empleado.ph
 
 print_r($_POST);
 $datos=array(
+
+  $_POST["codU"],
   $_POST["nomE"],
   $_POST["telE"],
   $_POST["nivelE"],
   $_POST["cedE"]
+  
 );
 
 $controlador = new ControladorEmpleado();
-$empleado = new Empleado(10,10,$datos[0],$datos[1], $datos[2], $datos[3]);
+$empleado = new Empleado(10,$datos[0],$datos[1],$datos[2], $datos[3], $datos[4]);
 
 echo($controlador->agregarRegistro($empleado));
 ?>
