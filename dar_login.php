@@ -64,6 +64,7 @@ function verificarIngresoUsuario(Usuario $usuario){
     }else{
         $errorEntrada="La contraseña no es correcta";
         echo $errorEntrada;
+        header('location: login.php');
 
     }	
 }

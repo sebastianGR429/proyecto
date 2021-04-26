@@ -198,7 +198,7 @@ if(isset($_SESSION['user'])){
                     if (r == 1) {
                         
                     } else {
-                        // toastr["error"](r, "ERROR");
+                        
                     }
                 }
             });
