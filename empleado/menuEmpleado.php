@@ -20,7 +20,15 @@
 							<li><a href="perfilEmpleado.php">Perfil</a></li>
 						</ul>
 					</li>
-
+					<li class="dropdown">
+						<a href="javascript:;" class="dropdown-toggle">
+							<span class="micon dw dw-edit2"></span><span href="index.php" class="mtext">Paquetes</span>
+						</a>
+						<ul class="submenu">
+							<li><a href="listarPaquetes.php">Listar</a></li>
+					
+						</ul>
+					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
 							<span class="micon dw dw-edit2"></span><span href="index.php" class="mtext">Partners</span>
