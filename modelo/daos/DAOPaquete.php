@@ -37,14 +37,15 @@ class DAOPaquete extends DB
 
     public function listar()
     {
-        $query = $this->con->prepare("SELECT * FROM PAQUETES");
-        $query->execute();
-        $par = array();
-        while ($fila = $query->fetch()) {
-            $par[] = $fila;
+        $query = "select * from PAQUETES";
+        $sentencia = $this->con->prepare($query);
+        $sentencia->execute([]);
+        $usuarios = [];
+        foreach ($sentencia->fetchall() as $key) {
+            $usuarios[] = new Paquete($key[0], $key[1], $key[2], $key[3],$key[4], $key[5], $key[6], $key[7],$key[8]);
         }
-        return $par;
-        
+            return $usuarios;
+
     }
 
     public function eliminarRegistro($idRegistro)
