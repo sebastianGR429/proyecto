@@ -60,7 +60,7 @@ if(isset($_SESSION['user'])){
   <main id="main">
 
     <section id="pricing" class="pricing">
-    <div class="container2" style="margin-left: 700px">
+    <div class="container2" style="margin-left: 500px">
         <form class="form" id="login" method="POST" action="dar_login.php" >
             <h1 class="form__title">Login</h1>
             
