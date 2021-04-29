@@ -38,4 +38,14 @@ class ControladorClientes_chibcha{
         return $this->clientes->validarTarjeta($numero, $franq);
     }
 
+    public function actualizarPaquete($cod_paquete,$cod_cliente_c)
+    {
+        $this->paquete=new DAOClientes_chimbcha();
+        return $this->paquete->actualizarPaquete($cod_paquete,$cod_cliente_c);
+    }
+    public function listarTodos()
+    {
+        $this->clientes=new DAOClientes_chimbcha();
+        return $this->clientes->listarTodos();
+    }
 }

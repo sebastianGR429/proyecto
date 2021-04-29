@@ -1,6 +1,5 @@
 <?php
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorPaquete.php');
-include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/modelo/daos/DAOPaquete.php');
+include_once($_SERVER['DOCUMENT_ROOT'] . '/proyecto/controlador/ControladorClientes_chibcha.php');
 session_start();
 if (!isset($_SESSION['user'])) {
     header("location: ../index.php");
@@ -10,8 +9,8 @@ if (!isset($_SESSION['user'])) {
 include('Header.php');
 include('menuEmpleado.php');
 
-$CPaquete = new ControladorPaquete();
-$paquete = $CPaquete->listar();
+$CPaquete = new ControladorClientes_chibcha();
+$paquete = $CPaquete->listarTodos();
 ?>
 <div class="modal fade" id="verPaquete" role="dialog">
     <div class="modal-dialog">
@@ -37,34 +36,7 @@ $paquete = $CPaquete->listar();
 						<input type="text" class="form-control" id="cod_paquete" hidden="true"/>
                         <input type="text" class="form-control" id="nom_paquete" />
                     </div>
-                    <div class="form-group">
-                        <label >Certificación:</label>
-                        <input class="form-control" id="certificacion" ></input>
-                    </div>
-					<div class="form-group">
-                        <label >Iso:</label>
-                        <input class="form-control" id="iso" ></input>
-                    </div>
-                    <div class="form-group">
-                        <label >Almacenamiento:</label>
-                        <input class="form-control" id="almacenamiento"></input>
-                    </div>
-					<div class="form-group">
-                        <label >Base de datos:</label>
-                        <input class="form-control" id="bd"></input>
-                    </div>
-					<div class="form-group">
-                        <label >Correos:</label>
-                        <input class="form-control" id="correos"></input>
-                    </div>
-					<div class="form-group">
-                        <label >Sitios web:</label>
-                        <input class="form-control" id="sitios_web"></input>
-                    </div>
-					<div class="form-group">
-                        <label >Costo del paquete:</label>
-                        <input class="form-control" id="costo_paquete"></input>
-                    </div>
+                   
                 </form>
             </div>
             <!-- Modal Footer -->
@@ -103,15 +75,14 @@ $paquete = $CPaquete->listar();
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th>Cod paquete</th>
+								<th>Nombre cliente</th>
 								<th>Nombre paquete</th>
-								<th>Certificación</th>
-                                <th>Teléfono</th>
-                                <th>Almacenamiento</th>
-                                <th>Base de datos</th>
-                                <th>Correos</th>
-                                <th>Sitios Web</th>
-                                <th>Costo del paquete</th>
+								<th>Plan de pago</th>
+                                <th>Tipo de dominio</th>
+                                <th>Dominio</th>
+                                <th>Fecha de pago</th>
+                                <th>Plataforma</th>
+
 								<th>Acciones</th>
 							</tr>
 						</thead>
@@ -122,15 +93,14 @@ $paquete = $CPaquete->listar();
 							<tbody>
 								<tr> 
 								
-									<td> <?php echo $key['cod_paquete']?>  </td> 
+									<td> <?php echo $key['nom_cliente']?>  </td> 
 									<td> <?php echo $key['nom_paquete']?>  </td> 
-									<td> <?php echo $key['certificacion'];?>  </td> 
-									<td> <?php echo $key['iso'];?> </td> 
-                                    <td> <?php echo $key['almacenamiento'];?> </td> 
-									<td> <?php echo $key['bd'];?> </td> 
-									<td> <?php echo $key['correos'];?> </td> 
-									<td> <?php echo $key['sitios_web'];?> </td> 
-									<td> <?php echo $key['costo_paquete'];?> </td> 
+									<td> <?php echo $key['plan_pago'];?>  </td> 
+									<td> <?php echo $key['tipo_dominio'];?> </td> 
+                                    <td> <?php echo $key['dominio'];?> </td> 
+									<td> <?php echo $key['fecha_pago'];?> </td> 
+									<td> <?php echo $key['plataforma'];?> </td>									
+									
 									<td>
 										<button type= "button" class="btn btn-success verPaquete">Ver</button>
 									</td>	

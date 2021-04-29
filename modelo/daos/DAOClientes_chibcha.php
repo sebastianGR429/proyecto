@@ -45,7 +45,15 @@ class DAOClientes_chimbcha extends DB
         ]);
         return $respuesta;
     }    
-
+    public function actualizarPaquete($cod_paquete,$cod_cliente_c)
+    {
+        $query = "UPDATE CLIENTES_CHIBCHA SET cod_paquete=?
+        WHERE cod_cliente_c=?";
+        $respuesta = $this->con->prepare($query)->execute([
+            $cod_paquete,$cod_cliente_c
+        ]);
+        return $respuesta;
+    }    
     public function eliminarRegistro($idRegistro)
     {
         
@@ -66,6 +74,17 @@ class DAOClientes_chimbcha extends DB
     {
         $query = $this->con->prepare("SELECT * FROM dominios_cliente WHERE nom_cliente=?");
         $query->execute([$nom_cliente]);
+        $par = array();
+        while ($fila = $query->fetch()) {
+            $par[] = $fila;
+        }
+        return $par;
+    }
+    
+    public function listarTodos()
+    {
+        $query = $this->con->prepare("SELECT * FROM dominios_cliente");
+        $query->execute();
         $par = array();
         while ($fila = $query->fetch()) {
             $par[] = $fila;
