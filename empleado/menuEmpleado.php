@@ -22,7 +22,7 @@
 					</li>
 					<li class="dropdown">
 						<a href="javascript:;" class="dropdown-toggle">
-							<span class="micon dw dw-edit2"></span><span href="index.php" class="mtext">Paquetes</span>
+							<span class="micon dw dw-edit2"></span><span href="index.php" class="mtext">Paquetes clientes</span>
 						</a>
 						<ul class="submenu">
 							<li><a href="listarPaquetes.php">Listar</a></li>

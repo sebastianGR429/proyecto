@@ -12,36 +12,12 @@ include('menuEmpleado.php');
 $CPaquete = new ControladorClientes_chibcha();
 $paquete = $CPaquete->listarTodos();
 ?>
-<div class="modal fade" id="verPaquete" role="dialog">
+<div class="modal fade" id="verSugerencia" role="dialog">
     <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-			<h4 class="modal-title" id="myModalLabel">Ver sugerencia</h4>
-
-                <button type="button" class="close" data-dismiss="modal">
-                    <span aria-hidden="true">×</span>
-                    <span class="sr-only">Close</span>
-                </button>
-            </div>
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                <p class="statusMsg"></p>
-                <form role="formSugerencia">
-				<input type="text" class="form-control" id="cod_nivel" hidden="true"/>
-
-                    <div class="form-group">
-                        <label>Nombre de paquete:</label>
-						<input type="text" class="form-control" id="cod_paquete" hidden="true"/>
-                        <input type="text" class="form-control" id="nom_paquete" />
-                    </div>
-                   
-                </form>
-            </div>
             <!-- Modal Footer -->
             <div class="modal-footer">					
-				<button type="button" class="btn btn-primary solucionarBtn" onclick="editarPaquete()">Editar paquete</button>
+				<button type="button" class="btn btn-primary solucionarBtn" onclick="solucionarSugerencia()">Solucionar sugerencia</button>
+				<button type="button" name = 'updateSugerencia'class="btn btn-warning escalartBtn" onclick="escalarSugerencia()">Escalar sugerencia</button>
     		</div>
 		</div>
 	</div>
@@ -53,11 +29,11 @@ $paquete = $CPaquete->listarTodos();
 				<div class="row">
 					<div class="col-md-6 col-sm-12">
 						<div class="title">
-							<h4>Gestor de paquetes Chibcha-web</h4>
+							<h4>Gestor de sugerencias Chibcha-web</h4>
 						</div>
 						<nav aria-label="breadcrumb" role="navigation">
 							<ol class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">Partner</a></li>
+								<li class="breadcrumb-item"><a href="index.html">sugerencias</a></li>
 								<li class="breadcrumb-item active" aria-current="page">Listar</li>
 							</ol>
 						</nav>
@@ -69,54 +45,59 @@ $paquete = $CPaquete->listarTodos();
 			<!-- Export Datatable start -->
 			<div class="card-box mb-30">
 				<div class="pd-20">
-					<h4 class="text-blue h4">Partner registradas</h4>
+					<h4 class="text-blue h4">Sugerencias registradas</h4>
 				</div>
 				<div class="pb-20">
 					<table class="table hover multiple-select-row data-table-export nowrap">
 						<thead>
 							<tr>
-								<th>Nombre cliente</th>
-								<th>Nombre paquete</th>
-								<th>Plan de pago</th>
-                                <th>Tipo de dominio</th>
+								<th>fecha de pago</th>
+								<th>Cliente</th>
+								<th>Paquete</th>
+								<th>Plan</th>
+								<th>Tipo de dominio</th>
                                 <th>Dominio</th>
-                                <th>Fecha de pago</th>
-                                <th>Plataforma</th>
+								<th>Plataforma</th>
+								<th>Accion</th>
 
-								<th>Acciones</th>
 							</tr>
 						</thead>
 						<?php
 							foreach ($paquete as $key) {
-								
 						?>
 							<tbody>
 								<tr> 
-								
-									<td> <?php echo $key['nom_cliente']?>  </td> 
-									<td> <?php echo $key['nom_paquete']?>  </td> 
-									<td> <?php echo $key['plan_pago'];?>  </td> 
+									<td> <?php echo $key['fecha_pago']; ?> </td>
+									<td> <?php echo $key['nom_cliente']?> </td> 
+									<td> <?php echo $key['nom_paquete']?> </td> 
+									<td> <?php echo $key['plan_pago'];?> </td> 
 									<td> <?php echo $key['tipo_dominio'];?> </td> 
-                                    <td> <?php echo $key['dominio'];?> </td> 
-									<td> <?php echo $key['fecha_pago'];?> </td> 
-									<td> <?php echo $key['plataforma'];?> </td>									
+									<td> <?php echo $key['dominio'];?> </td> 
+									<td> <?php echo $key['plataforma']; ?> </td>
 									
-									<td>
-										<button type= "button" class="btn btn-success verPaquete">Ver</button>
-									</td>	
+									<?php echo "<td><button type='button' class='btn btn-dark' onclick='act_plan(" . '"' . $key["cod_cliente_c"] . '"'. ")'>Actualizar</button></td>" ?>
+									
 								</tr>
 							</tbody>
 							<?php
 							}
 							?>
 					</table>
+
+					<div class="modal fade" id="modal11" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+						
+							
+						</div>
+					</div>
+					</div>
 				</div>
 			</div>
 			<!-- Export Datatable End -->
 		</div>
 	</div>
 </div>
-
 
 <script src="TemplateAdministrador/vendors/scripts/core.js"></script>
 <script src="TemplateAdministrador/vendors/scripts/script.min.js"></script>
@@ -143,62 +124,9 @@ $paquete = $CPaquete->listarTodos();
 <!-- Datatable Setting js -->
 <script src="TemplateAdministrador/vendors/scripts/datatable-setting.js"></script>
 <script>
-
 //Funcion para escalar sugerencias
-function editarPaquete() {
-		cod_paquete = $('#cod_paquete').val();
-		nom_paquete = $('#nom_paquete').val();
-		certificacion = $('#certificacion').val();
-		iso = $('#iso').val();
-
-		almacenamiento = $('#almacenamiento').val();
-		bd = $('#bd').val();
-		correos = $('#correos').val();
-		sitios_web = $('#sitios_web').val();
-		costo_paquete = $('#costo_paquete').val();
-
-		var dataString = 'cod_paquete=' + cod_paquete + '&nom_paquete=' + nom_paquete + '&certificacion=' + certificacion+ '&iso=' + iso+ '&almacenamiento=' + almacenamiento+ '&bd=' + bd + '&correos=' + correos+ '&sitios_web=' + sitios_web+ '&costo_paquete=' + costo_paquete;
-        $.ajax({
-            type: "POST",
-            data: dataString,
-            url: "editarPaquete.php",
-
-            success: function(r) {
-                console.log(r);
-                if (r == 1) {
-                    toastr["error"]("Error al al completar accion ", "Error :(");
-                } else {
-                    toastr["success"]("Paquete editado con exito", "Genial");
-                    // document.getElementById("formSugerencia").reset();
-                }
-            }
-        });
-    }
-	//Funcion par la invocación del modal
-$(document).ready(function(){
-	$('.verPaquete').on('click', function(){
-		$('#verPaquete').modal('show');
-
-			$tr = $(this).closest('tr');
-
-			var data = $tr.children("td").map(function(){
-				return $(this).text();
-			}).get();
-			$('#cod_paquete').val(data[0]);
-			$('#nom_paquete').val(data[1]);
-			$('#certificacion').val(data[2]);
-			$('#iso').val(data[3]);
-
-			$('#almacenamiento').val(data[4]);
-			$('#bd').val(data[5]);
-			$('#correos').val(data[6]);
-			$('#sitios_web').val(data[7]);
-			$('#costo_paquete').val(data[8]);
-
-						
-
-	})
-});
-
-
+function act_plan(codigoPlan) {
+		$('.modal-content').load('modal_plan.php?codP='+codigoPlan) 
+		$('#modal11').modal('show');
+	}
 </script>

@@ -49,9 +49,7 @@ class DAOClientes_chimbcha extends DB
     {
         $query = "UPDATE CLIENTES_CHIBCHA SET cod_paquete=?
         WHERE cod_cliente_c=?";
-        $respuesta = $this->con->prepare($query)->execute([
-            $cod_paquete,$cod_cliente_c
-        ]);
+        $respuesta = $this->con->prepare($query)->execute([$cod_paquete,$cod_cliente_c]);
         return $respuesta;
     }    
     public function eliminarRegistro($idRegistro)
